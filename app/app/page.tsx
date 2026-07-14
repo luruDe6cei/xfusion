@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getChallenges, getSolutions } from '@/lib/data';
-import { ChallengeCard, SolutionCard } from './components';
+import { FeaturedCard } from './featured-card';
 
 /**
  * Landing page — reconstructed from the real xfusion.pro homepage
@@ -94,7 +94,8 @@ export default async function LandingPage() {
       </section>
 
       {/* About */}
-      <section id="about" className="section">
+      <section id="about" className="section about-splash full-bleed" style={{ padding: '72px 20px' }}>
+        <div className="container">
         <div className="section-head">
           <h2 className="h2">About <span className="accent">Us</span></h2>
           <Link href="/explore" className="btn btn-primary btn-sm">Explore ↗</Link>
@@ -107,6 +108,7 @@ export default async function LandingPage() {
               <p className="muted">{a.body}</p>
             </article>
           ))}
+        </div>
         </div>
       </section>
 
@@ -134,7 +136,9 @@ export default async function LandingPage() {
           <Link href="/challenges" className="muted">View all →</Link>
         </div>
         <div className="grid-3">
-          {challenges.map((c) => <ChallengeCard key={c.id} c={c} />)}
+          {challenges.map((c) => (
+            <FeaturedCard key={c.id} href={`/challenges/${c.slug}`} name={c.name} by={c.company?.name} text={c.shortDescription} keywords={c.keywords} logo={c.company?.logo?.thumbnailUrl || c.company?.logo?.url} cta="View Challenge" />
+          ))}
         </div>
       </section>
 
@@ -145,7 +149,9 @@ export default async function LandingPage() {
           <Link href="/solutions" className="muted">View all →</Link>
         </div>
         <div className="grid-3">
-          {solutions.map((s) => <SolutionCard key={s.id} s={s} />)}
+          {solutions.map((s) => (
+            <FeaturedCard key={s.id} href={`/solutions/${s.slug}`} name={s.name} by={s.company?.name} text={s.shortDescription} keywords={s.keywords} logo={s.company?.logo?.thumbnailUrl || s.company?.logo?.url} cta="View Solution" />
+          ))}
         </div>
       </section>
 
@@ -158,8 +164,8 @@ export default async function LandingPage() {
               <span className="w-[6px] shrink-0" style={{ background: colour }} />
               <div className="flex flex-col flex-1">
                 <div className="p-[var(--spacing-20)] flex flex-col gap-[var(--spacing-4)]" style={{ background: colour }}>
-                  <span className="text-[length:var(--font-size-32)] font-[var(--font-weight-bold)] leading-[var(--line-height-100)] text-[var(--color-grey-white)]">{n}</span>
-                  <span className="text-[length:var(--font-size-16)] text-[var(--color-grey-white)]">{label}</span>
+                  <span className="text-[length:var(--font-size-32)] font-[var(--font-weight-bold)] leading-[var(--line-height-100)] text-[color:var(--color-grey-white)]">{n}</span>
+                  <span className="text-[length:var(--font-size-16)] text-[color:var(--color-grey-white)]">{label}</span>
                 </div>
                 <p className="muted p-[var(--spacing-20)]">{body}</p>
               </div>
@@ -209,7 +215,7 @@ export default async function LandingPage() {
             <input placeholder="Enter your full name" disabled className="h-[48px] px-[var(--spacing-16)] rounded-[var(--radius-4)] border border-solid border-[var(--color-border-input)] bg-[var(--color-grey-white)] text-[length:var(--font-size-16)]" />
             <input placeholder="Enter your email" disabled className="h-[48px] px-[var(--spacing-16)] rounded-[var(--radius-4)] border border-solid border-[var(--color-border-input)] bg-[var(--color-grey-white)] text-[length:var(--font-size-16)]" />
             <textarea placeholder="Enter your message (optional)" disabled className="min-h-[120px] p-[var(--spacing-16)] rounded-[var(--radius-4)] border border-solid border-[var(--color-border-input)] bg-[var(--color-grey-white)] text-[length:var(--font-size-16)] resize-none" />
-            <span className="w-fit self-end flex items-center gap-[var(--spacing-10)] h-[48px] px-[var(--spacing-32)] rounded-[var(--radius-40)] text-[var(--color-grey-white)]" style={{ background: 'var(--gradient-primary)' }} title="Form isn't wired up yet">
+            <span className="w-fit self-end flex items-center gap-[var(--spacing-10)] h-[48px] px-[var(--spacing-32)] rounded-[var(--radius-40)] text-[color:var(--color-grey-white)]" style={{ background: 'var(--gradient-primary)' }} title="Form isn't wired up yet">
               Submit ✈
             </span>
           </form>

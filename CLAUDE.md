@@ -119,6 +119,11 @@ After edits: `cd app && npm run build` (type-checks + prerenders all routes). Th
   the production build clobbers the dev server's chunks — every asset then 404s
   (`layout.css`, `main-app.js`), so the page renders as unstyled HTML and looks like a
   CSS bug that isn't one. Stop dev first, or `rm -rf .next` and restart dev afterwards.
+- **Hand-written rules in `globals.css` must live in `@layer base`.** Unlayered CSS
+  beats ALL of Tailwind's layered utilities regardless of specificity — an unlayered
+  `a { color: inherit }` silently killed every `text-[color:…]` utility on links
+  (invisible white-on-black button text). Also: Tailwind can't type a bare
+  `text-[var(--x)]` — write `text-[color:var(--x)]` / `text-[length:var(--x)]`.
 - **Restart `next dev` after every `schema.prisma` change.** `db:push` regenerates the
   client on disk, but the running server keeps the old one in memory and queries columns
   that no longer exist (`P2022: The column X does not exist`). The stack trace blames

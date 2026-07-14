@@ -54,10 +54,10 @@ export function NavAuth() {
 
   return (
     <div className="flex items-center gap-[20px]">
-      <div className="flex items-center gap-[18px] text-[var(--color-grey-black)]">
-        <Link href="/dashboard" aria-label="Apps" className="hover:text-[var(--color-primary)]"><Icon d={APPS} /></Link>
-        <Link href="/dashboard/mailbox/chat/create-new" aria-label="Messages" className="hover:text-[var(--color-primary)]"><Icon d={CHAT} /></Link>
-        <Link href="/dashboard" aria-label="Notifications" className="hover:text-[var(--color-primary)]"><Icon d={BELL} /></Link>
+      <div className="flex items-center gap-[18px] text-[color:var(--color-grey-black)]">
+        <Link href="/dashboard" aria-label="Apps" className="hover:text-[color:var(--color-primary)]"><Icon d={APPS} /></Link>
+        <Link href="/dashboard/mailbox/chat/create-new" aria-label="Messages" className="hover:text-[color:var(--color-primary)]"><Icon d={CHAT} /></Link>
+        <Link href="/dashboard" aria-label="Notifications" className="hover:text-[color:var(--color-primary)]"><Icon d={BELL} /></Link>
       </div>
 
       <div className="h-[28px] w-px bg-[var(--color-grey-3)]" />
@@ -78,7 +78,7 @@ export function NavAuth() {
 
         {open && (
           <div className="absolute right-0 top-[46px] min-w-[180px] p-[8px] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] bg-[var(--color-grey-white)] shadow-[var(--shadow-card)] z-50">
-            <div className="px-[12px] py-[8px] text-[length:var(--font-size-14)] text-[var(--color-grey-5)] truncate">
+            <div className="px-[12px] py-[8px] text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)] truncate">
               {user.email}
             </div>
             <Link href="/dashboard/profile" onClick={() => setOpen(false)} className="block px-[12px] py-[8px] rounded-[var(--radius-4)] text-[length:var(--font-size-16)] hover:bg-[var(--color-grey-2)]">

@@ -56,7 +56,7 @@ export function DetailActions({ slug, kind }: { slug: string; kind: 'challenge' 
       )}
       <Link
         href={`/dashboard/mailbox/chat/create-new?slug=${slug}&type=${kind}`}
-        className={`${pill} border border-solid border-[var(--color-grey-3)] bg-[var(--color-grey-white)] text-[var(--color-grey-black)]`}
+        className={`${pill} border border-solid border-[var(--color-grey-3)] bg-[var(--color-grey-white)] text-[color:var(--color-grey-black)]`}
       >
         Request details <ChatIcon />
       </Link>

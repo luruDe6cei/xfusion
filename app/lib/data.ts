@@ -3,6 +3,7 @@
 // (company.logo, industry, subIndustry), matching the original API responses.
 import { prisma } from './prisma';
 import type { Challenge, Solution, Company } from './types';
+import { rankSolutions, type SolutionMatch } from './match';
 
 const challengeInclude = {
   company: { include: { logo: true, country: true } },
@@ -66,6 +67,13 @@ export async function challengesByCompany(companyId: string): Promise<Challenge[
     orderBy: { createdAt: 'desc' },
   });
   return rows as unknown as Challenge[];
+}
+
+// xFUSION 2.0 demo (spec ch. 3/9): rank the whole solution bank against one
+// challenge. Deterministic heuristic — see lib/match.ts for the caveats.
+export async function getSolutionMatches(challenge: Challenge): Promise<SolutionMatch[]> {
+  const solutions = await prisma.solution.findMany({ include: solutionInclude });
+  return rankSolutions(challenge, solutions as unknown as Solution[]);
 }
 
 export async function solutionsByCompany(companyId: string): Promise<Solution[]> {

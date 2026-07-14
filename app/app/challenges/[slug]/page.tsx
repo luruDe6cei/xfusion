@@ -1,7 +1,8 @@
-import { getChallenge, getChallenges } from '@/lib/data';
+import { getChallenge, getChallenges, getSolutionMatches } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { DetailActions } from '../../detail-actions';
+import { MatchPanel } from './match-panel';
 
 /**
  * Challenge detail — mirrors the real page's structure
@@ -36,9 +37,11 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
   const c = await getChallenge(slug);
   if (!c) notFound();
 
+  const matches = await getSolutionMatches(c);
   const logo = c.company?.logo?.thumbnailUrl || c.company?.logo?.url;
 
   return (
+    <>
     <article className="py-[var(--spacing-40)] grid gap-[var(--spacing-40)] lg:grid-cols-[1fr_320px] items-start">
       {/* Main column */}
       <div className="flex flex-col gap-[var(--spacing-32)] min-w-0">
@@ -56,7 +59,7 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
             )}
           </div>
 
-          <h1 className="text-[length:var(--font-size-44)] font-[var(--font-weight-bold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)]">
+          <h1 className="text-[length:var(--font-size-44)] font-[var(--font-weight-bold)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)]">
             {c.name}
           </h1>
 
@@ -68,7 +71,7 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
               // eslint-disable-next-line @next/next/no-img-element
               <img src={logo} alt="" width={40} height={40} className="rounded-[var(--radius-4)] object-cover" />
             )}
-            <span className="text-[length:var(--font-size-16)] text-[var(--color-grey-5)]">
+            <span className="text-[length:var(--font-size-16)] text-[color:var(--color-grey-5)]">
               {c.company?.name}
             </span>
           </Link>
@@ -108,7 +111,7 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
           neither of which exists yet (see HANDOFF.md), so they're inert. */}
       <aside className="lg:sticky lg:top-[88px] w-full flex flex-col gap-[var(--spacing-16)] p-[var(--spacing-24)] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] bg-[var(--color-grey-white)]">
         <div className="flex flex-col gap-[var(--spacing-4)]">
-          <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">Published Date</span>
+          <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">Published Date</span>
           <span className="text-[length:var(--font-size-16)] font-[var(--font-weight-medium)]">
             {longDate(c.createdAt)}
           </span>
@@ -126,6 +129,8 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
         </dl>
       </aside>
     </article>
+    <MatchPanel challengeSlug={c.slug} matches={matches} />
+    </>
   );
 }
 
@@ -133,10 +138,10 @@ function Section({ title, body }: { title: string; body?: string | null }) {
   if (!body) return null;
   return (
     <section className="flex flex-col gap-[var(--spacing-12)]">
-      <h2 className="text-[length:var(--font-size-24)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)]">
+      <h2 className="text-[length:var(--font-size-24)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)]">
         {title}
       </h2>
-      <p className="text-[length:var(--font-size-16)] leading-[var(--line-height-150)] text-[var(--color-grey-black)] whitespace-pre-wrap">
+      <p className="text-[length:var(--font-size-16)] leading-[var(--line-height-150)] text-[color:var(--color-grey-black)] whitespace-pre-wrap">
         {body}
       </p>
     </section>
@@ -145,7 +150,7 @@ function Section({ title, body }: { title: string; body?: string | null }) {
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="px-[var(--spacing-12)] py-[var(--spacing-6)] rounded-[var(--radius-40)] bg-[var(--color-violet-1)] text-[length:var(--font-size-14)] leading-[var(--line-height-130)] text-[var(--color-grey-black)]">
+    <span className="px-[var(--spacing-12)] py-[var(--spacing-6)] rounded-[var(--radius-40)] bg-[var(--color-violet-1)] text-[length:var(--font-size-14)] leading-[var(--line-height-130)] text-[color:var(--color-grey-black)]">
       {children}
     </span>
   );
@@ -154,7 +159,7 @@ function Pill({ children }: { children: React.ReactNode }) {
 function Meta({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col gap-[2px]">
-      <dt className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">{label}</dt>
+      <dt className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">{label}</dt>
       <dd className="text-[length:var(--font-size-16)] font-[var(--font-weight-medium)] capitalize">{value}</dd>
     </div>
   );

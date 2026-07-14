@@ -46,7 +46,7 @@ export default async function SolutionDetail({ params }: { params: Promise<{ slu
             </div>
           )}
 
-          <h1 className="text-[length:var(--font-size-44)] font-[var(--font-weight-bold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)]">
+          <h1 className="text-[length:var(--font-size-44)] font-[var(--font-weight-bold)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)]">
             {s.name}
           </h1>
 
@@ -55,7 +55,7 @@ export default async function SolutionDetail({ params }: { params: Promise<{ slu
               // eslint-disable-next-line @next/next/no-img-element
               <img src={logo} alt="" width={40} height={40} className="rounded-[var(--radius-4)] object-cover" />
             )}
-            <span className="text-[length:var(--font-size-16)] text-[var(--color-grey-5)]">{s.company?.name}</span>
+            <span className="text-[length:var(--font-size-16)] text-[color:var(--color-grey-5)]">{s.company?.name}</span>
           </Link>
         </header>
 
@@ -86,7 +86,7 @@ export default async function SolutionDetail({ params }: { params: Promise<{ slu
 
       <aside className="lg:sticky lg:top-[88px] w-full flex flex-col gap-[var(--spacing-16)] p-[var(--spacing-24)] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] bg-[var(--color-grey-white)]">
         <div className="flex flex-col gap-[var(--spacing-4)]">
-          <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">Published Date</span>
+          <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">Published Date</span>
           <span className="text-[length:var(--font-size-16)] font-[var(--font-weight-medium)]">
             {longDate(s.createdAt)}
           </span>
@@ -111,10 +111,10 @@ function Section({ title, body }: { title: string; body?: string | null }) {
   if (!body) return null;
   return (
     <section className="flex flex-col gap-[var(--spacing-12)]">
-      <h2 className="text-[length:var(--font-size-24)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)]">
+      <h2 className="text-[length:var(--font-size-24)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)]">
         {title}
       </h2>
-      <p className="text-[length:var(--font-size-16)] leading-[var(--line-height-150)] text-[var(--color-grey-black)] whitespace-pre-wrap">
+      <p className="text-[length:var(--font-size-16)] leading-[var(--line-height-150)] text-[color:var(--color-grey-black)] whitespace-pre-wrap">
         {body}
       </p>
     </section>
@@ -124,7 +124,7 @@ function Section({ title, body }: { title: string; body?: string | null }) {
 function Meta({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col gap-[2px]">
-      <dt className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">{label}</dt>
+      <dt className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">{label}</dt>
       <dd className="text-[length:var(--font-size-16)] font-[var(--font-weight-medium)] capitalize">{value}</dd>
     </div>
   );

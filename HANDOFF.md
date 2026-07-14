@@ -66,6 +66,11 @@ scraping. Suggested order:
 ### 3. Matching
 - `averageMatchScore` is exposed by the API but the algorithm isn't. Design our own
   (e.g. keyword/industry/expertise overlap) if this feature is wanted.
+- **2.0 demo shipped (2026-07-14):** `/challenges/[slug]` now has a "Matched Solutions —
+  2.0 preview" section (spec ch. 3): top-8 ranking via a deterministic heuristic in
+  `app/lib/match.ts`, score breakdown + "Why this Match", slider evaluation →
+  Short List → Match, state in localStorage. Item list distilled from the spec:
+  `docs/xfusion-2.0-items.md`. This is a demo stand-in, not a real matcher.
 
 ### 4. Nice-to-haves
 - Search & industry filters on list pages.

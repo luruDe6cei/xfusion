@@ -43,7 +43,7 @@ export default async function CreateNewMessage({
             <path d="M9.5 14.5 21.5 4.5" strokeDasharray="2 2" />
           </svg>
           <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)]">No conversations yet</h3>
-          <p className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)] max-w-[260px]">
+          <p className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)] max-w-[260px]">
             Your conversations will appear here when you start messaging with other users
           </p>
         </div>
@@ -61,17 +61,17 @@ export default async function CreateNewMessage({
           <input
             value={item?.name ?? slug ?? ''}
             disabled
-            className="h-[48px] px-[var(--spacing-16)] rounded-[var(--radius-4)] bg-[var(--color-grey-1)] border border-solid border-[var(--color-grey-2)] text-[length:var(--font-size-16)] text-[var(--color-grey-5)]"
+            className="h-[48px] px-[var(--spacing-16)] rounded-[var(--radius-4)] bg-[var(--color-grey-1)] border border-solid border-[var(--color-grey-2)] text-[length:var(--font-size-16)] text-[color:var(--color-grey-5)]"
           />
         </div>
 
         <div className="flex-1 flex flex-col rounded-[var(--radius-8)] border border-solid border-[var(--color-border-input)] overflow-hidden">
           {/* Formatting toolbar — visual only; messaging isn't built. */}
-          <div className="flex items-center gap-[var(--spacing-16)] px-[var(--spacing-16)] h-[52px] border-b border-solid border-[var(--color-grey-2)] text-[var(--color-grey-black)]">
+          <div className="flex items-center gap-[var(--spacing-16)] px-[var(--spacing-16)] h-[52px] border-b border-solid border-[var(--color-grey-2)] text-[color:var(--color-grey-black)]">
             <strong className="text-[17px]">B</strong>
             <em className="text-[17px] font-serif">I</em>
             <span className="underline text-[16px]">U</span>
-            <span className="text-[var(--color-grey-4)]">|</span>
+            <span className="text-[color:var(--color-grey-4)]">|</span>
             <span className="text-[15px]">≡</span>
             <span className="text-[15px]">⋮≡</span>
           </div>
@@ -86,7 +86,7 @@ export default async function CreateNewMessage({
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-grey-5)" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
             <path d="m21 11-8.5 8.5a5 5 0 0 1-7-7l8.5-8.5a3.5 3.5 0 0 1 5 5L10.5 17.5a2 2 0 0 1-3-3L16 6" />
           </svg>
-          <button disabled className="flex items-center gap-[var(--spacing-10)] text-[length:var(--font-size-16)] text-[var(--color-grey-5)] cursor-not-allowed">
+          <button disabled className="flex items-center gap-[var(--spacing-10)] text-[length:var(--font-size-16)] text-[color:var(--color-grey-5)] cursor-not-allowed">
             Send
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" /></svg>
           </button>

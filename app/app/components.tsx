@@ -40,7 +40,7 @@ function CardHeader({ industry, date }: { industry?: string | null; date: Date |
       <div className="flex items-center gap-[8px] min-w-0 flex-1 overflow-hidden">
         {industry && (
           <div className="h-[40px] px-[24px] pe-[12px] py-[8px] flex items-center justify-center shrink-0 bg-[var(--color-violet-3)]">
-            <span className="text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-130)] text-[var(--color-grey-black)] whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
+            <span className="text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-130)] text-[color:var(--color-grey-black)] whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
               {industry}
             </span>
           </div>
@@ -50,13 +50,13 @@ function CardHeader({ industry, date }: { industry?: string | null; date: Date |
           style={{ background: 'var(--gradient-success-card)' }}
         >
           <CheckIcon />
-          <span className="text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-130)] whitespace-nowrap text-[var(--color-grey-black)]">
+          <span className="text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-130)] whitespace-nowrap text-[color:var(--color-grey-black)]">
             Active
           </span>
         </div>
       </div>
       <div className="shrink-0">
-        <span className="text-[length:var(--font-size-14)] font-[var(--font-weight-regular)] leading-[var(--line-height-120)] text-[var(--color-grey-5)] whitespace-nowrap">
+        <span className="text-[length:var(--font-size-14)] font-[var(--font-weight-regular)] leading-[var(--line-height-120)] text-[color:var(--color-grey-5)] whitespace-nowrap">
           {fmtDate(date)}
         </span>
       </div>
@@ -70,11 +70,11 @@ function Keywords({ keywords }: { keywords?: string[] }) {
   const [first, ...rest] = keywords;
   return (
     <div className="flex items-center gap-[8px] flex-wrap">
-      <span className="px-[10px] py-[4px] rounded-[var(--radius-4)] bg-[var(--color-grey-2)] text-[length:var(--font-size-14)] leading-[var(--line-height-120)] text-[var(--color-grey-black)] truncate max-w-[190px]">
+      <span className="px-[10px] py-[4px] rounded-[var(--radius-4)] bg-[var(--color-grey-2)] text-[length:var(--font-size-14)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)] truncate max-w-[190px]">
         {first}
       </span>
       {rest.length > 0 && (
-        <span className="px-[10px] py-[4px] rounded-[var(--radius-4)] bg-[var(--color-grey-2)] text-[length:var(--font-size-14)] leading-[var(--line-height-120)] text-[var(--color-grey-5)]">
+        <span className="px-[10px] py-[4px] rounded-[var(--radius-4)] bg-[var(--color-grey-2)] text-[length:var(--font-size-14)] leading-[var(--line-height-120)] text-[color:var(--color-grey-5)]">
           +{rest.length}
         </span>
       )}
@@ -105,7 +105,7 @@ function Logo({ company, size = 36 }: { company?: Company | null; size?: number 
         // eslint-disable-next-line @next/next/no-img-element
         <img src={url} alt={company?.name || ''} width={size} height={size} style={{ objectFit: 'cover' }} />
       ) : (
-        <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">
+        <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">
           {company?.name?.[0] || '?'}
         </span>
       )}
@@ -124,14 +124,14 @@ export function ChallengeCard({ c }: { c: Challenge }) {
       <CardHeader industry={c.industry?.name} date={c.createdAt} />
       <div className="flex flex-col flex-1 gap-[16px] ps-[24px]">
         <div className="flex flex-col gap-[4px]">
-          <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)] line-clamp-2">
+          <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)] line-clamp-2">
             {c.name}
           </h3>
           {/* Upstream prints "By <org>" as text — no logo on list cards. */}
-          <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)] truncate">
+          <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)] truncate">
             By {c.company?.name}
           </span>
-          <p className="mt-[8px] text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[var(--color-grey-5)] line-clamp-3">
+          <p className="mt-[8px] text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[color:var(--color-grey-5)] line-clamp-3">
             {c.shortDescription}
           </p>
         </div>
@@ -148,13 +148,13 @@ export function SolutionCard({ s }: { s: Solution }) {
       <CardHeader industry={s.industry?.name} date={s.createdAt} />
       <div className="flex flex-col flex-1 gap-[16px] ps-[24px]">
         <div className="flex flex-col gap-[4px]">
-          <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)] line-clamp-2">
+          <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)] line-clamp-2">
             {s.name}
           </h3>
-          <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)] truncate">
+          <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)] truncate">
             By {s.company?.name}
           </span>
-          <p className="mt-[8px] text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[var(--color-grey-5)] line-clamp-3">
+          <p className="mt-[8px] text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[color:var(--color-grey-5)] line-clamp-3">
             {s.shortDescription}
           </p>
         </div>
@@ -186,10 +186,10 @@ export function CompanyCard({ c }: { c: Company; counts?: { ch: number; so: numb
       <div className="w-[80px] h-[80px] flex items-center justify-center rounded-[var(--radius-8)] bg-[var(--color-violet-1)]">
         <BuildingIcon />
       </div>
-      <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)]">
+      <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)]">
         {c.name}
       </h3>
-      <p className="text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[var(--color-grey-5)] line-clamp-2">
+      <p className="text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[color:var(--color-grey-5)] line-clamp-2">
         {c.description}
       </p>
       <span className="mt-auto w-full h-[44px] px-[var(--spacing-16)] flex items-center justify-between rounded-[var(--radius-40)] border border-solid border-[var(--color-grey-3)] text-[length:var(--font-size-16)] bg-[var(--color-grey-white)] group-hover:border-[var(--color-primary)] transition-colors">
@@ -209,7 +209,7 @@ export function SectionHeader({ title, href, cta }: { title: string; href?: stri
         {title}
       </h2>
       {href && (
-        <Link href={href} className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)] hover:text-[var(--color-primary)]">
+        <Link href={href} className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)] hover:text-[color:var(--color-primary)]">
           {cta || 'View all'} →
         </Link>
       )}

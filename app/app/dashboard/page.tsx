@@ -77,7 +77,7 @@ function Field({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col gap-[2px]">
       <span className="text-[length:var(--font-size-14)] font-[var(--font-weight-semibold)]">{label}</span>
-      <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)] break-words">{value}</span>
+      <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)] break-words">{value}</span>
     </div>
   );
 }
@@ -98,13 +98,13 @@ function RecentPanel({ title, accent, items, emptyText, cta }: {
       {items.length ? (
         <ul className="flex flex-col gap-[var(--spacing-12)] py-[var(--spacing-16)]">
           {items.map((i) => (
-            <li key={i.href}><Link href={i.href} className="hover:text-[var(--color-primary)]">{i.name}</Link></li>
+            <li key={i.href}><Link href={i.href} className="hover:text-[color:var(--color-primary)]">{i.name}</Link></li>
           ))}
         </ul>
       ) : (
         <div className="flex-1 flex flex-col items-center justify-center gap-[var(--spacing-20)]">
-          <p className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">{emptyText}</p>
-          <span className="flex items-center gap-[var(--spacing-12)] h-[48px] px-[var(--spacing-32)] rounded-[var(--radius-40)] bg-[var(--color-grey-black)] text-[var(--color-grey-white)]" title="Write flows aren't built yet">
+          <p className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">{emptyText}</p>
+          <span className="flex items-center gap-[var(--spacing-12)] h-[48px] px-[var(--spacing-32)] rounded-[var(--radius-40)] bg-[var(--color-grey-black)] text-[color:var(--color-grey-white)]" title="Write flows aren't built yet">
             {cta} <span aria-hidden="true">＋</span>
           </span>
         </div>

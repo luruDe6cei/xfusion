@@ -44,7 +44,7 @@ export default async function SubmitProposalIntro({ params }: { params: Promise<
         </svg>
         <h1 className="text-[length:var(--font-size-44)] font-[var(--font-weight-bold)] leading-[var(--line-height-120)]">
           Submit a<br />
-          <span className="text-[var(--color-primary)]">Proposal</span>
+          <span className="text-[color:var(--color-primary)]">Proposal</span>
         </h1>
         <p className="text-[length:var(--font-size-16)] leading-[var(--line-height-150)] max-w-[420px]">
           We&apos;ll take you through a few short steps to submit your proposal. To get the best
@@ -54,13 +54,13 @@ export default async function SubmitProposalIntro({ params }: { params: Promise<
         {/* The wizard is a write flow that isn't built yet — this returns to the challenge. */}
         <Link
           href={`/challenges/${c.slug}`}
-          className="w-fit h-[52px] px-[var(--spacing-32)] flex items-center gap-[var(--spacing-12)] rounded-[var(--radius-40)] bg-[var(--color-grey-black)] text-[var(--color-grey-white)] text-[length:var(--font-size-16)] hover:opacity-90 transition-opacity"
+          className="w-fit h-[52px] px-[var(--spacing-32)] flex items-center gap-[var(--spacing-12)] rounded-[var(--radius-40)] bg-[var(--color-grey-black)] text-[color:var(--color-grey-white)] text-[length:var(--font-size-16)] hover:opacity-90 transition-opacity"
           title="The proposal wizard isn't built yet"
         >
           Let&apos;s start
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M9 6l6 6-6 6" /></svg>
         </Link>
-        <label className="flex items-center gap-[var(--spacing-8)] text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">
+        <label className="flex items-center gap-[var(--spacing-8)] text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">
           <input type="checkbox" disabled /> Don&apos;t show me again
         </label>
       </div>
@@ -72,7 +72,7 @@ export default async function SubmitProposalIntro({ params }: { params: Promise<
             <span className="w-[6px] shrink-0" style={{ background: bar }} />
             <div className="p-[var(--spacing-24)] flex flex-col gap-[var(--spacing-10)] min-h-[190px]">
               <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)]">{title}</h3>
-              <p className="text-[length:var(--font-size-14)] leading-[var(--line-height-140)] text-[var(--color-grey-5)]">{body}</p>
+              <p className="text-[length:var(--font-size-14)] leading-[var(--line-height-140)] text-[color:var(--color-grey-5)]">{body}</p>
             </div>
           </div>
         ))}

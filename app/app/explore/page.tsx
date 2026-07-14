@@ -47,7 +47,7 @@ function ExploreSection({ title, href, children }: { title: string; href: string
           <ResultsIcon />
           <h2 className="text-[length:var(--font-size-24)] font-[var(--font-weight-semibold)]">{title}</h2>
         </div>
-        <Link href={href} className="flex items-center gap-[6px] text-[length:var(--font-size-14)] text-[var(--color-grey-5)] hover:text-[var(--color-primary)]">
+        <Link href={href} className="flex items-center gap-[6px] text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)] hover:text-[color:var(--color-primary)]">
           View All →
         </Link>
       </div>

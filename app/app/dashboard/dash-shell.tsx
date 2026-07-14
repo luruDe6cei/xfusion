@@ -103,7 +103,7 @@ export function ManagementHeader({
             </span>
           ))}
         </div>
-        <span className="flex items-center gap-[var(--spacing-12)] h-[48px] px-[var(--spacing-24)] rounded-[var(--radius-40)] bg-[var(--color-grey-black)] text-[var(--color-grey-white)] text-[length:var(--font-size-16)]" title="Write flows aren't built yet">
+        <span className="flex items-center gap-[var(--spacing-12)] h-[48px] px-[var(--spacing-24)] rounded-[var(--radius-40)] bg-[var(--color-grey-black)] text-[color:var(--color-grey-white)] text-[length:var(--font-size-16)]" title="Write flows aren't built yet">
           {cta} <span aria-hidden="true">＋</span>
         </span>
       </div>
@@ -113,7 +113,7 @@ export function ManagementHeader({
           disabled
           className="flex-1 h-[52px] px-[var(--spacing-16)] rounded-[var(--radius-8)] border border-solid border-[var(--color-border-input)] bg-[var(--color-grey-white)] text-[length:var(--font-size-16)]"
         />
-        <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)] whitespace-nowrap">{count}</span>
+        <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)] whitespace-nowrap">{count}</span>
       </div>
     </header>
   );

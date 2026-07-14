@@ -44,7 +44,7 @@ export default function LoginPage() {
         </div>
 
         <label className="flex flex-col gap-[var(--spacing-6)]">
-          <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">Display name</span>
+          <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">Display name</span>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -53,7 +53,7 @@ export default function LoginPage() {
         </label>
 
         <label className="flex flex-col gap-[var(--spacing-6)]">
-          <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">Email</span>
+          <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">Email</span>
           <input
             type="email"
             value={email}
@@ -63,8 +63,8 @@ export default function LoginPage() {
         </label>
 
         <label className="flex flex-col gap-[var(--spacing-6)]">
-          <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">
-            Password <span className="text-[var(--color-grey-4)]">(ignored)</span>
+          <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">
+            Password <span className="text-[color:var(--color-grey-4)]">(ignored)</span>
           </span>
           <input
             type="password"
@@ -77,7 +77,7 @@ export default function LoginPage() {
           Log in
         </button>
 
-        <Link href="/" className="text-center text-[length:var(--font-size-14)] text-[var(--color-grey-5)] hover:text-[var(--color-primary)]">
+        <Link href="/" className="text-center text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)] hover:text-[color:var(--color-primary)]">
           Back to site
         </Link>
       </form>

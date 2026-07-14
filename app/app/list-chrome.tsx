@@ -68,7 +68,7 @@ const ResultsIcon = ({ color }: { color: string }) => (
 export function HeroBanner({ title, variant }: { title: string; variant: Kind | 'explore' }) {
   return (
     <div className={`hero-banner hero-banner--${variant} full-bleed`}>
-      <h1 className="text-[length:var(--font-size-44)] font-[var(--font-weight-medium)] text-[var(--color-grey-white)] leading-[var(--line-height-120)]">
+      <h1 className="text-[length:var(--font-size-44)] font-[var(--font-weight-medium)] text-[color:var(--color-grey-white)] leading-[var(--line-height-120)]">
         {title}
       </h1>
     </div>
@@ -91,7 +91,7 @@ function Select({ label, value, options, onChange }: {
         <option value="">{label}</option>
         {options.map((o) => <option key={o} value={o}>{o}</option>)}
       </select>
-      <span className="absolute right-[14px] top-1/2 -translate-y-1/2 pointer-events-none text-[var(--color-grey-5)]">
+      <span className="absolute right-[14px] top-1/2 -translate-y-1/2 pointer-events-none text-[color:var(--color-grey-5)]">
         <Chevron />
       </span>
     </div>
@@ -149,7 +149,7 @@ export function FilterableList({ items, kind }: { items: Item[]; kind: Kind }) {
   return (
     <div className="list-panel">
       <div className="relative">
-        <span className="absolute left-[16px] top-1/2 -translate-y-1/2 text-[var(--color-grey-5)]">
+        <span className="absolute left-[16px] top-1/2 -translate-y-1/2 text-[color:var(--color-grey-5)]">
           <SearchIcon />
         </span>
         <input
@@ -168,7 +168,7 @@ export function FilterableList({ items, kind }: { items: Item[]; kind: Kind }) {
           {kind === 'challenges' && (
             <div className="flex-1 min-w-[170px] h-[48px] px-[var(--spacing-16)] flex items-center justify-between rounded-[var(--radius-4)] border border-solid border-[var(--color-border-input)] bg-[var(--color-grey-white)] text-[length:var(--font-size-16)]">
               <span>Active</span>
-              <span className="text-[var(--color-grey-4)]">×</span>
+              <span className="text-[color:var(--color-grey-4)]">×</span>
             </div>
           )}
           <Select label="Domain" value={domain} options={domains} onChange={setDomain} />
@@ -188,7 +188,7 @@ export function FilterableList({ items, kind }: { items: Item[]; kind: Kind }) {
           <ResultsIcon color={t.accent} />
           <h2 className="text-[length:var(--font-size-20)] font-[var(--font-weight-semibold)]">Results</h2>
         </div>
-        <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">
+        <span className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">
           {shown.length} Result{shown.length === 1 ? '' : 's'}
         </span>
       </div>
@@ -207,7 +207,7 @@ export function FilterableList({ items, kind }: { items: Item[]; kind: Kind }) {
       </div>
 
       {shown.length === 0 && (
-        <p className="text-[var(--color-grey-5)] py-[var(--spacing-40)] text-center">
+        <p className="text-[color:var(--color-grey-5)] py-[var(--spacing-40)] text-center">
           Nothing matches those filters.
         </p>
       )}

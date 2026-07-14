@@ -32,7 +32,7 @@ export default function ProfileSettings() {
               <span className="w-[10px] h-[10px] rounded-full shrink-0" style={{ background: dot }} />
               <div className="flex-1">
                 <h3 className="text-[length:var(--font-size-16)] font-[var(--font-weight-medium)]">{title}</h3>
-                <p className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)]">{body}</p>
+                <p className="text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">{body}</p>
               </div>
               <span className="w-[44px] h-[24px] rounded-full bg-[var(--color-violet-6)] relative shrink-0">
                 <span className="absolute right-[3px] top-[3px] w-[18px] h-[18px] rounded-full bg-white" />

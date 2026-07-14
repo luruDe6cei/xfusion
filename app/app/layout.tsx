@@ -49,10 +49,11 @@ function Nav() {
   );
 }
 
+// Columns match the captured footer (black, with the AI-Powered logo block).
 const FOOTER = [
   ['Who we are', [['/', 'Main'], ['/#about', 'About'], ['/#features', 'Features']]],
-  ['Platform', [['/explore', 'Explore'], ['/challenges', 'Challenges'], ['/solutions', 'Solutions'], ['/organizations', 'Organizations'], ['/#why', 'Why us'], ['/#how-it-works', 'How it Works']]],
-  ['Contact', [['/#contact', 'Contact us']]],
+  ['Platform', [['/explore', 'Explore'], ['/challenges', 'Challenges'], ['/solutions', 'Solutions'], ['/organizations', 'Organizations']]],
+  ['Why Us', [['/#how-it-works', 'How it Works'], ['/#contact', 'Contact us']]],
 ] as const;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -61,8 +62,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Nav />
         <main className="container" style={{ padding: '0 20px 40px' }}>{children}</main>
-        <footer style={{ borderTop: '1px solid var(--border)', background: 'var(--color-grey-white)', padding: '48px 0 28px' }}>
-          <div className="container">
+        {/* Upstream's footer is BLACK with the AI-Powered logo block. */}
+        <footer style={{ background: 'var(--color-grey-black)', color: 'var(--color-grey-white)', padding: '56px 0 32px' }}>
+          <div className="container" style={{ display: 'grid', gridTemplateColumns: 'minmax(200px, 1fr) 2fr', gap: 40 }}>
+            <div>
+              <div style={{ fontWeight: 700, fontSize: 22 }}>
+                x<span style={{ color: 'var(--color-violet-4)' }}>FUSION</span>
+              </div>
+              <div style={{ fontSize: 13, color: 'var(--color-grey-4)', marginTop: 4 }}>AI - Powered</div>
+            </div>
             <div className="footer-grid">
               {FOOTER.map(([heading, links]) => (
                 <div key={heading}>
@@ -79,9 +87,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <a href="https://www.xfusion.pro/pages/terms-and-conditions">Terms &amp; Conditions</a>
               </div>
             </div>
-            <p className="muted" style={{ fontSize: 13, marginTop: 36, paddingTop: 20, borderTop: '1px solid var(--border)' }}>
-              Local clone for development — data from the public xfusion.pro API.
-            </p>
+          </div>
+          <div className="container" style={{ fontSize: 13, color: 'var(--color-grey-5)', marginTop: 40, paddingTop: 20, borderTop: '1px solid #2a2a2a' }}>
+            Local clone for development — data from the public xfusion.pro API.
           </div>
         </footer>
       </body>
