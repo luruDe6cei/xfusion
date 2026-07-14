@@ -3,6 +3,20 @@
 Read this + `HANDOFF.md` before working. This file = stable conventions;
 `HANDOFF.md` = current state and next steps.
 
+## Codebase memory (MCP) — use it by default
+
+This repo is indexed in `codebase-memory-mcp` as project
+**`Users-eduard-projects-xfusion`**, with ADRs recording key decisions.
+
+- **Session start:** call `manage_adr(mode='get')` to load the decision records, and
+  `detect_changes` to see what moved since the last index.
+- **Navigating code:** prefer `search_code` / `query_graph` / `get_architecture` over
+  blind grepping for cross-file questions (callers, dependencies, structure).
+- **After significant changes** (new routes, new lib modules, schema changes):
+  re-run `index_repository(repo_path='/Users/eduard/projects/xfusion', mode='full')`.
+- **When a decision is made** (or reversed): append it to the ADRs via
+  `manage_adr(mode='update')` — decisions belong there, current state in `HANDOFF.md`.
+
 ## What this project is
 
 A local clone of xfusion.pro (a business-challenge / open-innovation platform).

@@ -2,6 +2,7 @@ import { getChallenge, getChallenges } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { DetailActions } from '../../detail-actions';
+import { DeleteChallenge } from './delete-challenge';
 
 /**
  * Challenge detail — mirrors the real page's structure
@@ -124,6 +125,10 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
             value={c.requiredDeploymentTime ? c.requiredDeploymentTime.replaceAll('_', ' ').toLowerCase() : '—'}
           />
         </dl>
+
+        <div className="pt-[var(--spacing-16)] border-t border-solid border-[var(--color-grey-2)]">
+          <DeleteChallenge slug={c.slug} />
+        </div>
       </aside>
     </article>
   );

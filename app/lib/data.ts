@@ -77,6 +77,12 @@ export async function solutionsByCompany(companyId: string): Promise<Solution[]>
   return rows as unknown as Solution[];
 }
 
+// Local demo helper for the delete button on challenge pages. Seeded challenges
+// come back with `npm run db:seed`; AI-published ones are gone for good.
+export async function deleteChallenge(slug: string): Promise<void> {
+  await prisma.challenge.delete({ where: { slug } });
+}
+
 export async function getIndustries(): Promise<Industry[]> {
   const rows = await prisma.industry.findMany({ orderBy: { name: 'asc' } });
   return rows as unknown as Industry[];
