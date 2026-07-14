@@ -103,3 +103,8 @@ copy with `cd scraper && npm run sync` — never hand-edit `app/data/`.
 
 After edits: `cd app && npm run build` (type-checks + prerenders all routes). Then
 `npm start` and curl/screenshot a few routes. A `db:seed` is safe to re-run anytime.
+
+- **Never run `npm run build` while `npm run dev` is live.** They share `.next/`, and
+  the production build clobbers the dev server's chunks — every asset then 404s
+  (`layout.css`, `main-app.js`), so the page renders as unstyled HTML and looks like a
+  CSS bug that isn't one. Stop dev first, or `rm -rf .next` and restart dev afterwards.

@@ -111,3 +111,70 @@ a { color: inherit; text-decoration: none; }
 .muted { color: var(--muted); }
 .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ─── Landing page ───────────────────────────────────────────────────────────
+   The nav's About/Features/Contact are anchors into these sections, matching
+   upstream — they are not separate routes. */
+
+/* Escape the centered .container in layout.tsx without refactoring every page. */
+.full-bleed { width: 100vw; margin-left: calc(50% - 50vw); }
+
+.hero {
+  background:
+    radial-gradient(circle at 78% 18%, #ffa35f55, transparent 42%),
+    radial-gradient(circle at 92% 55%, #ed437655, transparent 45%),
+    radial-gradient(circle at 62% 88%, #7b4fcd44, transparent 46%),
+    var(--color-grey-white);
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner { padding: 96px 20px 104px; }
+.hero-title { font-size: 64px; font-weight: 700; letter-spacing: -.02em; }
+.hero-lead { font-size: 19px; line-height: 1.6; color: var(--muted); max-width: 620px; margin: 20px 0 32px; }
+
+.section { padding: 72px 0; }
+.section-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
+.h2 { font-size: 38px; font-weight: 700; letter-spacing: -.01em; }
+.h2.center { text-align: center; margin-bottom: 40px; }
+.accent { color: var(--color-primary); }
+
+.grid-2 { display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); }
+.grid-3 { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+.card-title { font-size: 17px; font-weight: 600; margin-bottom: 8px; line-height: 1.35; }
+
+/* The numbered 01/02/03 tabs on the About cards. */
+.numtag {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 44px; height: 40px; padding: 0 10px;
+  font-size: 20px; font-weight: 600; color: var(--color-grey-white);
+  border-radius: 4px; margin-bottom: 18px;
+}
+.numtag-sm { min-width: 30px; height: 30px; font-size: 14px; margin: 0; background: var(--color-primary); flex-shrink: 0; }
+.about-card { padding-top: 0; padding-left: 0; }
+.about-card .numtag { margin-left: 0; border-radius: 0 0 4px 0; }
+.about-card .card-title, .about-card p { padding-left: 20px; }
+
+.stat { font-size: 42px; font-weight: 700; color: var(--color-primary); line-height: 1; margin-bottom: 10px; }
+
+.steps { list-style: none; display: grid; gap: 12px; }
+.step { display: flex; gap: 14px; align-items: flex-start; }
+
+.contact { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 660px; margin: 0 auto; }
+.contact-card { display: flex; flex-direction: column; gap: 6px; text-align: center; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 999px;
+  font-size: 15px; font-weight: 500; cursor: pointer;
+  border: 1px solid transparent; transition: opacity .15s ease;
+}
+.btn:hover { opacity: .88; }
+.btn-sm { padding: 9px 18px; font-size: 14px; }
+.btn-primary { background: var(--color-primary); color: var(--color-grey-white); }
+.btn-ghost { background: transparent; color: var(--color-text-primary); border-color: var(--color-grey-3); }
+
+/* Footer */
+.footer-grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.footer-grid h3 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.footer-grid a { display: block; font-size: 14px; color: var(--muted); padding: 4px 0; }
+.footer-grid a:hover { color: var(--color-primary); }
