@@ -20,6 +20,21 @@ into local Postgres (`xfusion_clone`), served by a Next.js 15 app on **:3007**.
 4. Wired to Postgres via Prisma: schema reconstructed from API shapes, `seed.ts`
    loads `data/*.json`, `lib/data.ts` rewritten to Prisma queries, pages made async.
 
+## Layout fidelity — how it's done
+
+The real site is **Tailwind v4 with every value as a CSS variable**, and we run Tailwind
+v4 too. So matching it is a *transplant*, not a redesign: the upstream design tokens live
+in `app/globals.css` (lifted verbatim from their stylesheet), and components reuse their
+actual class strings (`text-[length:var(--font-size-18)]`, `bg-[var(--color-violet-3)]`)
+bound to our Prisma data. Their DOM is in `scraper/snapshot/html/` — read it before
+inventing markup.
+
+One deliberate deviation: upstream's glyphs come from a proprietary icon font
+(`.icon-check:before{content:""}`); we use inline SVG instead of vendoring it.
+
+Done: landing page, cards, challenge + solution detail. Still ours, not theirs:
+org detail, the list pages' search/filter chrome, and the authed header icons.
+
 ## Current state — DONE ✅
 
 - Scraper works; full dataset + assets in `scraper/snapshot/`.

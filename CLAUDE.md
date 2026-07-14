@@ -95,6 +95,17 @@ copy with `cd scraper && npm run sync` — never hand-edit `app/data/`.
   org list/params filter to valid slugs.
 - `sub-industries` only appear nested inside challenges (no standalone endpoint); the
   seed derives their `industryId` from the parent challenge.
+- **There is no `description` field on a challenge or a solution.** The API returns
+  `shortDescription` only. The real detail pages render the *organization's* blurb
+  (`company.description`) under the heading "Background", and `shortDescription` under
+  "Challenge" / "The Solution". Don't re-add a `description` column — an earlier schema
+  had one and it was always `null`.
+- **The seed must carry `createdAt`/`updatedAt` from the JSON.** Prisma's
+  `@default(now())` otherwise stamps every row with the seed date, and every published
+  date in the UI silently becomes "today" — it looks plausible, so it hides well.
+- Solutions carry `implementationMethodology`, `requiredResources`,
+  `previousImplementations`, `timeToImplement`, `estimatedCost`. An earlier schema
+  omitted all of them and the seed dropped them on the floor.
 - We only have the **public read** surface. Auth, offers/submissions, messaging,
   and the matching algorithm (`averageMatchScore` is exposed but not its logic) are
   NOT visible and must be designed, not scraped.
@@ -108,3 +119,8 @@ After edits: `cd app && npm run build` (type-checks + prerenders all routes). Th
   the production build clobbers the dev server's chunks — every asset then 404s
   (`layout.css`, `main-app.js`), so the page renders as unstyled HTML and looks like a
   CSS bug that isn't one. Stop dev first, or `rm -rf .next` and restart dev afterwards.
+- **Restart `next dev` after every `schema.prisma` change.** `db:push` regenerates the
+  client on disk, but the running server keeps the old one in memory and queries columns
+  that no longer exist (`P2022: The column X does not exist`). The stack trace blames
+  `lib/data.ts`, so it reads as a query bug when it's really a stale process. The
+  browser's error overlay also survives the fix — reload before believing it.

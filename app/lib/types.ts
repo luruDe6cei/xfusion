@@ -53,9 +53,14 @@ export interface Solution {
   name: string;
   slug: string;
   shortDescription?: string | null;
-  description?: string | null;
   industry?: Industry | null;
   keywords: string[];
+  // Rendered by the real detail page. No `description` field exists upstream.
+  implementationMethodology?: string | null;
+  requiredResources?: string | null;
+  previousImplementations?: string | null;
+  timeToImplement?: string | null;
+  estimatedCost?: string | null;
   status: string;
   viewsCount: number;
   company: Company;

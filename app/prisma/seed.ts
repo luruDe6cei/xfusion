@@ -120,6 +120,10 @@ async function main() {
       showOnHomepage: !!c.showOnHomepage,
       homepageOrder: c.homepageOrder ?? 0,
       countryId: c.countryId ?? null,
+      // Carry upstream's real timestamps. Without these, Prisma's @default(now())
+      // stamps every row with the seed date and every "published" date is a lie.
+      ...(c.createdAt ? { createdAt: new Date(c.createdAt) } : {}),
+      ...(c.updatedAt ? { updatedAt: new Date(c.updatedAt) } : {}),
     };
     await prisma.challenge.upsert({ where: { id: c.id }, create: { id: c.id, ...base }, update: base });
     for (const f of c.files ?? []) await upsertFile(f, { challengeId: c.id });
@@ -133,11 +137,19 @@ async function main() {
       name: s.name,
       slug: s.slug,
       shortDescription: s.shortDescription ?? null,
-      description: s.description ?? null,
       industryId: industryIds.has(s.industryId) ? s.industryId : null,
       keywords: s.keywords ?? [],
+      // The real detail page renders these; the API returns them and we used to
+      // drop them on the floor. There is no `description` field upstream.
+      implementationMethodology: s.implementationMethodology ?? null,
+      requiredResources: s.requiredResources ?? null,
+      previousImplementations: s.previousImplementations ?? null,
+      timeToImplement: s.timeToImplement ?? null,
+      estimatedCost: s.estimatedCost ?? null,
       status: s.status ?? 'PUBLISHED',
       viewsCount: s.viewsCount ?? 0,
+      ...(s.createdAt ? { createdAt: new Date(s.createdAt) } : {}),
+      ...(s.updatedAt ? { updatedAt: new Date(s.updatedAt) } : {}),
     };
     await prisma.solution.upsert({ where: { id: s.id }, create: { id: s.id, ...base }, update: base });
     for (const f of s.files ?? []) await upsertFile(f, { solutionId: s.id });

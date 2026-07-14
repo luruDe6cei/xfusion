@@ -70,10 +70,16 @@ model Solution {
   name             String
   slug             String    @unique
   shortDescription String?
-  description      String?
   industryId       String?
   industry         Industry? @relation(fields: [industryId], references: [id])
   keywords         String[]
+  // Fields the public API actually returns and the real detail page renders.
+  // (There is NO `description` field on a solution upstream — don't re-add one.)
+  implementationMethodology String?
+  requiredResources         String?
+  previousImplementations   String?
+  timeToImplement           String?
+  estimatedCost             String?
   status           String    @default("PUBLISHED")
   viewsCount       Int       @default(0)
   sharesCount      Int       @default(0)
