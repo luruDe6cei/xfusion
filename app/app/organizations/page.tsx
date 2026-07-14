@@ -1,26 +1,16 @@
-import { getCompanies, challengesByCompany, solutionsByCompany } from '@/lib/data';
-import { CompanyCard, SectionHeader } from '../components';
+import { getCompanies } from '@/lib/data';
+import { HeroBanner, FilterableList } from '../list-chrome';
 
 export default async function OrganizationsPage() {
   const all = await getCompanies();
+  // 3 companies have null slugs upstream — they'd 404 on click.
   const companies = all.filter((c) => typeof c.slug === 'string' && c.slug.length > 0);
-  const withCounts = await Promise.all(
-    companies.map(async (c) => ({
-      c,
-      counts: {
-        ch: (await challengesByCompany(c.id)).length,
-        so: (await solutionsByCompany(c.id)).length,
-      },
-    })),
-  );
+
   return (
-    <div>
-      <SectionHeader title={`Organizations (${companies.length})`} />
-      <div className="grid-cards">
-        {withCounts.map(({ c, counts }) => (
-          <CompanyCard key={c.id} c={c} counts={counts} />
-        ))}
-      </div>
-    </div>
+    <>
+      <HeroBanner title="Organizations" variant="organizations" />
+      {/* Upstream gives this page a search box and no filter row. */}
+      <FilterableList items={companies} kind="organizations" />
+    </>
   );
 }

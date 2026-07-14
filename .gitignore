@@ -36,6 +36,8 @@ scraper/snapshot/assets/
 # Authenticated crawl (scrape-auth.mjs) — xfusion's content from behind their
 # login. Never commit this.
 scraper/snapshot/auth-html/
+scraper/snapshot/auth-shots/
+scraper/snapshot/auth-routes.json
 
 # ─── Spec documents (proprietary — kept local, see docs/README.md) ───────────
 docs/*.pdf

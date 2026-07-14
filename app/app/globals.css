@@ -190,6 +190,54 @@ a { color: inherit; text-decoration: none; }
 .hero-title { font-size: 64px; font-weight: 700; letter-spacing: -.02em; }
 .hero-lead { font-size: 19px; line-height: 1.6; color: var(--muted); max-width: 620px; margin: 20px 0 32px; }
 
+/* List-page hero: upstream uses a photographic orange gradient banner with the
+   page title centered. We approximate the wash with CSS gradients. */
+.hero-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+  padding: 40px 20px;
+  margin-bottom: 40px;
+  background: linear-gradient(100deg, #ffa35f 0%, #f5822e 45%, #ffd9b3 100%); /* fallback */
+}
+/* Per-page banners — approximating each upstream banner-*.webp image. */
+.hero-banner--challenges {
+  background:
+    radial-gradient(ellipse at 22% 45%, #ffc79a 0%, transparent 55%),
+    radial-gradient(ellipse at 72% 68%, #ef8a3a 0%, transparent 60%),
+    linear-gradient(100deg, #ffa35f 0%, #f5822e 45%, #ffd9b3 100%);
+}
+.hero-banner--solutions {
+  background:
+    radial-gradient(ellipse at 22% 45%, #9fe9c6 0%, transparent 55%),
+    radial-gradient(ellipse at 72% 68%, #16b874 0%, transparent 60%),
+    linear-gradient(100deg, #2fcd86 0%, #12a866 45%, #c7f2de 100%);
+}
+.hero-banner--organizations {
+  background:
+    radial-gradient(ellipse at 24% 40%, #b79bea 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 72%, #5b34a6 0%, transparent 60%),
+    linear-gradient(105deg, #7b4fcd 0%, #4d2a91 48%, #d9c9f5 100%);
+}
+/* Explore uses the brand multi-colour banner. */
+.hero-banner--explore {
+  background:
+    radial-gradient(ellipse at 20% 40%, #ffb877 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 70%, #ed4376 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 45%, #4ec7e8 0%, transparent 55%),
+    linear-gradient(100deg, #ffa35f 0%, #ed4376 50%, #7b4fcd 100%);
+}
+
+/* The white panel that holds search + filters + results on every list page. */
+.list-panel {
+  background: var(--color-grey-white);
+  border-radius: var(--radius-8);
+  padding: 28px;
+  margin-bottom: 60px;
+  box-shadow: var(--shadow-card);
+}
+
 .section { padding: 72px 0; }
 .section-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
 .h2 { font-size: 38px; font-weight: 700; letter-spacing: -.01em; }
@@ -231,6 +279,12 @@ a { color: inherit; text-decoration: none; }
 .btn-sm { padding: 9px 18px; font-size: 14px; }
 .btn-primary { background: var(--color-primary); color: var(--color-grey-white); }
 .btn-ghost { background: transparent; color: var(--color-text-primary); border-color: var(--color-grey-3); }
+/* Upstream's header pair: "Log in" is filled BLACK, "Sign up" is outlined. */
+.btn-dark { background: var(--color-grey-black); color: var(--color-grey-white); }
+.btn-outline { background: var(--color-grey-white); color: var(--color-grey-black); border-color: var(--color-grey-3); }
+/* Detail-page "Submit Proposal": the orange→pink→blue brand ramp, white text. */
+.btn-gradient { background: var(--gradient-primary); color: var(--color-grey-white); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
 
 /* Footer */
 .footer-grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }

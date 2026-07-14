@@ -1,6 +1,7 @@
 import { getSolution, getSolutions } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { DetailActions } from '../../detail-actions';
 
 /**
  * Solution detail — mirrors the real page (scraper/snapshot/html/solutions/*.html):
@@ -91,10 +92,7 @@ export default async function SolutionDetail({ params }: { params: Promise<{ slu
           </span>
         </div>
 
-        {/* Upstream shows Share here. No handler yet — see HANDOFF.md. */}
-        <button className="btn btn-ghost w-full justify-center" disabled title="Not built yet">
-          Share
-        </button>
+        <DetailActions slug={s.slug} kind="solution" />
 
         <dl className="grid grid-cols-2 gap-[var(--spacing-12)] pt-[var(--spacing-16)] border-t border-solid border-[var(--color-grey-2)]">
           <Meta

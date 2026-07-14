@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Poppins } from 'next/font/google';
+import { NavAuth } from './nav-auth';
 
 // The real site ships Poppins; globals.css consumes this via --font-poppins.
 const poppins = Poppins({
@@ -40,12 +41,9 @@ function Nav() {
             <Link key={href} href={href} style={{ fontSize: 15 }}>{label}</Link>
           ))}
         </nav>
-        {/* Auth is not built yet (see HANDOFF.md) — these are placeholders, as upstream
-            shows them to logged-out visitors. */}
-        <div style={{ display: 'flex', gap: 10 }}>
-          <Link href="/explore" className="btn btn-ghost btn-sm">Log in</Link>
-          <Link href="/explore" className="btn btn-primary btn-sm">Sign up</Link>
-        </div>
+        {/* Swaps between Log in/Sign up and the logged-in avatar menu. Mock only —
+            see lib/mock-auth.ts. */}
+        <NavAuth />
       </div>
     </header>
   );

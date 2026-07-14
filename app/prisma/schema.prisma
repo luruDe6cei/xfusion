@@ -72,6 +72,10 @@ model Solution {
   shortDescription String?
   industryId       String?
   industry         Industry? @relation(fields: [industryId], references: [id])
+  // "Category" in the UI filters. 10 of 13 solutions have one; an earlier schema
+  // omitted it, which left the Category filter dead on /solutions.
+  subIndustryId    String?
+  subIndustry      SubIndustry? @relation(fields: [subIndustryId], references: [id])
   keywords         String[]
   // Fields the public API actually returns and the real detail page renders.
   // (There is NO `description` field on a solution upstream — don't re-add one.)
@@ -106,6 +110,7 @@ model SubIndustry {
   industryId String?
   industry   Industry?   @relation(fields: [industryId], references: [id])
   challenges Challenge[]
+  solutions  Solution[]
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 }

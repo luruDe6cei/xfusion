@@ -138,6 +138,7 @@ async function main() {
       slug: s.slug,
       shortDescription: s.shortDescription ?? null,
       industryId: industryIds.has(s.industryId) ? s.industryId : null,
+      subIndustryId: s.subIndustryId ?? null,
       keywords: s.keywords ?? [],
       // The real detail page renders these; the API returns them and we used to
       // drop them on the floor. There is no `description` field upstream.

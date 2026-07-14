@@ -54,6 +54,7 @@ export interface Solution {
   slug: string;
   shortDescription?: string | null;
   industry?: Industry | null;
+  subIndustry?: Industry | null;
   keywords: string[];
   // Rendered by the real detail page. No `description` field exists upstream.
   implementationMethodology?: string | null;

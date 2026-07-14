@@ -1,6 +1,7 @@
 import { getChallenge, getChallenges } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { DetailActions } from '../../detail-actions';
 
 /**
  * Challenge detail — mirrors the real page's structure
@@ -113,15 +114,7 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
           </span>
         </div>
 
-        <button className="btn btn-primary w-full justify-center" disabled title="Not built — needs auth">
-          Submit Proposal
-        </button>
-        <button className="btn btn-ghost w-full justify-center" disabled title="Not built — needs auth">
-          Request details
-        </button>
-        <button className="btn btn-ghost w-full justify-center" disabled title="Not built">
-          Share
-        </button>
+        <DetailActions slug={c.slug} kind="challenge" />
 
         <dl className="grid grid-cols-2 gap-[var(--spacing-12)] pt-[var(--spacing-16)] border-t border-solid border-[var(--color-grey-2)]">
           <Meta label="Match score" value={c.averageMatchScore ? `${Math.round(c.averageMatchScore)}%` : '—'} />

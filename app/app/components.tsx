@@ -64,14 +64,33 @@ function CardHeader({ industry, date }: { industry?: string | null; date: Date |
   );
 }
 
-function CardFooter({ company }: { company?: Company | null }) {
+/** Upstream shows keywords as pills with a "+N" overflow chip, capped at 1 visible. */
+function Keywords({ keywords }: { keywords?: string[] }) {
+  if (!keywords?.length) return null;
+  const [first, ...rest] = keywords;
   return (
-    <div className="flex items-center gap-[8px] mt-auto">
-      <Logo company={company} size={32} />
-      <span className="text-[length:var(--font-size-14)] font-[var(--font-weight-regular)] leading-[var(--line-height-120)] text-[var(--color-grey-5)] truncate">
-        {company?.name}
+    <div className="flex items-center gap-[8px] flex-wrap">
+      <span className="px-[10px] py-[4px] rounded-[var(--radius-4)] bg-[var(--color-grey-2)] text-[length:var(--font-size-14)] leading-[var(--line-height-120)] text-[var(--color-grey-black)] truncate max-w-[190px]">
+        {first}
       </span>
+      {rest.length > 0 && (
+        <span className="px-[10px] py-[4px] rounded-[var(--radius-4)] bg-[var(--color-grey-2)] text-[length:var(--font-size-14)] leading-[var(--line-height-120)] text-[var(--color-grey-5)]">
+          +{rest.length}
+        </span>
+      )}
     </div>
+  );
+}
+
+/** The outlined "… Details →" button that closes every card upstream. */
+function DetailsButton({ label }: { label: string }) {
+  return (
+    <span className="mt-auto w-full h-[44px] px-[var(--spacing-16)] flex items-center justify-between rounded-[var(--radius-40)] border border-solid border-[var(--color-grey-3)] text-[length:var(--font-size-16)] bg-[var(--color-grey-white)] group-hover:border-[var(--color-primary)] transition-colors">
+      {label}
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+        <path d="M9 6l6 6-6 6" />
+      </svg>
+    </span>
   );
 }
 
@@ -96,7 +115,7 @@ function Logo({ company, size = 36 }: { company?: Company | null; size?: number 
 
 /** Shared shell — upstream's card: grey-1 fill, 8px radius, grey-3 border, 24px pad with a flush left edge. */
 const CARD =
-  'bg-[var(--color-grey-1)] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] ' +
+  'group bg-[var(--color-grey-white)] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] ' +
   'flex flex-col gap-[20px] p-[24px] ps-0 h-full relative transition-shadow hover:shadow-[var(--shadow-card)]';
 
 export function ChallengeCard({ c }: { c: Challenge }) {
@@ -108,11 +127,16 @@ export function ChallengeCard({ c }: { c: Challenge }) {
           <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)] line-clamp-2">
             {c.name}
           </h3>
-          <p className="text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[var(--color-grey-5)] line-clamp-3">
+          {/* Upstream prints "By <org>" as text — no logo on list cards. */}
+          <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)] truncate">
+            By {c.company?.name}
+          </span>
+          <p className="mt-[8px] text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[var(--color-grey-5)] line-clamp-3">
             {c.shortDescription}
           </p>
         </div>
-        <CardFooter company={c.company} />
+        <Keywords keywords={c.keywords} />
+        <DetailsButton label="Challenge Details" />
       </div>
     </Link>
   );
@@ -127,36 +151,53 @@ export function SolutionCard({ s }: { s: Solution }) {
           <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)] line-clamp-2">
             {s.name}
           </h3>
-          <p className="text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[var(--color-grey-5)] line-clamp-3">
+          <span className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)] truncate">
+            By {s.company?.name}
+          </span>
+          <p className="mt-[8px] text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[var(--color-grey-5)] line-clamp-3">
             {s.shortDescription}
           </p>
         </div>
-        <CardFooter company={s.company} />
+        <Keywords keywords={s.keywords} />
+        <DetailsButton label="Solution Details" />
       </div>
     </Link>
   );
 }
 
-export function CompanyCard({ c, counts }: { c: Company; counts?: { ch: number; so: number } }) {
+/** Building glyph the org cards use upstream, in place of a company logo. */
+function BuildingIcon() {
+  return (
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--color-violet-upload)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 21V6a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v15" />
+      <path d="M15 10h4a1 1 0 0 1 1 1v10" />
+      <path d="M8 8h3M8 12h3M8 16h3M2 21h20" />
+    </svg>
+  );
+}
+
+export function CompanyCard({ c }: { c: Company; counts?: { ch: number; so: number } }) {
   return (
     <Link
       href={`/organizations/${c.slug}`}
-      className="bg-[var(--color-grey-1)] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] flex flex-col gap-[16px] p-[24px] h-full transition-shadow hover:shadow-[var(--shadow-card)]"
+      className="group bg-[var(--color-grey-white)] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] flex flex-col gap-[16px] p-[24px] h-full transition-shadow hover:shadow-[var(--shadow-card)]"
     >
-      <div className="flex items-center gap-[12px]">
-        <Logo company={c} size={40} />
-        <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)]">
-          {c.name}
-        </h3>
+      {/* Upstream shows a violet building icon, not the company logo. */}
+      <div className="w-[80px] h-[80px] flex items-center justify-center rounded-[var(--radius-8)] bg-[var(--color-violet-1)]">
+        <BuildingIcon />
       </div>
+      <h3 className="text-[length:var(--font-size-18)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)] text-[var(--color-grey-black)]">
+        {c.name}
+      </h3>
       <p className="text-[length:var(--font-size-16)] font-[var(--font-weight-regular)] leading-[var(--line-height-140)] text-[var(--color-grey-5)] line-clamp-2">
         {c.description}
       </p>
-      {counts && (
-        <div className="text-[length:var(--font-size-14)] text-[var(--color-grey-5)] mt-auto">
-          {counts.ch} challenges · {counts.so} solutions
-        </div>
-      )}
+      <span className="mt-auto w-full h-[44px] px-[var(--spacing-16)] flex items-center justify-between rounded-[var(--radius-40)] border border-solid border-[var(--color-grey-3)] text-[length:var(--font-size-16)] bg-[var(--color-grey-white)] group-hover:border-[var(--color-primary)] transition-colors">
+        Company page
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <path d="M9 6l6 6-6 6" />
+        </svg>
+      </span>
     </Link>
   );
 }

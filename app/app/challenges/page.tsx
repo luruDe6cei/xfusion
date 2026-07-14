@@ -1,14 +1,16 @@
 import { getChallenges } from '@/lib/data';
-import { ChallengeCard, SectionHeader } from '../components';
+
+import { HeroBanner, FilterableList } from '../list-chrome';
 
 export default async function ChallengesPage() {
   const challenges = await getChallenges();
   return (
-    <div>
-      <SectionHeader title={`Challenges (${challenges.length})`} />
-      <div className="grid-cards">
-        {challenges.map((c) => <ChallengeCard key={c.id} c={c} />)}
-      </div>
-    </div>
+    <>
+      <HeroBanner title="Challenges" variant="challenges" />
+      <FilterableList
+        items={challenges}
+        kind="challenges"
+      />
+    </>
   );
 }

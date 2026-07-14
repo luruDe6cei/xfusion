@@ -30,22 +30,26 @@ const ABOUT = [
   },
 ];
 
+// Each card is tinted with an upstream --gradient-*-card token + a solid left bar,
+// per the captured homepage (auth-shots/index.png).
 const FEATURES = [
-  ['AI-Driven Matching', 'Our AI matches challenges with best-fit solutions across sectors, accelerating discovery and enabling faster, higher-quality collaborations.'],
-  ['Cross-Industry Collaboration', 'Access a global library of proven solutions, enabling the use of innovations from various industries to solve complex challenges and foster creative synergy.'],
-  ['Privacy & Security', 'Collaborate within a secure, interactive environment that protects intellectual property and supports trust between partners, with strict privacy controls.'],
-  ['Full Workflow Integration', 'Manage solutions from submission to implementation seamlessly, with tools that facilitate ongoing communication and provide detailed analytics at every stage.'],
-  ['Sustainable Knowledge Repository', 'Unmatched solutions are retained in a Solution Bank for future challenges, creating a sustainable knowledge base and increasing the likelihood of future matches.'],
-  ['API Integration', 'An API designed for handling large data sets, tailored for use by TTOs, universities, and research organizations, enhancing access and collaboration.'],
+  ['AI-Driven Matching', 'Our AI matches challenges with best-fit solutions across sectors, accelerating discovery and enabling faster, higher-quality collaborations.', 'var(--color-orange-1)', 'var(--gradient-warning-card)'],
+  ['Cross-Industry Collaboration', 'Access a global library of proven solutions, enabling the use of innovations from various industries to solve complex challenges and foster creative synergy.', 'var(--color-pink-1)', 'var(--gradient-error-card)'],
+  ['Privacy & Security', 'Collaborate within a secure, interactive environment that protects intellectual property and supports trust between partners, with strict privacy controls.', 'var(--color-blue-1)', 'var(--gradient-matched-card)'],
+  ['Full Workflow Integration', 'Manage solutions from submission to implementation seamlessly, with tools that facilitate ongoing communication and provide detailed analytics at every stage.', 'var(--color-violet-4)', 'var(--gradient-info-card)'],
+  ['Sustainable Knowledge Repository', 'Unmatched solutions are retained in a Solution Bank for future challenges, creating a sustainable knowledge base and increasing the likelihood of future matches.', 'var(--color-green-1)', 'var(--gradient-success-card)'],
+  ['API Integration', 'An API designed for handling large data sets, tailored for use by TTOs, universities, and research organizations, enhancing access and collaboration.', 'var(--color-violet-upload)', 'var(--gradient-upload-card)'],
 ];
 
+// Copy transcribed from the captured homepage — each tile is a solid coloured
+// header block (white text) over a white body, with a matching left bar.
 const STATS = [
-  ['30%', 'Increase in R&D Cost Efficiency', 'Cross-industry innovation at xFUSION leads to more efficient research and development, reducing costs by repurposing technologies from diverse fields.'],
-  ['40%', 'Much Faster Time-to-Market', 'Our collaborative process accelerates the path from idea to implementation, enabling faster product launches and reducing time-to-market by up to 40%.'],
-  ['10%', 'Improvement in Solution Ideation & Validation', 'By leveraging cross-disciplinary expertise, xFUSION delivers validated solutions that address complex challenges more effectively.'],
-  ['50%', 'Reduction in Discovery Time', 'AI-driven matching surfaces relevant solutions in a fraction of the time manual scouting takes.'],
-  ['5x', 'More Relevant Matches', 'Matching across industries widens the pool of viable solutions well beyond a single sector.'],
-  ['100+', 'Organizations & Innovators', 'A growing marketplace of enterprises, startups, research bodies, and public institutions.'],
+  ['30%', 'Increase in R&D Cost Efficiency', 'Cross-industry innovation at xFUSION leads to more efficient research and development, reducing costs by repurposing technologies from diverse fields.', 'var(--color-orange-1)'],
+  ['40%', 'Much Faster Time-to-Market', 'Our collaborative process accelerates the path from idea to implementation, enabling faster product launches and reducing time-to-market by up to 40%.', 'var(--color-pink-1)'],
+  ['10%', 'Improvement in Solution Ideation & Validation', 'By leveraging cross-disciplinary expertise, xFUSION delivers validated solutions that address complex challenges more effectively, enhancing ideation and validation rates.', 'var(--color-violet-5)'],
+  ['50%', 'More Industry-Academia Collaboration', 'xFUSION bridges the gap between academia and industry, boosting collaborative efforts that drive scientific advancements and practical solutions.', 'var(--color-violet-4)'],
+  ['5x', 'Increase in Market Reach & Revenue Potential', 'Cross-industry partnerships expand into new markets, creating exponential growth opportunities for products and technologies.', 'var(--color-green-1)'],
+  ['100+', 'Partners Across Different Industries', 'Our extensive network of partners enables breakthrough solutions, harnessing insights from leaders in multiple high-impact sectors.', 'var(--color-violet-6)'],
 ];
 
 const HOW = [
@@ -110,10 +114,14 @@ export default async function LandingPage() {
       <section id="features" className="section">
         <h2 className="h2 center">Main <span className="accent">Features</span></h2>
         <div className="grid-3">
-          {FEATURES.map(([title, body]) => (
-            <article key={title} className="card">
-              <h3 className="card-title">{title}</h3>
-              <p className="muted">{body}</p>
+          {FEATURES.map(([title, body, bar, tint]) => (
+            <article key={title} className="flex rounded-[var(--radius-4)] overflow-hidden" style={{ background: tint }}>
+              <span className="w-[6px] shrink-0" style={{ background: bar }} />
+              <div className="p-[var(--spacing-24)] flex flex-col gap-[var(--spacing-10)]">
+                <span className="w-[38px] h-[38px] rounded-[var(--radius-4)] flex items-center justify-center" style={{ color: bar, border: `1.5px dashed ${bar}` }} aria-hidden="true">✦</span>
+                <h3 className="card-title">{title}</h3>
+                <p className="muted">{body}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -122,7 +130,7 @@ export default async function LandingPage() {
       {/* Featured challenges — real data */}
       <section id="challenges" className="section">
         <div className="section-head">
-          <h2 className="h2">Featured <span className="accent">Challenges</span></h2>
+          <h2 className="h2">Featured <span style={{ color: 'var(--color-orange-1)' }}>Challenges</span></h2>
           <Link href="/challenges" className="muted">View all →</Link>
         </div>
         <div className="grid-3">
@@ -133,7 +141,7 @@ export default async function LandingPage() {
       {/* Featured solutions — real data */}
       <section id="solutions" className="section">
         <div className="section-head">
-          <h2 className="h2">Featured <span className="accent">Solutions</span></h2>
+          <h2 className="h2">Featured <span style={{ color: 'var(--color-green-1)' }}>Solutions</span></h2>
           <Link href="/solutions" className="muted">View all →</Link>
         </div>
         <div className="grid-3">
@@ -143,13 +151,18 @@ export default async function LandingPage() {
 
       {/* Why */}
       <section id="why" className="section">
-        <h2 className="h2 center">Why Do You Need <span className="accent">xFUSION?</span></h2>
+        <h2 className="h2 center">Why Do You Need xFUSION?</h2>
         <div className="grid-3">
-          {STATS.map(([n, label, body]) => (
-            <article key={n + label} className="card">
-              <div className="stat">{n}</div>
-              <h3 className="card-title">{label}</h3>
-              <p className="muted">{body}</p>
+          {STATS.map(([n, label, body, colour]) => (
+            <article key={n + label} className="flex rounded-[var(--radius-4)] overflow-hidden bg-[var(--color-grey-white)] border border-solid border-[var(--color-grey-2)]">
+              <span className="w-[6px] shrink-0" style={{ background: colour }} />
+              <div className="flex flex-col flex-1">
+                <div className="p-[var(--spacing-20)] flex flex-col gap-[var(--spacing-4)]" style={{ background: colour }}>
+                  <span className="text-[length:var(--font-size-32)] font-[var(--font-weight-bold)] leading-[var(--line-height-100)] text-[var(--color-grey-white)]">{n}</span>
+                  <span className="text-[length:var(--font-size-16)] text-[var(--color-grey-white)]">{label}</span>
+                </div>
+                <p className="muted p-[var(--spacing-20)]">{body}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -182,15 +195,24 @@ export default async function LandingPage() {
       {/* Contact */}
       <section id="contact" className="section">
         <h2 className="h2 center">Contact <span className="accent">Us</span></h2>
-        <div className="contact">
-          <a href="tel:+972528523131" className="card contact-card">
-            <span className="muted">Phone</span>
-            <strong>+972-528-523131</strong>
-          </a>
-          <a href="mailto:oranit@xfusion.pro" className="card contact-card">
-            <span className="muted">Email</span>
-            <strong>oranit@xfusion.pro</strong>
-          </a>
+        <div className="grid gap-[var(--spacing-40)] lg:grid-cols-2 items-start max-w-[960px] mx-auto">
+          <div className="flex flex-col gap-[var(--spacing-20)]">
+            <p className="text-[length:var(--font-size-16)] leading-[var(--line-height-150)]">
+              Ready to turn challenges or solutions into real opportunities?{' '}
+              <strong>Fill out this form and we&apos;ll help you get started.</strong>
+            </p>
+            <a href="tel:+972528523131" className="text-[length:var(--font-size-16)]">📞 +972-528-523131</a>
+            <a href="mailto:oranit@xfusion.pro" className="text-[length:var(--font-size-16)]">✉️ oranit@xfusion.pro</a>
+          </div>
+          {/* Form is visual-only — there's no backend to receive it (HANDOFF.md). */}
+          <form className="flex flex-col gap-[var(--spacing-12)]" aria-label="Contact form (not wired up)">
+            <input placeholder="Enter your full name" disabled className="h-[48px] px-[var(--spacing-16)] rounded-[var(--radius-4)] border border-solid border-[var(--color-border-input)] bg-[var(--color-grey-white)] text-[length:var(--font-size-16)]" />
+            <input placeholder="Enter your email" disabled className="h-[48px] px-[var(--spacing-16)] rounded-[var(--radius-4)] border border-solid border-[var(--color-border-input)] bg-[var(--color-grey-white)] text-[length:var(--font-size-16)]" />
+            <textarea placeholder="Enter your message (optional)" disabled className="min-h-[120px] p-[var(--spacing-16)] rounded-[var(--radius-4)] border border-solid border-[var(--color-border-input)] bg-[var(--color-grey-white)] text-[length:var(--font-size-16)] resize-none" />
+            <span className="w-fit self-end flex items-center gap-[var(--spacing-10)] h-[48px] px-[var(--spacing-32)] rounded-[var(--radius-40)] text-[var(--color-grey-white)]" style={{ background: 'var(--gradient-primary)' }} title="Form isn't wired up yet">
+              Submit ✈
+            </span>
+          </form>
         </div>
       </section>
     </>

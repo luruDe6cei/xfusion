@@ -13,6 +13,7 @@ const challengeInclude = {
 const solutionInclude = {
   company: { include: { logo: true, country: true } },
   industry: true,
+  subIndustry: true, // "Category" in the list filters
 } as const;
 
 export async function getChallenges(): Promise<Challenge[]> {
