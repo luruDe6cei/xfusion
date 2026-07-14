@@ -1,8 +1,7 @@
-import { getChallenge, getChallenges, getSolutionMatches } from '@/lib/data';
+import { getChallenge, getChallenges } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { DetailActions } from '../../detail-actions';
-import { MatchPanel } from './match-panel';
 
 /**
  * Challenge detail — mirrors the real page's structure
@@ -37,11 +36,9 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
   const c = await getChallenge(slug);
   if (!c) notFound();
 
-  const matches = await getSolutionMatches(c);
   const logo = c.company?.logo?.thumbnailUrl || c.company?.logo?.url;
 
   return (
-    <>
     <article className="py-[var(--spacing-40)] grid gap-[var(--spacing-40)] lg:grid-cols-[1fr_320px] items-start">
       {/* Main column */}
       <div className="flex flex-col gap-[var(--spacing-32)] min-w-0">
@@ -129,8 +126,6 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
         </dl>
       </aside>
     </article>
-    <MatchPanel challengeSlug={c.slug} matches={matches} />
-    </>
   );
 }
 

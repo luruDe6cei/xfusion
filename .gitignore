@@ -44,6 +44,9 @@ docs/*.pdf
 docs/*.docx
 docs/*.doc
 
+# ─── Demo screenshots (regenerable, contain xfusion content) ─────────────────
+demo/
+
 # ─── Editor / OS cruft ───────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db

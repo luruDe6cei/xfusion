@@ -65,12 +65,19 @@ scraping. Suggested order:
 
 ### 3. Matching
 - `averageMatchScore` is exposed by the API but the algorithm isn't. Design our own
-  (e.g. keyword/industry/expertise overlap) if this feature is wanted.
-- **2.0 demo shipped (2026-07-14):** `/challenges/[slug]` now has a "Matched Solutions —
-  2.0 preview" section (spec ch. 3): top-8 ranking via a deterministic heuristic in
-  `app/lib/match.ts`, score breakdown + "Why this Match", slider evaluation →
-  Short List → Match, state in localStorage. Item list distilled from the spec:
-  `docs/xfusion-2.0-items.md`. This is a demo stand-in, not a real matcher.
+  if this feature is wanted. (A heuristic ch.-3 "Matched Solutions" panel was built and
+  then **reverted** on 2026-07-14 — owner wants AI-capability demos, not heuristic UI.
+  Code parked in `demo/reverted-matched-solutions/`, restore notes in the roadmap doc.)
+
+### 2.0 work — current state (2026-07-14)
+- **SHIPPED: AI challenge intake (spec ch. 2)** at `/challenges/new` — Socratic chat
+  powered by **Gemini** (`app/lib/gemini.ts`, REST, no SDK) that drafts every challenge
+  field for review, then publishes via the app's **first write path**
+  (`createChallenge` in `lib/data.ts`, owned by a synthetic "Demo Organization").
+  Needs `GEMINI_API_KEY` in `app/.env` (placeholder added; restart dev after setting).
+- **`docs/xfusion-2.0-items.md` is the 2.0 roadmap** — full spec checklist plus
+  self-contained implementation tickets (XF2-01…XF2-12) with file-level build notes.
+  Pick up any ticket from there; it repeats the gotchas that matter per ticket.
 
 ### 4. Nice-to-haves
 - Search & industry filters on list pages.
