@@ -1,0 +1,254 @@
+[
+  {
+    "id": "cmjzk641d000sa0n1e4saopr2",
+    "name": "Agriculture",
+    "slug": "agriculture",
+    "createdAt": "2026-01-04T09:57:48.145Z",
+    "updatedAt": "2026-01-04T09:57:48.145Z"
+  },
+  {
+    "id": "cmjzk62ws000ea0n14imxktyj",
+    "name": "Automotive",
+    "slug": "automotive",
+    "createdAt": "2026-01-04T09:57:46.684Z",
+    "updatedAt": "2026-01-04T09:57:46.684Z"
+  },
+  {
+    "id": "cmjzk632o000ga0n19n8cnydc",
+    "name": "Aviation",
+    "slug": "aviation",
+    "createdAt": "2026-01-04T09:57:46.896Z",
+    "updatedAt": "2026-01-04T09:57:46.896Z"
+  },
+  {
+    "id": "cmjzk66g3001ma0n1lfsdvu1f",
+    "name": "Biotechnology",
+    "slug": "biotechnology",
+    "createdAt": "2026-01-04T09:57:51.267Z",
+    "updatedAt": "2026-01-04T09:57:51.267Z"
+  },
+  {
+    "id": "cmjzk66lv001oa0n1mk9xl0ph",
+    "name": "Chemicals & Materials",
+    "slug": "chemicals-and-materials",
+    "createdAt": "2026-01-04T09:57:51.475Z",
+    "updatedAt": "2026-01-04T09:57:51.475Z"
+  },
+  {
+    "id": "cmjzk65hf001aa0n1hugp5xf4",
+    "name": "Construction & Real Estate",
+    "slug": "construction-and-real-estate",
+    "createdAt": "2026-01-04T09:57:50.019Z",
+    "updatedAt": "2026-01-04T09:57:50.019Z"
+  },
+  {
+    "id": "cmjzk62fd0008a0n1wun0fn9h",
+    "name": "Defense & Military",
+    "slug": "defense-and-military",
+    "createdAt": "2026-01-04T09:57:46.057Z",
+    "updatedAt": "2026-01-04T09:57:46.057Z"
+  },
+  {
+    "id": "cmjzk655w0016a0n1rhpe0ws2",
+    "name": "E-Commerce",
+    "slug": "e-commerce",
+    "createdAt": "2026-01-04T09:57:49.604Z",
+    "updatedAt": "2026-01-04T09:57:49.604Z"
+  },
+  {
+    "id": "cmjzk664k001ia0n1puz21gsf",
+    "name": "Education",
+    "slug": "education",
+    "createdAt": "2026-01-04T09:57:50.852Z",
+    "updatedAt": "2026-01-04T09:57:50.852Z"
+  },
+  {
+    "id": "cmjzk63e8000ka0n1c0fhtkqk",
+    "name": "Energy",
+    "slug": "energy",
+    "createdAt": "2026-01-04T09:57:47.312Z",
+    "updatedAt": "2026-01-04T09:57:47.312Z"
+  },
+  {
+    "id": "cmjzk64oi0010a0n1xl89q3ya",
+    "name": "Finance & Banking",
+    "slug": "finance-and-banking",
+    "createdAt": "2026-01-04T09:57:48.978Z",
+    "updatedAt": "2026-01-04T09:57:48.978Z"
+  },
+  {
+    "id": "cmjzk6474000ua0n1h30s5ap8",
+    "name": "Food & Beverage",
+    "slug": "food-and-beverage",
+    "createdAt": "2026-01-04T09:57:48.352Z",
+    "updatedAt": "2026-01-04T09:57:48.352Z"
+  },
+  {
+    "id": "cmjzk64in000ya0n144hun16p",
+    "name": "Government & Public Sector",
+    "slug": "government-and-public-sector",
+    "createdAt": "2026-01-04T09:57:48.767Z",
+    "updatedAt": "2026-01-04T09:57:48.767Z"
+  },
+  {
+    "id": "cmjzk61r90000a0n1im76nyb3",
+    "name": "Healthcare",
+    "slug": "healthcare",
+    "createdAt": "2026-01-04T09:57:45.189Z",
+    "updatedAt": "2026-01-04T09:57:45.189Z"
+  },
+  {
+    "id": "cmjzk6734001ua0n1bks8jsvk",
+    "name": "Hospitality & Tourism",
+    "slug": "hospitality-and-tourism",
+    "createdAt": "2026-01-04T09:57:52.096Z",
+    "updatedAt": "2026-01-04T09:57:52.096Z"
+  },
+  {
+    "id": "cmjzk64ua0012a0n1knv73czt",
+    "name": "Insurance",
+    "slug": "insurance",
+    "createdAt": "2026-01-04T09:57:49.186Z",
+    "updatedAt": "2026-01-04T09:57:49.186Z"
+  },
+  {
+    "id": "cmjzk629j0006a0n1k2mj9fui",
+    "name": "Life Sciences",
+    "slug": "life-sciences",
+    "createdAt": "2026-01-04T09:57:45.847Z",
+    "updatedAt": "2026-01-04T09:57:45.847Z"
+  },
+  {
+    "id": "cmjzk66xb001sa0n17l8g74r0",
+    "name": "Logistics & Freight",
+    "slug": "logistics-and-freight",
+    "createdAt": "2026-01-04T09:57:51.887Z",
+    "updatedAt": "2026-01-04T09:57:51.887Z"
+  },
+  {
+    "id": "cmjzk65bo0018a0n1482ocxz4",
+    "name": "Manufacturing & Industry",
+    "slug": "manufacturing-and-industry",
+    "createdAt": "2026-01-04T09:57:49.812Z",
+    "updatedAt": "2026-01-04T09:57:49.812Z"
+  },
+  {
+    "id": "cmjzk65yq001ga0n1lrrzgg9i",
+    "name": "Media & Entertainment",
+    "slug": "media-and-entertainment",
+    "createdAt": "2026-01-04T09:57:50.642Z",
+    "updatedAt": "2026-01-04T09:57:50.642Z"
+  },
+  {
+    "id": "cmjzk61xp0002a0n1cwkthc6a",
+    "name": "Medical Devices",
+    "slug": "medical-devices",
+    "createdAt": "2026-01-04T09:57:45.421Z",
+    "updatedAt": "2026-01-04T09:57:45.421Z"
+  },
+  {
+    "id": "cmjzk66rj001qa0n197t27hwg",
+    "name": "Mining & Natural Resources",
+    "slug": "mining-and-natural-resources",
+    "createdAt": "2026-01-04T09:57:51.679Z",
+    "updatedAt": "2026-01-04T09:57:51.679Z"
+  },
+  {
+    "id": "cmjzk67en001ya0n10ev2v6sb",
+    "name": "Non-Profit & Social Sector",
+    "slug": "non-profit-and-social-sector",
+    "createdAt": "2026-01-04T09:57:52.511Z",
+    "updatedAt": "2026-01-04T09:57:52.511Z"
+  },
+  {
+    "id": "cmjzk63pt000oa0n1pppw28cq",
+    "name": "Oil & Gas",
+    "slug": "oil-and-gas",
+    "createdAt": "2026-01-04T09:57:47.729Z",
+    "updatedAt": "2026-01-04T09:57:47.729Z"
+  },
+  {
+    "id": "cmjzk623n0004a0n1yq6kuo27",
+    "name": "Pharmaceuticals",
+    "slug": "pharmaceuticals",
+    "createdAt": "2026-01-04T09:57:45.635Z",
+    "updatedAt": "2026-01-04T09:57:45.635Z"
+  },
+  {
+    "id": "cmjzk62l8000aa0n1gvi6j0dj",
+    "name": "Public Safety",
+    "slug": "public-safety",
+    "createdAt": "2026-01-04T09:57:46.268Z",
+    "updatedAt": "2026-01-04T09:57:46.268Z"
+  },
+  {
+    "id": "cmjzk638f000ia0n13es0tx8r",
+    "name": "Rail & Maritime",
+    "slug": "rail-and-maritime",
+    "createdAt": "2026-01-04T09:57:47.103Z",
+    "updatedAt": "2026-01-04T09:57:47.103Z"
+  },
+  {
+    "id": "cmjzk63vl000qa0n1cs5g3swg",
+    "name": "Renewable Energy",
+    "slug": "renewable-energy",
+    "createdAt": "2026-01-04T09:57:47.937Z",
+    "updatedAt": "2026-01-04T09:57:47.937Z"
+  },
+  {
+    "id": "cmjzk66ac001ka0n10z5umusn",
+    "name": "Research & Academia",
+    "slug": "research-and-academia",
+    "createdAt": "2026-01-04T09:57:51.060Z",
+    "updatedAt": "2026-01-04T09:57:51.060Z"
+  },
+  {
+    "id": "cmjzk65030014a0n1kaza28bu",
+    "name": "Retail & Consumer Goods",
+    "slug": "retail-and-consumer-goods",
+    "createdAt": "2026-01-04T09:57:49.395Z",
+    "updatedAt": "2026-01-04T09:57:49.395Z"
+  },
+  {
+    "id": "cmjzk65n7001ca0n1hfeiy1d7",
+    "name": "Smart Cities & Urban",
+    "slug": "smart-cities-and-urban",
+    "createdAt": "2026-01-04T09:57:50.227Z",
+    "updatedAt": "2026-01-04T09:57:50.227Z"
+  },
+  {
+    "id": "cmjzk678v001wa0n1zkx859cn",
+    "name": "Sports & Leisure",
+    "slug": "sports-and-leisure",
+    "createdAt": "2026-01-04T09:57:52.303Z",
+    "updatedAt": "2026-01-04T09:57:52.303Z"
+  },
+  {
+    "id": "cmjzk65sy001ea0n11ud7ihz6",
+    "name": "Telecommunications",
+    "slug": "telecommunications",
+    "createdAt": "2026-01-04T09:57:50.434Z",
+    "updatedAt": "2026-01-04T09:57:50.434Z"
+  },
+  {
+    "id": "cmjzk62r0000ca0n11725qinb",
+    "name": "Transportation & Mobility",
+    "slug": "transportation-and-mobility",
+    "createdAt": "2026-01-04T09:57:46.476Z",
+    "updatedAt": "2026-01-04T09:57:46.476Z"
+  },
+  {
+    "id": "cmjzk63k0000ma0n1pjfhgwwu",
+    "name": "Utilities",
+    "slug": "utilities",
+    "createdAt": "2026-01-04T09:57:47.520Z",
+    "updatedAt": "2026-01-04T09:57:47.520Z"
+  },
+  {
+    "id": "cmjzk64cv000wa0n11ut98r91",
+    "name": "Water & Environment",
+    "slug": "water-and-environment",
+    "createdAt": "2026-01-04T09:57:48.559Z",
+    "updatedAt": "2026-01-04T09:57:48.559Z"
+  }
+]

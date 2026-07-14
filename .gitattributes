@@ -1,0 +1,16 @@
+# Normalize line endings on commit; check out native.
+* text=auto
+
+# Scraped API payloads: machine-generated data, not hand-written source.
+# Collapse them in diffs/PRs and keep them out of language stats.
+scraper/snapshot/api/*.json linguist-generated=true
+app/data/*.json            linguist-generated=true
+
+# Lockfiles: generated, don't review by hand.
+package-lock.json linguist-generated=true
+
+# Binary assets — never try to merge or diff these as text.
+*.png binary
+*.jpg binary
+*.pdf binary
+*.docx binary

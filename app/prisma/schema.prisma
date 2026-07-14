@@ -1,0 +1,132 @@
+// Reconstructed from xfusion.pro's public API responses.
+// CUID ids + createdAt/updatedAt on every model indicate Prisma + Postgres upstream.
+// This is a faithful model of the *observed* public fields; private/admin fields
+// (auth, offers, messaging) are not visible from the public API and are omitted.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id                 String      @id @default(cuid())
+  name               String
+  slug               String      @unique
+  description        String?
+  website            String?
+  domain             String?
+  isApproved         Boolean     @default(false)
+  isCompleted        Boolean     @default(false)
+  hasDeletionRequest Boolean     @default(false)
+  logoId             String?
+  logo               File?       @relation("CompanyLogo", fields: [logoId], references: [id])
+  countryId          String?
+  country            Country?    @relation(fields: [countryId], references: [id])
+  ownerId            String?
+  challenges         Challenge[]
+  solutions          Solution[]
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+}
+
+model Challenge {
+  id                     String       @id @default(cuid())
+  companyId              String
+  company                Company      @relation(fields: [companyId], references: [id])
+  createdByUserId        String?
+  name                   String
+  slug                   String       @unique
+  shortDescription       String?
+  description            String?
+  objective              String?
+  industryId             String?
+  industry               Industry?    @relation(fields: [industryId], references: [id])
+  subIndustryId          String?
+  subIndustry            SubIndustry? @relation(fields: [subIndustryId], references: [id])
+  keywords               String[]
+  requiredExpertise      String[]
+  requiredDeploymentTime String? // e.g. THREE_TO_6_MONTHS
+  rewardInformation      String?
+  status                 String       @default("PUBLISHED")
+  viewsCount             Int          @default(0)
+  sharesCount            Int          @default(0)
+  averageMatchScore      Float?
+  showOnHomepage         Boolean      @default(false)
+  homepageOrder          Int          @default(0)
+  countryId              String?
+  files                  File[]       @relation("ChallengeFiles")
+  createdAt              DateTime     @default(now())
+  updatedAt              DateTime     @updatedAt
+}
+
+model Solution {
+  id               String    @id @default(cuid())
+  companyId        String
+  company          Company   @relation(fields: [companyId], references: [id])
+  name             String
+  slug             String    @unique
+  shortDescription String?
+  description      String?
+  industryId       String?
+  industry         Industry? @relation(fields: [industryId], references: [id])
+  keywords         String[]
+  status           String    @default("PUBLISHED")
+  viewsCount       Int       @default(0)
+  sharesCount      Int       @default(0)
+  files            File[]    @relation("SolutionFiles")
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model Industry {
+  id            String        @id @default(cuid())
+  name          String
+  slug          String        @unique
+  subIndustries SubIndustry[]
+  challenges    Challenge[]
+  solutions     Solution[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model SubIndustry {
+  id         String      @id @default(cuid())
+  name       String
+  slug       String
+  industryId String?
+  industry   Industry?   @relation(fields: [industryId], references: [id])
+  challenges Challenge[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
+model Country {
+  id        String    @id @default(cuid())
+  name      String
+  companies Company[]
+}
+
+model File {
+  id           String     @id @default(cuid())
+  name         String
+  url          String
+  key          String?
+  thumbnailUrl String?
+  type         String? // IMAGE, DOCUMENT, …
+  mimetype     String?
+  filesize     Int?
+  width        Int?
+  height       Int?
+  format       String?
+  isPrivate    Boolean    @default(false)
+  companyLogo  Company[]  @relation("CompanyLogo")
+  challenge    Challenge? @relation("ChallengeFiles", fields: [challengeId], references: [id])
+  challengeId  String?
+  solution     Solution?  @relation("SolutionFiles", fields: [solutionId], references: [id])
+  solutionId   String?
+  createdAt    DateTime   @default(now())
+}

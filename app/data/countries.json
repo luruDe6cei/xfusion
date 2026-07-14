@@ -1,0 +1,1374 @@
+[
+  {
+    "id": "cmlktcgfm00000zyk909jduxh",
+    "name": "Afghanistan",
+    "code": "AF",
+    "createdAt": "2026-02-13T11:37:32.722Z",
+    "updatedAt": "2026-02-13T11:37:32.722Z"
+  },
+  {
+    "id": "cmlktcgg600020zykuawgn6wr",
+    "name": "Albania",
+    "code": "AL",
+    "createdAt": "2026-02-13T11:37:32.742Z",
+    "updatedAt": "2026-02-13T11:37:32.742Z"
+  },
+  {
+    "id": "cmlktcggc00040zyk3s4wv3bz",
+    "name": "Algeria",
+    "code": "DZ",
+    "createdAt": "2026-02-13T11:37:32.748Z",
+    "updatedAt": "2026-02-13T11:37:32.748Z"
+  },
+  {
+    "id": "cmlktcggg00060zykt6nzi6rb",
+    "name": "Andorra",
+    "code": "AD",
+    "createdAt": "2026-02-13T11:37:32.752Z",
+    "updatedAt": "2026-02-13T11:37:32.752Z"
+  },
+  {
+    "id": "cmlktcggl00080zykr77i695x",
+    "name": "Angola",
+    "code": "AO",
+    "createdAt": "2026-02-13T11:37:32.757Z",
+    "updatedAt": "2026-02-13T11:37:32.757Z"
+  },
+  {
+    "id": "cmlktcggp000a0zykx2wr1t15",
+    "name": "Antigua and Barbuda",
+    "code": "AG",
+    "createdAt": "2026-02-13T11:37:32.761Z",
+    "updatedAt": "2026-02-13T11:37:32.761Z"
+  },
+  {
+    "id": "cmlktcggv000c0zykarjaofmf",
+    "name": "Argentina",
+    "code": "AR",
+    "createdAt": "2026-02-13T11:37:32.767Z",
+    "updatedAt": "2026-02-13T11:37:32.767Z"
+  },
+  {
+    "id": "cmlktcggz000e0zyktjmp315s",
+    "name": "Armenia",
+    "code": "AM",
+    "createdAt": "2026-02-13T11:37:32.771Z",
+    "updatedAt": "2026-02-13T11:37:32.771Z"
+  },
+  {
+    "id": "cmlktcgh3000g0zykl268k9wl",
+    "name": "Australia",
+    "code": "AU",
+    "createdAt": "2026-02-13T11:37:32.775Z",
+    "updatedAt": "2026-02-13T11:37:32.775Z"
+  },
+  {
+    "id": "cmlktcgh8000i0zyk1aheq6hk",
+    "name": "Austria",
+    "code": "AT",
+    "createdAt": "2026-02-13T11:37:32.780Z",
+    "updatedAt": "2026-02-13T11:37:32.780Z"
+  },
+  {
+    "id": "cmlktcghd000k0zykswn9sbnz",
+    "name": "Azerbaijan",
+    "code": "AZ",
+    "createdAt": "2026-02-13T11:37:32.785Z",
+    "updatedAt": "2026-02-13T11:37:32.785Z"
+  },
+  {
+    "id": "cmlktcghh000m0zykl8kk92gz",
+    "name": "Bahamas",
+    "code": "BS",
+    "createdAt": "2026-02-13T11:37:32.789Z",
+    "updatedAt": "2026-02-13T11:37:32.789Z"
+  },
+  {
+    "id": "cmlktcghl000o0zykhhfmkiu8",
+    "name": "Bahrain",
+    "code": "BH",
+    "createdAt": "2026-02-13T11:37:32.793Z",
+    "updatedAt": "2026-02-13T11:37:32.793Z"
+  },
+  {
+    "id": "cmlktcghq000q0zykvaf3bqmw",
+    "name": "Bangladesh",
+    "code": "BD",
+    "createdAt": "2026-02-13T11:37:32.798Z",
+    "updatedAt": "2026-02-13T11:37:32.798Z"
+  },
+  {
+    "id": "cmlktcghu000s0zykbi3mz2g7",
+    "name": "Barbados",
+    "code": "BB",
+    "createdAt": "2026-02-13T11:37:32.802Z",
+    "updatedAt": "2026-02-13T11:37:32.802Z"
+  },
+  {
+    "id": "cmlktcgi2000u0zyk4v7c9pe8",
+    "name": "Belarus",
+    "code": "BY",
+    "createdAt": "2026-02-13T11:37:32.810Z",
+    "updatedAt": "2026-02-13T11:37:32.810Z"
+  },
+  {
+    "id": "cmlktcgi6000w0zyk6xy3sfko",
+    "name": "Belgium",
+    "code": "BE",
+    "createdAt": "2026-02-13T11:37:32.814Z",
+    "updatedAt": "2026-02-13T11:37:32.814Z"
+  },
+  {
+    "id": "cmlktcgia000y0zykqnlrvpji",
+    "name": "Belize",
+    "code": "BZ",
+    "createdAt": "2026-02-13T11:37:32.818Z",
+    "updatedAt": "2026-02-13T11:37:32.818Z"
+  },
+  {
+    "id": "cmlktcgie00100zykuv82pf4d",
+    "name": "Benin",
+    "code": "BJ",
+    "createdAt": "2026-02-13T11:37:32.822Z",
+    "updatedAt": "2026-02-13T11:37:32.822Z"
+  },
+  {
+    "id": "cmlktcgii00120zyk9i5s1kyt",
+    "name": "Bhutan",
+    "code": "BT",
+    "createdAt": "2026-02-13T11:37:32.826Z",
+    "updatedAt": "2026-02-13T11:37:32.826Z"
+  },
+  {
+    "id": "cmlktcgin00140zyksgjtsu1m",
+    "name": "Bolivia",
+    "code": "BO",
+    "createdAt": "2026-02-13T11:37:32.831Z",
+    "updatedAt": "2026-02-13T11:37:32.831Z"
+  },
+  {
+    "id": "cmlktcgir00160zykksoso1do",
+    "name": "Bosnia and Herzegovina",
+    "code": "BA",
+    "createdAt": "2026-02-13T11:37:32.835Z",
+    "updatedAt": "2026-02-13T11:37:32.835Z"
+  },
+  {
+    "id": "cmlktcgiw00180zykmevrp4ww",
+    "name": "Botswana",
+    "code": "BW",
+    "createdAt": "2026-02-13T11:37:32.840Z",
+    "updatedAt": "2026-02-13T11:37:32.840Z"
+  },
+  {
+    "id": "cmlktcgj1001a0zykdvey5has",
+    "name": "Brazil",
+    "code": "BR",
+    "createdAt": "2026-02-13T11:37:32.845Z",
+    "updatedAt": "2026-02-13T11:37:32.845Z"
+  },
+  {
+    "id": "cmlktcgj5001c0zykrvxgq9uv",
+    "name": "Brunei",
+    "code": "BN",
+    "createdAt": "2026-02-13T11:37:32.849Z",
+    "updatedAt": "2026-02-13T11:37:32.849Z"
+  },
+  {
+    "id": "cmlktcgja001e0zyk90c31j2r",
+    "name": "Bulgaria",
+    "code": "BG",
+    "createdAt": "2026-02-13T11:37:32.854Z",
+    "updatedAt": "2026-02-13T11:37:32.854Z"
+  },
+  {
+    "id": "cmlktcgjf001g0zykq6r52agw",
+    "name": "Burkina Faso",
+    "code": "BF",
+    "createdAt": "2026-02-13T11:37:32.859Z",
+    "updatedAt": "2026-02-13T11:37:32.859Z"
+  },
+  {
+    "id": "cmlktcgjj001i0zyk94t30vxa",
+    "name": "Burundi",
+    "code": "BI",
+    "createdAt": "2026-02-13T11:37:32.863Z",
+    "updatedAt": "2026-02-13T11:37:32.863Z"
+  },
+  {
+    "id": "cmlktcgjn001k0zyk7ovkk3w6",
+    "name": "Cabo Verde",
+    "code": "CV",
+    "createdAt": "2026-02-13T11:37:32.867Z",
+    "updatedAt": "2026-02-13T11:37:32.867Z"
+  },
+  {
+    "id": "cmlktcgjr001m0zyk7ympfqm3",
+    "name": "Cambodia",
+    "code": "KH",
+    "createdAt": "2026-02-13T11:37:32.871Z",
+    "updatedAt": "2026-02-13T11:37:32.871Z"
+  },
+  {
+    "id": "cmlktcgjv001o0zykxnd577sj",
+    "name": "Cameroon",
+    "code": "CM",
+    "createdAt": "2026-02-13T11:37:32.875Z",
+    "updatedAt": "2026-02-13T11:37:32.875Z"
+  },
+  {
+    "id": "cmlktcgk1001q0zyk9wow5e46",
+    "name": "Canada",
+    "code": "CA",
+    "createdAt": "2026-02-13T11:37:32.881Z",
+    "updatedAt": "2026-02-13T11:37:32.881Z"
+  },
+  {
+    "id": "cmlktcgk5001s0zyk5fi9qcrl",
+    "name": "Central African Republic",
+    "code": "CF",
+    "createdAt": "2026-02-13T11:37:32.885Z",
+    "updatedAt": "2026-02-13T11:37:32.885Z"
+  },
+  {
+    "id": "cmlktcgk9001u0zykuzbachk8",
+    "name": "Chad",
+    "code": "TD",
+    "createdAt": "2026-02-13T11:37:32.889Z",
+    "updatedAt": "2026-02-13T11:37:32.889Z"
+  },
+  {
+    "id": "cmlktcgkd001w0zykxe0qsdyi",
+    "name": "Chile",
+    "code": "CL",
+    "createdAt": "2026-02-13T11:37:32.893Z",
+    "updatedAt": "2026-02-13T11:37:32.893Z"
+  },
+  {
+    "id": "cmlktcgkh001y0zykjueact71",
+    "name": "China",
+    "code": "CN",
+    "createdAt": "2026-02-13T11:37:32.897Z",
+    "updatedAt": "2026-02-13T11:37:32.897Z"
+  },
+  {
+    "id": "cmlktcgkl00200zykkmecsz7f",
+    "name": "Colombia",
+    "code": "CO",
+    "createdAt": "2026-02-13T11:37:32.901Z",
+    "updatedAt": "2026-02-13T11:37:32.901Z"
+  },
+  {
+    "id": "cmlktcgko00220zyklepuaajo",
+    "name": "Comoros",
+    "code": "KM",
+    "createdAt": "2026-02-13T11:37:32.904Z",
+    "updatedAt": "2026-02-13T11:37:32.904Z"
+  },
+  {
+    "id": "cmlktcgks00240zykyfpfw3q5",
+    "name": "Congo (Democratic Republic)",
+    "code": "CD",
+    "createdAt": "2026-02-13T11:37:32.908Z",
+    "updatedAt": "2026-02-13T11:37:32.908Z"
+  },
+  {
+    "id": "cmlktcgkz00260zykj2ww7tp3",
+    "name": "Congo (Republic)",
+    "code": "CG",
+    "createdAt": "2026-02-13T11:37:32.915Z",
+    "updatedAt": "2026-02-13T11:37:32.915Z"
+  },
+  {
+    "id": "cmlktcgl300280zyk9p4zaa75",
+    "name": "Costa Rica",
+    "code": "CR",
+    "createdAt": "2026-02-13T11:37:32.919Z",
+    "updatedAt": "2026-02-13T11:37:32.919Z"
+  },
+  {
+    "id": "cmlktcgl7002a0zykqlagxxuy",
+    "name": "Croatia",
+    "code": "HR",
+    "createdAt": "2026-02-13T11:37:32.923Z",
+    "updatedAt": "2026-02-13T11:37:32.923Z"
+  },
+  {
+    "id": "cmlktcgla002c0zykavbszwpz",
+    "name": "Cuba",
+    "code": "CU",
+    "createdAt": "2026-02-13T11:37:32.926Z",
+    "updatedAt": "2026-02-13T11:37:32.926Z"
+  },
+  {
+    "id": "cmlktcgle002e0zykl4m5dy5r",
+    "name": "Cyprus",
+    "code": "CY",
+    "createdAt": "2026-02-13T11:37:32.930Z",
+    "updatedAt": "2026-02-13T11:37:32.930Z"
+  },
+  {
+    "id": "cmlktcglk002g0zyk4wpzchmj",
+    "name": "Czech Republic",
+    "code": "CZ",
+    "createdAt": "2026-02-13T11:37:32.936Z",
+    "updatedAt": "2026-02-13T11:37:32.936Z"
+  },
+  {
+    "id": "cmlktcglo002i0zykzg9kxfce",
+    "name": "Denmark",
+    "code": "DK",
+    "createdAt": "2026-02-13T11:37:32.940Z",
+    "updatedAt": "2026-02-13T11:37:32.940Z"
+  },
+  {
+    "id": "cmlktcglt002k0zykhts8cz0m",
+    "name": "Djibouti",
+    "code": "DJ",
+    "createdAt": "2026-02-13T11:37:32.944Z",
+    "updatedAt": "2026-02-13T11:37:32.944Z"
+  },
+  {
+    "id": "cmlktcglz002m0zykwp7y4hfw",
+    "name": "Dominica",
+    "code": "DM",
+    "createdAt": "2026-02-13T11:37:32.951Z",
+    "updatedAt": "2026-02-13T11:37:32.951Z"
+  },
+  {
+    "id": "cmlktcgm4002o0zykqctvoaq4",
+    "name": "Dominican Republic",
+    "code": "DO",
+    "createdAt": "2026-02-13T11:37:32.956Z",
+    "updatedAt": "2026-02-13T11:37:32.956Z"
+  },
+  {
+    "id": "cmlktcgm9002q0zykmv13ohey",
+    "name": "Ecuador",
+    "code": "EC",
+    "createdAt": "2026-02-13T11:37:32.961Z",
+    "updatedAt": "2026-02-13T11:37:32.961Z"
+  },
+  {
+    "id": "cmlktcgmd002s0zykh73h0u24",
+    "name": "Egypt",
+    "code": "EG",
+    "createdAt": "2026-02-13T11:37:32.965Z",
+    "updatedAt": "2026-02-13T11:37:32.965Z"
+  },
+  {
+    "id": "cmlktcgmh002u0zyk5c1i5njj",
+    "name": "El Salvador",
+    "code": "SV",
+    "createdAt": "2026-02-13T11:37:32.969Z",
+    "updatedAt": "2026-02-13T11:37:32.969Z"
+  },
+  {
+    "id": "cmlktcgml002w0zykc8hdpacg",
+    "name": "Equatorial Guinea",
+    "code": "GQ",
+    "createdAt": "2026-02-13T11:37:32.973Z",
+    "updatedAt": "2026-02-13T11:37:32.973Z"
+  },
+  {
+    "id": "cmlktcgmp002y0zyk2kov79os",
+    "name": "Eritrea",
+    "code": "ER",
+    "createdAt": "2026-02-13T11:37:32.977Z",
+    "updatedAt": "2026-02-13T11:37:32.977Z"
+  },
+  {
+    "id": "cmlktcgmt00300zyknsqd7oig",
+    "name": "Estonia",
+    "code": "EE",
+    "createdAt": "2026-02-13T11:37:32.981Z",
+    "updatedAt": "2026-02-13T11:37:32.981Z"
+  },
+  {
+    "id": "cmlktcgmy00320zykyx5nrpxu",
+    "name": "Eswatini",
+    "code": "SZ",
+    "createdAt": "2026-02-13T11:37:32.986Z",
+    "updatedAt": "2026-02-13T11:37:32.986Z"
+  },
+  {
+    "id": "cmlktcgn200340zyk4etxcioo",
+    "name": "Ethiopia",
+    "code": "ET",
+    "createdAt": "2026-02-13T11:37:32.990Z",
+    "updatedAt": "2026-02-13T11:37:32.990Z"
+  },
+  {
+    "id": "cmlktcgn600360zykpbpzukwd",
+    "name": "Fiji",
+    "code": "FJ",
+    "createdAt": "2026-02-13T11:37:32.994Z",
+    "updatedAt": "2026-02-13T11:37:32.994Z"
+  },
+  {
+    "id": "cmlktcgna00380zyk066gzfud",
+    "name": "Finland",
+    "code": "FI",
+    "createdAt": "2026-02-13T11:37:32.998Z",
+    "updatedAt": "2026-02-13T11:37:32.998Z"
+  },
+  {
+    "id": "cmlktcgnf003a0zykpvf2wak6",
+    "name": "France",
+    "code": "FR",
+    "createdAt": "2026-02-13T11:37:33.003Z",
+    "updatedAt": "2026-02-13T11:37:33.003Z"
+  },
+  {
+    "id": "cmlktcgnl003c0zykerek2u0h",
+    "name": "Gabon",
+    "code": "GA",
+    "createdAt": "2026-02-13T11:37:33.009Z",
+    "updatedAt": "2026-02-13T11:37:33.009Z"
+  },
+  {
+    "id": "cmlktcgns003e0zykjkl2xnnn",
+    "name": "Gambia",
+    "code": "GM",
+    "createdAt": "2026-02-13T11:37:33.016Z",
+    "updatedAt": "2026-02-13T11:37:33.016Z"
+  },
+  {
+    "id": "cmlktcgnx003g0zykv768e61u",
+    "name": "Georgia",
+    "code": "GE",
+    "createdAt": "2026-02-13T11:37:33.021Z",
+    "updatedAt": "2026-02-13T11:37:33.021Z"
+  },
+  {
+    "id": "cmlktcgo2003i0zykjfxbs63v",
+    "name": "Germany",
+    "code": "DE",
+    "createdAt": "2026-02-13T11:37:33.026Z",
+    "updatedAt": "2026-02-13T11:37:33.026Z"
+  },
+  {
+    "id": "cmlktcgo7003k0zykao2kic5s",
+    "name": "Ghana",
+    "code": "GH",
+    "createdAt": "2026-02-13T11:37:33.031Z",
+    "updatedAt": "2026-02-13T11:37:33.031Z"
+  },
+  {
+    "id": "cmlktcgob003m0zykpstx8pbs",
+    "name": "Greece",
+    "code": "GR",
+    "createdAt": "2026-02-13T11:37:33.035Z",
+    "updatedAt": "2026-02-13T11:37:33.035Z"
+  },
+  {
+    "id": "cmlktcgog003o0zykqqyhtx5r",
+    "name": "Grenada",
+    "code": "GD",
+    "createdAt": "2026-02-13T11:37:33.040Z",
+    "updatedAt": "2026-02-13T11:37:33.040Z"
+  },
+  {
+    "id": "cmlktcgok003q0zykmstzcsjc",
+    "name": "Guatemala",
+    "code": "GT",
+    "createdAt": "2026-02-13T11:37:33.044Z",
+    "updatedAt": "2026-02-13T11:37:33.044Z"
+  },
+  {
+    "id": "cmlktcgop003s0zyk0nedl4g4",
+    "name": "Guinea",
+    "code": "GN",
+    "createdAt": "2026-02-13T11:37:33.049Z",
+    "updatedAt": "2026-02-13T11:37:33.049Z"
+  },
+  {
+    "id": "cmlktcgot003u0zyku21got3b",
+    "name": "Guinea-Bissau",
+    "code": "GW",
+    "createdAt": "2026-02-13T11:37:33.053Z",
+    "updatedAt": "2026-02-13T11:37:33.053Z"
+  },
+  {
+    "id": "cmlktcgox003w0zyk8a8obacy",
+    "name": "Guyana",
+    "code": "GY",
+    "createdAt": "2026-02-13T11:37:33.057Z",
+    "updatedAt": "2026-02-13T11:37:33.057Z"
+  },
+  {
+    "id": "cmlktcgp1003y0zyk02rgy2yb",
+    "name": "Haiti",
+    "code": "HT",
+    "createdAt": "2026-02-13T11:37:33.061Z",
+    "updatedAt": "2026-02-13T11:37:33.061Z"
+  },
+  {
+    "id": "cmlktcgp600400zykfibd4qde",
+    "name": "Honduras",
+    "code": "HN",
+    "createdAt": "2026-02-13T11:37:33.066Z",
+    "updatedAt": "2026-02-13T11:37:33.066Z"
+  },
+  {
+    "id": "cmlktcgpb00420zykurl8ucgw",
+    "name": "Hungary",
+    "code": "HU",
+    "createdAt": "2026-02-13T11:37:33.071Z",
+    "updatedAt": "2026-02-13T11:37:33.071Z"
+  },
+  {
+    "id": "cmlktcgpe00440zykmx5r666x",
+    "name": "Iceland",
+    "code": "IS",
+    "createdAt": "2026-02-13T11:37:33.074Z",
+    "updatedAt": "2026-02-13T11:37:33.074Z"
+  },
+  {
+    "id": "cmlktcgpi00460zykaou0usho",
+    "name": "India",
+    "code": "IN",
+    "createdAt": "2026-02-13T11:37:33.078Z",
+    "updatedAt": "2026-02-13T11:37:33.078Z"
+  },
+  {
+    "id": "cmlktcgpn00480zykjy5t2q09",
+    "name": "Indonesia",
+    "code": "ID",
+    "createdAt": "2026-02-13T11:37:33.083Z",
+    "updatedAt": "2026-02-13T11:37:33.083Z"
+  },
+  {
+    "id": "cmlktcgpr004a0zykxx446qga",
+    "name": "Iran",
+    "code": "IR",
+    "createdAt": "2026-02-13T11:37:33.087Z",
+    "updatedAt": "2026-02-13T11:37:33.087Z"
+  },
+  {
+    "id": "cmlktcgpw004c0zyk47qy3xfh",
+    "name": "Iraq",
+    "code": "IQ",
+    "createdAt": "2026-02-13T11:37:33.092Z",
+    "updatedAt": "2026-02-13T11:37:33.092Z"
+  },
+  {
+    "id": "cmlktcgq0004e0zykciar20az",
+    "name": "Ireland",
+    "code": "IE",
+    "createdAt": "2026-02-13T11:37:33.096Z",
+    "updatedAt": "2026-02-13T11:37:33.096Z"
+  },
+  {
+    "id": "cmlktcgq4004g0zyk9z5uhwjj",
+    "name": "Israel",
+    "code": "IL",
+    "createdAt": "2026-02-13T11:37:33.100Z",
+    "updatedAt": "2026-02-13T11:37:33.100Z"
+  },
+  {
+    "id": "cmlktcgq8004i0zyk0yiwxo6q",
+    "name": "Italy",
+    "code": "IT",
+    "createdAt": "2026-02-13T11:37:33.104Z",
+    "updatedAt": "2026-02-13T11:37:33.104Z"
+  },
+  {
+    "id": "cmlktcgqc004k0zykbgaeuurh",
+    "name": "Ivory Coast",
+    "code": "CI",
+    "createdAt": "2026-02-13T11:37:33.108Z",
+    "updatedAt": "2026-02-13T11:37:33.108Z"
+  },
+  {
+    "id": "cmlktcgqh004m0zykxnvynfho",
+    "name": "Jamaica",
+    "code": "JM",
+    "createdAt": "2026-02-13T11:37:33.113Z",
+    "updatedAt": "2026-02-13T11:37:33.113Z"
+  },
+  {
+    "id": "cmlktcgql004o0zykrr1zvnx3",
+    "name": "Japan",
+    "code": "JP",
+    "createdAt": "2026-02-13T11:37:33.117Z",
+    "updatedAt": "2026-02-13T11:37:33.117Z"
+  },
+  {
+    "id": "cmlktcgqp004q0zykdqo89qvz",
+    "name": "Jordan",
+    "code": "JO",
+    "createdAt": "2026-02-13T11:37:33.121Z",
+    "updatedAt": "2026-02-13T11:37:33.121Z"
+  },
+  {
+    "id": "cmlktcgqt004s0zykn4h5nzvd",
+    "name": "Kazakhstan",
+    "code": "KZ",
+    "createdAt": "2026-02-13T11:37:33.125Z",
+    "updatedAt": "2026-02-13T11:37:33.125Z"
+  },
+  {
+    "id": "cmlktcgqx004u0zyka66ynmdc",
+    "name": "Kenya",
+    "code": "KE",
+    "createdAt": "2026-02-13T11:37:33.129Z",
+    "updatedAt": "2026-02-13T11:37:33.129Z"
+  },
+  {
+    "id": "cmlktcgr2004w0zykdht864ma",
+    "name": "Kiribati",
+    "code": "KI",
+    "createdAt": "2026-02-13T11:37:33.134Z",
+    "updatedAt": "2026-02-13T11:37:33.134Z"
+  },
+  {
+    "id": "cmlktcgr6004y0zyk1mklj6v8",
+    "name": "Kuwait",
+    "code": "KW",
+    "createdAt": "2026-02-13T11:37:33.138Z",
+    "updatedAt": "2026-02-13T11:37:33.138Z"
+  },
+  {
+    "id": "cmlktcgra00500zykkf9oct7n",
+    "name": "Kyrgyzstan",
+    "code": "KG",
+    "createdAt": "2026-02-13T11:37:33.142Z",
+    "updatedAt": "2026-02-13T11:37:33.142Z"
+  },
+  {
+    "id": "cmlktcgrf00520zykr8sevc2l",
+    "name": "Laos",
+    "code": "LA",
+    "createdAt": "2026-02-13T11:37:33.147Z",
+    "updatedAt": "2026-02-13T11:37:33.147Z"
+  },
+  {
+    "id": "cmlktcgrj00540zyk5c1i70qj",
+    "name": "Latvia",
+    "code": "LV",
+    "createdAt": "2026-02-13T11:37:33.151Z",
+    "updatedAt": "2026-02-13T11:37:33.151Z"
+  },
+  {
+    "id": "cmlktcgrn00560zyk6fj6fuw4",
+    "name": "Lebanon",
+    "code": "LB",
+    "createdAt": "2026-02-13T11:37:33.155Z",
+    "updatedAt": "2026-02-13T11:37:33.155Z"
+  },
+  {
+    "id": "cmlktcgrs00580zykpcnwlb1e",
+    "name": "Lesotho",
+    "code": "LS",
+    "createdAt": "2026-02-13T11:37:33.159Z",
+    "updatedAt": "2026-02-13T11:37:33.159Z"
+  },
+  {
+    "id": "cmlktcgrx005a0zykzdut2umd",
+    "name": "Liberia",
+    "code": "LR",
+    "createdAt": "2026-02-13T11:37:33.165Z",
+    "updatedAt": "2026-02-13T11:37:33.165Z"
+  },
+  {
+    "id": "cmlktcgs3005c0zykpynm8lma",
+    "name": "Libya",
+    "code": "LY",
+    "createdAt": "2026-02-13T11:37:33.171Z",
+    "updatedAt": "2026-02-13T11:37:33.171Z"
+  },
+  {
+    "id": "cmlktcgs7005e0zykbpv4y2n1",
+    "name": "Liechtenstein",
+    "code": "LI",
+    "createdAt": "2026-02-13T11:37:33.175Z",
+    "updatedAt": "2026-02-13T11:37:33.175Z"
+  },
+  {
+    "id": "cmlktcgsb005g0zykvn0i3t9g",
+    "name": "Lithuania",
+    "code": "LT",
+    "createdAt": "2026-02-13T11:37:33.179Z",
+    "updatedAt": "2026-02-13T11:37:33.179Z"
+  },
+  {
+    "id": "cmlktcgsf005i0zykogtsodgm",
+    "name": "Luxembourg",
+    "code": "LU",
+    "createdAt": "2026-02-13T11:37:33.183Z",
+    "updatedAt": "2026-02-13T11:37:33.183Z"
+  },
+  {
+    "id": "cmlktcgsk005k0zykzormloju",
+    "name": "Madagascar",
+    "code": "MG",
+    "createdAt": "2026-02-13T11:37:33.188Z",
+    "updatedAt": "2026-02-13T11:37:33.188Z"
+  },
+  {
+    "id": "cmlktcgso005m0zykpmi5abn3",
+    "name": "Malawi",
+    "code": "MW",
+    "createdAt": "2026-02-13T11:37:33.192Z",
+    "updatedAt": "2026-02-13T11:37:33.192Z"
+  },
+  {
+    "id": "cmlktcgss005o0zykcj4c30lk",
+    "name": "Malaysia",
+    "code": "MY",
+    "createdAt": "2026-02-13T11:37:33.196Z",
+    "updatedAt": "2026-02-13T11:37:33.196Z"
+  },
+  {
+    "id": "cmlktcgsw005q0zyke0oq5nze",
+    "name": "Maldives",
+    "code": "MV",
+    "createdAt": "2026-02-13T11:37:33.200Z",
+    "updatedAt": "2026-02-13T11:37:33.200Z"
+  },
+  {
+    "id": "cmlktcgt1005s0zyk8a4uzawr",
+    "name": "Mali",
+    "code": "ML",
+    "createdAt": "2026-02-13T11:37:33.205Z",
+    "updatedAt": "2026-02-13T11:37:33.205Z"
+  },
+  {
+    "id": "cmlktcgt5005u0zykxwamnox1",
+    "name": "Malta",
+    "code": "MT",
+    "createdAt": "2026-02-13T11:37:33.209Z",
+    "updatedAt": "2026-02-13T11:37:33.209Z"
+  },
+  {
+    "id": "cmlktcgt9005w0zykz0lk0op3",
+    "name": "Marshall Islands",
+    "code": "MH",
+    "createdAt": "2026-02-13T11:37:33.213Z",
+    "updatedAt": "2026-02-13T11:37:33.213Z"
+  },
+  {
+    "id": "cmlktcgtd005y0zyknnem8ypa",
+    "name": "Mauritania",
+    "code": "MR",
+    "createdAt": "2026-02-13T11:37:33.217Z",
+    "updatedAt": "2026-02-13T11:37:33.217Z"
+  },
+  {
+    "id": "cmlktcgti00600zykdapwp4l7",
+    "name": "Mauritius",
+    "code": "MU",
+    "createdAt": "2026-02-13T11:37:33.222Z",
+    "updatedAt": "2026-02-13T11:37:33.222Z"
+  },
+  {
+    "id": "cmlktcgtm00620zyklmrcgomv",
+    "name": "Mexico",
+    "code": "MX",
+    "createdAt": "2026-02-13T11:37:33.226Z",
+    "updatedAt": "2026-02-13T11:37:33.226Z"
+  },
+  {
+    "id": "cmlktcgtq00640zykps43wh1e",
+    "name": "Micronesia",
+    "code": "FM",
+    "createdAt": "2026-02-13T11:37:33.230Z",
+    "updatedAt": "2026-02-13T11:37:33.230Z"
+  },
+  {
+    "id": "cmlktcgtu00660zyk6a259k0u",
+    "name": "Moldova",
+    "code": "MD",
+    "createdAt": "2026-02-13T11:37:33.234Z",
+    "updatedAt": "2026-02-13T11:37:33.234Z"
+  },
+  {
+    "id": "cmlktcgty00680zykkrjyjzdz",
+    "name": "Monaco",
+    "code": "MC",
+    "createdAt": "2026-02-13T11:37:33.238Z",
+    "updatedAt": "2026-02-13T11:37:33.238Z"
+  },
+  {
+    "id": "cmlktcgu3006a0zykxxox8msp",
+    "name": "Mongolia",
+    "code": "MN",
+    "createdAt": "2026-02-13T11:37:33.243Z",
+    "updatedAt": "2026-02-13T11:37:33.243Z"
+  },
+  {
+    "id": "cmlktcgu7006c0zykp1hsey2a",
+    "name": "Montenegro",
+    "code": "ME",
+    "createdAt": "2026-02-13T11:37:33.247Z",
+    "updatedAt": "2026-02-13T11:37:33.247Z"
+  },
+  {
+    "id": "cmlktcgub006e0zykoh4wss8f",
+    "name": "Morocco",
+    "code": "MA",
+    "createdAt": "2026-02-13T11:37:33.251Z",
+    "updatedAt": "2026-02-13T11:37:33.251Z"
+  },
+  {
+    "id": "cmlktcguf006g0zyk7pi3z4uv",
+    "name": "Mozambique",
+    "code": "MZ",
+    "createdAt": "2026-02-13T11:37:33.255Z",
+    "updatedAt": "2026-02-13T11:37:33.255Z"
+  },
+  {
+    "id": "cmlktcguj006i0zyk4o33vdn0",
+    "name": "Myanmar",
+    "code": "MM",
+    "createdAt": "2026-02-13T11:37:33.259Z",
+    "updatedAt": "2026-02-13T11:37:33.259Z"
+  },
+  {
+    "id": "cmlktcgun006k0zykrio1jn5z",
+    "name": "Namibia",
+    "code": "NA",
+    "createdAt": "2026-02-13T11:37:33.263Z",
+    "updatedAt": "2026-02-13T11:37:33.263Z"
+  },
+  {
+    "id": "cmlktcguq006m0zykbp6xbgjx",
+    "name": "Nauru",
+    "code": "NR",
+    "createdAt": "2026-02-13T11:37:33.266Z",
+    "updatedAt": "2026-02-13T11:37:33.266Z"
+  },
+  {
+    "id": "cmlktcgva006o0zyk3q5bsna0",
+    "name": "Nepal",
+    "code": "NP",
+    "createdAt": "2026-02-13T11:37:33.285Z",
+    "updatedAt": "2026-02-13T11:37:33.285Z"
+  },
+  {
+    "id": "cmlktcgve006q0zyk66ra398b",
+    "name": "Netherlands",
+    "code": "NL",
+    "createdAt": "2026-02-13T11:37:33.290Z",
+    "updatedAt": "2026-02-13T11:37:33.290Z"
+  },
+  {
+    "id": "cmlktcgvh006s0zykj3yhd3dp",
+    "name": "New Zealand",
+    "code": "NZ",
+    "createdAt": "2026-02-13T11:37:33.293Z",
+    "updatedAt": "2026-02-13T11:37:33.293Z"
+  },
+  {
+    "id": "cmlktcgvl006u0zykbgsw7n4o",
+    "name": "Nicaragua",
+    "code": "NI",
+    "createdAt": "2026-02-13T11:37:33.297Z",
+    "updatedAt": "2026-02-13T11:37:33.297Z"
+  },
+  {
+    "id": "cmlktcgvo006w0zyk7p6ae103",
+    "name": "Niger",
+    "code": "NE",
+    "createdAt": "2026-02-13T11:37:33.300Z",
+    "updatedAt": "2026-02-13T11:37:33.300Z"
+  },
+  {
+    "id": "cmlktcgvr006y0zykq0rubwgl",
+    "name": "Nigeria",
+    "code": "NG",
+    "createdAt": "2026-02-13T11:37:33.303Z",
+    "updatedAt": "2026-02-13T11:37:33.303Z"
+  },
+  {
+    "id": "cmlktcgvv00700zykxuzj9fbs",
+    "name": "North Korea",
+    "code": "KP",
+    "createdAt": "2026-02-13T11:37:33.307Z",
+    "updatedAt": "2026-02-13T11:37:33.307Z"
+  },
+  {
+    "id": "cmlktcgvz00720zykll6v2xup",
+    "name": "North Macedonia",
+    "code": "MK",
+    "createdAt": "2026-02-13T11:37:33.311Z",
+    "updatedAt": "2026-02-13T11:37:33.311Z"
+  },
+  {
+    "id": "cmlktcgw300740zyk54cglcga",
+    "name": "Norway",
+    "code": "NO",
+    "createdAt": "2026-02-13T11:37:33.314Z",
+    "updatedAt": "2026-02-13T11:37:33.314Z"
+  },
+  {
+    "id": "cmlktcgw600760zyketu3nhz4",
+    "name": "Oman",
+    "code": "OM",
+    "createdAt": "2026-02-13T11:37:33.318Z",
+    "updatedAt": "2026-02-13T11:37:33.318Z"
+  },
+  {
+    "id": "cmlktcgwa00780zykjsr6l8pe",
+    "name": "Pakistan",
+    "code": "PK",
+    "createdAt": "2026-02-13T11:37:33.322Z",
+    "updatedAt": "2026-02-13T11:37:33.322Z"
+  },
+  {
+    "id": "cmlktcgwe007a0zyk5yexdovy",
+    "name": "Palau",
+    "code": "PW",
+    "createdAt": "2026-02-13T11:37:33.326Z",
+    "updatedAt": "2026-02-13T11:37:33.326Z"
+  },
+  {
+    "id": "cmlktcgwh007c0zykw1hour5h",
+    "name": "Palestine",
+    "code": "PS",
+    "createdAt": "2026-02-13T11:37:33.329Z",
+    "updatedAt": "2026-02-13T11:37:33.329Z"
+  },
+  {
+    "id": "cmlktcgwm007e0zykpqsdrnvy",
+    "name": "Panama",
+    "code": "PA",
+    "createdAt": "2026-02-13T11:37:33.334Z",
+    "updatedAt": "2026-02-13T11:37:33.334Z"
+  },
+  {
+    "id": "cmlktcgwp007g0zykd8yoz3hq",
+    "name": "Papua New Guinea",
+    "code": "PG",
+    "createdAt": "2026-02-13T11:37:33.337Z",
+    "updatedAt": "2026-02-13T11:37:33.337Z"
+  },
+  {
+    "id": "cmlktcgwt007i0zykg8g08q43",
+    "name": "Paraguay",
+    "code": "PY",
+    "createdAt": "2026-02-13T11:37:33.341Z",
+    "updatedAt": "2026-02-13T11:37:33.341Z"
+  },
+  {
+    "id": "cmlktcgww007k0zykqj62a3fo",
+    "name": "Peru",
+    "code": "PE",
+    "createdAt": "2026-02-13T11:37:33.344Z",
+    "updatedAt": "2026-02-13T11:37:33.344Z"
+  },
+  {
+    "id": "cmlktcgx0007m0zykbmsquslz",
+    "name": "Philippines",
+    "code": "PH",
+    "createdAt": "2026-02-13T11:37:33.348Z",
+    "updatedAt": "2026-02-13T11:37:33.348Z"
+  },
+  {
+    "id": "cmlktcgx3007o0zykybknsci6",
+    "name": "Poland",
+    "code": "PL",
+    "createdAt": "2026-02-13T11:37:33.351Z",
+    "updatedAt": "2026-02-13T11:37:33.351Z"
+  },
+  {
+    "id": "cmlktcgx7007q0zyk2j60h81i",
+    "name": "Portugal",
+    "code": "PT",
+    "createdAt": "2026-02-13T11:37:33.355Z",
+    "updatedAt": "2026-02-13T11:37:33.355Z"
+  },
+  {
+    "id": "cmlktcgxb007s0zykcshr1d2o",
+    "name": "Qatar",
+    "code": "QA",
+    "createdAt": "2026-02-13T11:37:33.359Z",
+    "updatedAt": "2026-02-13T11:37:33.359Z"
+  },
+  {
+    "id": "cmlktcgxe007u0zyk8tcyfmqd",
+    "name": "Romania",
+    "code": "RO",
+    "createdAt": "2026-02-13T11:37:33.362Z",
+    "updatedAt": "2026-02-13T11:37:33.362Z"
+  },
+  {
+    "id": "cmlktcgxi007w0zyk4vnlq7hn",
+    "name": "Russia",
+    "code": "RU",
+    "createdAt": "2026-02-13T11:37:33.366Z",
+    "updatedAt": "2026-02-13T11:37:33.366Z"
+  },
+  {
+    "id": "cmlktcgxm007y0zykrcxx6y0e",
+    "name": "Rwanda",
+    "code": "RW",
+    "createdAt": "2026-02-13T11:37:33.370Z",
+    "updatedAt": "2026-02-13T11:37:33.370Z"
+  },
+  {
+    "id": "cmlktcgxp00800zykf547xn9e",
+    "name": "Saint Kitts and Nevis",
+    "code": "KN",
+    "createdAt": "2026-02-13T11:37:33.373Z",
+    "updatedAt": "2026-02-13T11:37:33.373Z"
+  },
+  {
+    "id": "cmlktcgxt00820zykxyyv7ojw",
+    "name": "Saint Lucia",
+    "code": "LC",
+    "createdAt": "2026-02-13T11:37:33.377Z",
+    "updatedAt": "2026-02-13T11:37:33.377Z"
+  },
+  {
+    "id": "cmlktcgxw00840zykdtoy2you",
+    "name": "Saint Vincent and the Grenadines",
+    "code": "VC",
+    "createdAt": "2026-02-13T11:37:33.380Z",
+    "updatedAt": "2026-02-13T11:37:33.380Z"
+  },
+  {
+    "id": "cmlktcgy000860zykb5kgbw5u",
+    "name": "Samoa",
+    "code": "WS",
+    "createdAt": "2026-02-13T11:37:33.384Z",
+    "updatedAt": "2026-02-13T11:37:33.384Z"
+  },
+  {
+    "id": "cmlktcgy400880zykjemz393c",
+    "name": "San Marino",
+    "code": "SM",
+    "createdAt": "2026-02-13T11:37:33.388Z",
+    "updatedAt": "2026-02-13T11:37:33.388Z"
+  },
+  {
+    "id": "cmlktcgy8008a0zyk1hs6kcyd",
+    "name": "Sao Tome and Principe",
+    "code": "ST",
+    "createdAt": "2026-02-13T11:37:33.392Z",
+    "updatedAt": "2026-02-13T11:37:33.392Z"
+  },
+  {
+    "id": "cmlktcgyd008c0zykdy8oas70",
+    "name": "Saudi Arabia",
+    "code": "SA",
+    "createdAt": "2026-02-13T11:37:33.397Z",
+    "updatedAt": "2026-02-13T11:37:33.397Z"
+  },
+  {
+    "id": "cmlktcgyg008e0zyk8at0aktq",
+    "name": "Senegal",
+    "code": "SN",
+    "createdAt": "2026-02-13T11:37:33.400Z",
+    "updatedAt": "2026-02-13T11:37:33.400Z"
+  },
+  {
+    "id": "cmlktcgyk008g0zykagtm2qw5",
+    "name": "Serbia",
+    "code": "RS",
+    "createdAt": "2026-02-13T11:37:33.404Z",
+    "updatedAt": "2026-02-13T11:37:33.404Z"
+  },
+  {
+    "id": "cmlktcgyn008i0zyk97fidnlf",
+    "name": "Seychelles",
+    "code": "SC",
+    "createdAt": "2026-02-13T11:37:33.407Z",
+    "updatedAt": "2026-02-13T11:37:33.407Z"
+  },
+  {
+    "id": "cmlktcgyr008k0zyk3j03sy3w",
+    "name": "Sierra Leone",
+    "code": "SL",
+    "createdAt": "2026-02-13T11:37:33.411Z",
+    "updatedAt": "2026-02-13T11:37:33.411Z"
+  },
+  {
+    "id": "cmlktcgyv008m0zykt8cinbmk",
+    "name": "Singapore",
+    "code": "SG",
+    "createdAt": "2026-02-13T11:37:33.415Z",
+    "updatedAt": "2026-02-13T11:37:33.415Z"
+  },
+  {
+    "id": "cmlktcgyy008o0zykhege7itr",
+    "name": "Slovakia",
+    "code": "SK",
+    "createdAt": "2026-02-13T11:37:33.418Z",
+    "updatedAt": "2026-02-13T11:37:33.418Z"
+  },
+  {
+    "id": "cmlktcgz2008q0zykv4v2xk0b",
+    "name": "Slovenia",
+    "code": "SI",
+    "createdAt": "2026-02-13T11:37:33.422Z",
+    "updatedAt": "2026-02-13T11:37:33.422Z"
+  },
+  {
+    "id": "cmlktcgz6008s0zyk7b59ziah",
+    "name": "Solomon Islands",
+    "code": "SB",
+    "createdAt": "2026-02-13T11:37:33.426Z",
+    "updatedAt": "2026-02-13T11:37:33.426Z"
+  },
+  {
+    "id": "cmlktcgza008u0zykomtzsvzb",
+    "name": "Somalia",
+    "code": "SO",
+    "createdAt": "2026-02-13T11:37:33.430Z",
+    "updatedAt": "2026-02-13T11:37:33.430Z"
+  },
+  {
+    "id": "cmlktcgzd008w0zykm84k3dpn",
+    "name": "South Africa",
+    "code": "ZA",
+    "createdAt": "2026-02-13T11:37:33.433Z",
+    "updatedAt": "2026-02-13T11:37:33.433Z"
+  },
+  {
+    "id": "cmlktcgzh008y0zykkaknc7s3",
+    "name": "South Korea",
+    "code": "KR",
+    "createdAt": "2026-02-13T11:37:33.437Z",
+    "updatedAt": "2026-02-13T11:37:33.437Z"
+  },
+  {
+    "id": "cmlktcgzl00900zykor2sic3o",
+    "name": "South Sudan",
+    "code": "SS",
+    "createdAt": "2026-02-13T11:37:33.441Z",
+    "updatedAt": "2026-02-13T11:37:33.441Z"
+  },
+  {
+    "id": "cmlktcgzo00920zykc3gtr1fw",
+    "name": "Spain",
+    "code": "ES",
+    "createdAt": "2026-02-13T11:37:33.444Z",
+    "updatedAt": "2026-02-13T11:37:33.444Z"
+  },
+  {
+    "id": "cmlktcgzs00940zyk8h8mg1ai",
+    "name": "Sri Lanka",
+    "code": "LK",
+    "createdAt": "2026-02-13T11:37:33.448Z",
+    "updatedAt": "2026-02-13T11:37:33.448Z"
+  },
+  {
+    "id": "cmlktcgzv00960zykd16m022n",
+    "name": "Sudan",
+    "code": "SD",
+    "createdAt": "2026-02-13T11:37:33.451Z",
+    "updatedAt": "2026-02-13T11:37:33.451Z"
+  },
+  {
+    "id": "cmlktcgzz00980zykww1x7lex",
+    "name": "Suriname",
+    "code": "SR",
+    "createdAt": "2026-02-13T11:37:33.455Z",
+    "updatedAt": "2026-02-13T11:37:33.455Z"
+  },
+  {
+    "id": "cmlktch03009a0zyksvqw30h0",
+    "name": "Sweden",
+    "code": "SE",
+    "createdAt": "2026-02-13T11:37:33.459Z",
+    "updatedAt": "2026-02-13T11:37:33.459Z"
+  },
+  {
+    "id": "cmlktch06009c0zykzlaao5z2",
+    "name": "Switzerland",
+    "code": "CH",
+    "createdAt": "2026-02-13T11:37:33.462Z",
+    "updatedAt": "2026-02-13T11:37:33.462Z"
+  },
+  {
+    "id": "cmlktch0a009e0zyklhlsc9iq",
+    "name": "Syria",
+    "code": "SY",
+    "createdAt": "2026-02-13T11:37:33.466Z",
+    "updatedAt": "2026-02-13T11:37:33.466Z"
+  },
+  {
+    "id": "cmlktch0e009g0zykoivvy2w3",
+    "name": "Taiwan",
+    "code": "TW",
+    "createdAt": "2026-02-13T11:37:33.470Z",
+    "updatedAt": "2026-02-13T11:37:33.470Z"
+  },
+  {
+    "id": "cmlktch0i009i0zykqm35cqvp",
+    "name": "Tajikistan",
+    "code": "TJ",
+    "createdAt": "2026-02-13T11:37:33.474Z",
+    "updatedAt": "2026-02-13T11:37:33.474Z"
+  },
+  {
+    "id": "cmlktch0l009k0zykenegjdd9",
+    "name": "Tanzania",
+    "code": "TZ",
+    "createdAt": "2026-02-13T11:37:33.477Z",
+    "updatedAt": "2026-02-13T11:37:33.477Z"
+  },
+  {
+    "id": "cmlktch0p009m0zykl9fx8eij",
+    "name": "Thailand",
+    "code": "TH",
+    "createdAt": "2026-02-13T11:37:33.481Z",
+    "updatedAt": "2026-02-13T11:37:33.481Z"
+  },
+  {
+    "id": "cmlktch0t009o0zyk72mxzbm9",
+    "name": "Timor-Leste",
+    "code": "TL",
+    "createdAt": "2026-02-13T11:37:33.485Z",
+    "updatedAt": "2026-02-13T11:37:33.485Z"
+  },
+  {
+    "id": "cmlktch0x009q0zykwyb470hm",
+    "name": "Togo",
+    "code": "TG",
+    "createdAt": "2026-02-13T11:37:33.489Z",
+    "updatedAt": "2026-02-13T11:37:33.489Z"
+  },
+  {
+    "id": "cmlktch10009s0zykj5h2nrzz",
+    "name": "Tonga",
+    "code": "TO",
+    "createdAt": "2026-02-13T11:37:33.492Z",
+    "updatedAt": "2026-02-13T11:37:33.492Z"
+  },
+  {
+    "id": "cmlktch14009u0zyk6rdbfl3f",
+    "name": "Trinidad and Tobago",
+    "code": "TT",
+    "createdAt": "2026-02-13T11:37:33.496Z",
+    "updatedAt": "2026-02-13T11:37:33.496Z"
+  },
+  {
+    "id": "cmlktch17009w0zyk449h06ug",
+    "name": "Tunisia",
+    "code": "TN",
+    "createdAt": "2026-02-13T11:37:33.499Z",
+    "updatedAt": "2026-02-13T11:37:33.499Z"
+  },
+  {
+    "id": "cmlktch1b009y0zykyac0yijj",
+    "name": "Turkey",
+    "code": "TR",
+    "createdAt": "2026-02-13T11:37:33.503Z",
+    "updatedAt": "2026-02-13T11:37:33.503Z"
+  },
+  {
+    "id": "cmlktch1e00a00zykc139amw6",
+    "name": "Turkmenistan",
+    "code": "TM",
+    "createdAt": "2026-02-13T11:37:33.506Z",
+    "updatedAt": "2026-02-13T11:37:33.506Z"
+  },
+  {
+    "id": "cmlktch1i00a20zykofetpypm",
+    "name": "Tuvalu",
+    "code": "TV",
+    "createdAt": "2026-02-13T11:37:33.510Z",
+    "updatedAt": "2026-02-13T11:37:33.510Z"
+  },
+  {
+    "id": "cmlktch1m00a40zykf5jqooer",
+    "name": "Uganda",
+    "code": "UG",
+    "createdAt": "2026-02-13T11:37:33.514Z",
+    "updatedAt": "2026-02-13T11:37:33.514Z"
+  },
+  {
+    "id": "cmlktch1p00a60zyk3pddl1ay",
+    "name": "Ukraine",
+    "code": "UA",
+    "createdAt": "2026-02-13T11:37:33.517Z",
+    "updatedAt": "2026-02-13T11:37:33.517Z"
+  },
+  {
+    "id": "cmlktch1t00a80zykdimajl5c",
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "createdAt": "2026-02-13T11:37:33.521Z",
+    "updatedAt": "2026-02-13T11:37:33.521Z"
+  },
+  {
+    "id": "cmlktch1x00aa0zykxi9zvkyw",
+    "name": "United Kingdom",
+    "code": "GB",
+    "createdAt": "2026-02-13T11:37:33.525Z",
+    "updatedAt": "2026-02-13T11:37:33.525Z"
+  },
+  {
+    "id": "cmlktch2000ac0zyk0v4fmzb2",
+    "name": "United States",
+    "code": "US",
+    "createdAt": "2026-02-13T11:37:33.528Z",
+    "updatedAt": "2026-02-13T11:37:33.528Z"
+  },
+  {
+    "id": "cmlktch2400ae0zyk2imdxm40",
+    "name": "Uruguay",
+    "code": "UY",
+    "createdAt": "2026-02-13T11:37:33.532Z",
+    "updatedAt": "2026-02-13T11:37:33.532Z"
+  },
+  {
+    "id": "cmlktch2700ag0zyktgpjex4u",
+    "name": "Uzbekistan",
+    "code": "UZ",
+    "createdAt": "2026-02-13T11:37:33.535Z",
+    "updatedAt": "2026-02-13T11:37:33.535Z"
+  },
+  {
+    "id": "cmlktch2b00ai0zyk9mw780h0",
+    "name": "Vanuatu",
+    "code": "VU",
+    "createdAt": "2026-02-13T11:37:33.539Z",
+    "updatedAt": "2026-02-13T11:37:33.539Z"
+  },
+  {
+    "id": "cmlktch2e00ak0zykrx4jhl8r",
+    "name": "Vatican City",
+    "code": "VA",
+    "createdAt": "2026-02-13T11:37:33.542Z",
+    "updatedAt": "2026-02-13T11:37:33.542Z"
+  },
+  {
+    "id": "cmlktch2i00am0zykncteuaw2",
+    "name": "Venezuela",
+    "code": "VE",
+    "createdAt": "2026-02-13T11:37:33.546Z",
+    "updatedAt": "2026-02-13T11:37:33.546Z"
+  },
+  {
+    "id": "cmlktch2m00ao0zyk64xyn0u1",
+    "name": "Vietnam",
+    "code": "VN",
+    "createdAt": "2026-02-13T11:37:33.550Z",
+    "updatedAt": "2026-02-13T11:37:33.550Z"
+  },
+  {
+    "id": "cmlktch2p00aq0zykfq59x8ys",
+    "name": "Yemen",
+    "code": "YE",
+    "createdAt": "2026-02-13T11:37:33.553Z",
+    "updatedAt": "2026-02-13T11:37:33.553Z"
+  },
+  {
+    "id": "cmlktch2t00as0zykwydn0oqf",
+    "name": "Zambia",
+    "code": "ZM",
+    "createdAt": "2026-02-13T11:37:33.557Z",
+    "updatedAt": "2026-02-13T11:37:33.557Z"
+  },
+  {
+    "id": "cmlktch2w00au0zykjk14wgj8",
+    "name": "Zimbabwe",
+    "code": "ZW",
+    "createdAt": "2026-02-13T11:37:33.560Z",
+    "updatedAt": "2026-02-13T11:37:33.560Z"
+  }
+]
