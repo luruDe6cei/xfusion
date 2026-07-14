@@ -5,8 +5,13 @@
 import { NextResponse } from 'next/server';
 import { geminiJson, type ChatTurn } from '@/lib/gemini';
 import { getIndustries } from '@/lib/data';
-import { LIMITS, type IntakeResponse } from '../../challenges/new/intake-shared';
-import { FIRST_QUESTION } from '../../challenges/new/intake-shared';
+import { FIRST_QUESTION, LIMITS, type IntakeResponse } from '../../challenges/new/intake-shared';
+
+// Guardrails: the transcript is billed against the Gemini key, so cap what a
+// single request may forward. 20 turns / 20k chars is far beyond any real
+// intake conversation (max ~8 turns by design).
+const MAX_TURNS = 20;
+const MAX_TOTAL_CHARS = 20_000;
 
 const RESPONSE_SCHEMA = {
   type: 'OBJECT',
@@ -77,6 +82,18 @@ export async function POST(req: Request) {
     const { messages } = (await req.json()) as { messages: ChatTurn[] };
     if (!Array.isArray(messages) || messages.length === 0 || messages[0].role !== 'user') {
       return NextResponse.json({ error: 'messages must start with a user turn' }, { status: 400 });
+    }
+    const wellFormed = messages.every(
+      (m) => (m.role === 'user' || m.role === 'model') && typeof m.text === 'string',
+    );
+    const totalChars = wellFormed
+      ? messages.reduce((n, m) => n + m.text.length, 0)
+      : Infinity;
+    if (!wellFormed || messages.length > MAX_TURNS || totalChars > MAX_TOTAL_CHARS) {
+      return NextResponse.json(
+        { error: 'Conversation is too long or malformed — please start over.' },
+        { status: 400 },
+      );
     }
 
     const industries = await getIndustries();

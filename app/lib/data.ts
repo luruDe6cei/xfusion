@@ -25,13 +25,19 @@ export async function getChallenges(): Promise<Challenge[]> {
   return rows as unknown as Challenge[];
 }
 
+// Detail lookups filter PUBLISHED like the lists do — otherwise a DRAFT would be
+// hidden from /challenges yet fully visible at its direct URL.
 export async function getChallenge(slug: string): Promise<Challenge | null> {
-  const row = await prisma.challenge.findUnique({ where: { slug }, include: challengeInclude });
+  const row = await prisma.challenge.findFirst({
+    where: { slug, status: 'PUBLISHED' },
+    include: challengeInclude,
+  });
   return row as unknown as Challenge | null;
 }
 
 export async function getSolutions(): Promise<Solution[]> {
   const rows = await prisma.solution.findMany({
+    where: { status: 'PUBLISHED' },
     include: solutionInclude,
     orderBy: { createdAt: 'desc' },
   });
@@ -39,7 +45,10 @@ export async function getSolutions(): Promise<Solution[]> {
 }
 
 export async function getSolution(slug: string): Promise<Solution | null> {
-  const row = await prisma.solution.findUnique({ where: { slug }, include: solutionInclude });
+  const row = await prisma.solution.findFirst({
+    where: { slug, status: 'PUBLISHED' },
+    include: solutionInclude,
+  });
   return row as unknown as Solution | null;
 }
 
@@ -70,7 +79,7 @@ export async function challengesByCompany(companyId: string): Promise<Challenge[
 
 export async function solutionsByCompany(companyId: string): Promise<Solution[]> {
   const rows = await prisma.solution.findMany({
-    where: { companyId },
+    where: { companyId, status: 'PUBLISHED' },
     include: solutionInclude,
     orderBy: { createdAt: 'desc' },
   });

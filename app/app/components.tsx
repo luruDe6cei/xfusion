@@ -12,11 +12,13 @@ import type { Challenge, Solution, Company } from '@/lib/types';
  * SVG instead so we don't vendor their font.
  */
 
-// Upstream formats dates as DD.MM.YY (e.g. "12.07.26").
+// Upstream formats dates as DD.MM.YY (e.g. "12.07.26"). UTC getters on purpose:
+// these cards render inside a Client Component, so local-TZ formatting would
+// hydration-mismatch against HTML prerendered in another timezone.
 const fmtDate = (d: Date | string) => {
   const x = new Date(d);
   const p = (n: number) => String(n).padStart(2, '0');
-  return `${p(x.getDate())}.${p(x.getMonth() + 1)}.${String(x.getFullYear()).slice(-2)}`;
+  return `${p(x.getUTCDate())}.${p(x.getUTCMonth() + 1)}.${String(x.getUTCFullYear()).slice(-2)}`;
 };
 
 function CheckIcon() {

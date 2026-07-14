@@ -24,7 +24,8 @@ const ordinal = (n: number) => {
 };
 const longDate = (d: Date | string) => {
   const x = new Date(d);
-  return `${x.toLocaleString('en-US', { month: 'long' })} ${ordinal(x.getDate())}, ${x.getFullYear()}`;
+  // UTC so the date matches the cards' fmtDate regardless of server timezone.
+  return `${x.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' })} ${ordinal(x.getUTCDate())}, ${x.getUTCFullYear()}`;
 };
 
 export default async function SolutionDetail({ params }: { params: Promise<{ slug: string }> }) {
