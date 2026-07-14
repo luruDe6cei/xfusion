@@ -50,6 +50,65 @@
   --color-warning: var(--color-orange-1);
   --color-error: var(--color-red-1);
 
+  /* Type scale */
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-24: 24px;
+  --font-size-28: 28px;
+  --font-size-32: 32px;
+  --font-size-44: 44px;
+  --font-size-90: 90px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-100: 1;
+  --line-height-120: 1.2;
+  --line-height-130: 1.3;
+  --line-height-140: 1.4;
+  --line-height-150: 1.5;
+
+  /* Spacing scale — upstream names each step by its px value. */
+  --spacing-3: 3px;
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-7: 7px;
+  --spacing-8: 8px;
+  --spacing-10: 10px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-60: 60px;
+  --spacing-64: 64px;
+  --spacing-80: 80px;
+  --spacing-100: 100px;
+
+  --radius-4: 4px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-40: 40px;
+
+  --shadow-card: 0px 12px 20px 0px #00000008;
+
+  /* Gradients — the status-card tints (Active/Matched/Draft) and the brand ramp. */
+  --gradient-primary: linear-gradient(97deg, #ffa35f -24.24%, #ed4376 39.44%, #4ec7e8 99.54%);
+  --gradient-ai: linear-gradient(132deg, #ffa35f4d 14.04%, #ed43764d 52.44%, #4ec7e84d 88.68%);
+  --gradient-success-card: linear-gradient(80deg, #2fcd861f 18.28%, #2fcd860f 59.42%), #fff;
+  --gradient-matched-card: linear-gradient(80deg, #4ec7e81f 18.28%, #4ec7e80f 59.42%), var(--color-grey-white);
+  --gradient-draft-card: linear-gradient(80deg, #8b88901f 18.28%, #8b88900f 59.42%), var(--color-grey-white);
+  --gradient-info-card: linear-gradient(80deg, #643dad1f 18.28%, #643dad0f 59.42%), #fff;
+  --gradient-warning-card: linear-gradient(80deg, #ffa35f1f 18.28%, #ffa35f0f 59.42%), #fff;
+  --gradient-error-card: linear-gradient(80deg, #e2000114 18.28%, #e200010a 59.42%), #fff;
+  --gradient-upload-card: linear-gradient(80.43deg, #643dad1f 18.28%, #643dad0f 59.42%), var(--color-grey-white);
+
   /* ── Aliases: our component classes speak this vocabulary. Keeping them
         means the whole app re-themes from the tokens above, no TSX edits. ── */
   --bg: var(--color-background-main);
