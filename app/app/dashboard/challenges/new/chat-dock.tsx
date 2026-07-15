@@ -86,7 +86,7 @@ export function ChatDock() {
 
   if (!expanded) {
     return (
-      <div className="rounded-[var(--radius-12)] border border-solid border-[var(--color-grey-2)] bg-[var(--color-grey-white)] flex flex-col overflow-hidden">
+      <div className="flex-1 min-h-0 rounded-[var(--radius-12)] border border-solid border-[var(--color-grey-2)] bg-[var(--color-grey-white)] flex flex-col overflow-hidden">
         <DockHeader
           expanded={false}
           onToggle={() => setExpanded(true)}
@@ -105,7 +105,7 @@ export function ChatDock() {
   return (
     <>
       {/* keep the sidebar slot occupied so the layout doesn't jump */}
-      <div className="rounded-[var(--radius-12)] border border-dashed border-[var(--color-grey-3)] bg-[var(--color-grey-1)] p-[var(--spacing-16)] text-[length:var(--font-size-13)] text-[color:var(--color-grey-5)]">
+      <div className="flex-1 min-h-0 rounded-[var(--radius-12)] border border-dashed border-[var(--color-grey-3)] bg-[var(--color-grey-1)] p-[var(--spacing-16)] text-[length:var(--font-size-13)] text-[color:var(--color-grey-5)]">
         AI Assistant is open in the large view.
       </div>
       <div
@@ -300,10 +300,10 @@ function ChatBody({
     : 'text-[length:var(--font-size-15)]';
 
   return (
-    <div className="flex flex-col min-h-0 min-w-0">
+    <div className="flex flex-col flex-1 min-h-0 min-w-0">
       <div
-        className={`flex flex-col gap-[var(--spacing-8)] p-[var(--spacing-12)] overflow-y-auto ${
-          compact ? 'max-h-[420px]' : 'flex-1'
+        className={`flex flex-col gap-[var(--spacing-8)] p-[var(--spacing-12)] overflow-y-auto flex-1 ${
+          compact ? 'min-h-[140px]' : ''
         }`}
       >
         <Bubble role="model" text={FIRST_QUESTION} className={bubbleText} compact={compact} />
@@ -369,13 +369,16 @@ function ChatBody({
               send();
             }
           }}
-          rows={compact ? 2 : 4}
+          rows={compact ? 3 : 4}
           placeholder={
             compact
               ? 'Even a few words are enough — the AI will ask the rest. (⌘/Ctrl+Enter to send)'
               : 'Describe your challenge in your own words — even a few vague words are enough, the AI will interview you. Enter for a new line, ⌘/Ctrl+Enter to send.'
           }
-          className="flex-1 px-[var(--spacing-12)] py-[var(--spacing-8)] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] text-[length:var(--font-size-14)] leading-[var(--line-height-150)] resize-none outline-none focus:border-[var(--color-primary)] overflow-y-auto"
+          // min-h keeps the box tall even when empty — the auto-grow effect
+          // sizes to typed content and would otherwise collapse under the
+          // placeholder, causing a scrollbar in the idle state.
+          className="flex-1 min-h-[112px] px-[var(--spacing-12)] py-[var(--spacing-8)] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] text-[length:var(--font-size-16)] leading-[var(--line-height-150)] resize-none outline-none focus:border-[var(--color-primary)] overflow-y-auto"
         />
         <button
           type="button"

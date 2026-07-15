@@ -80,7 +80,7 @@ function WizardInner(data: WizardData) {
         <Stepper />
       </header>
 
-      <div className="grid gap-[var(--spacing-24)] items-start lg:grid-cols-[minmax(0,1fr)_400px]">
+      <div className="grid gap-[var(--spacing-24)] items-stretch lg:grid-cols-[minmax(0,1fr)_400px]">
         <section className="bg-[var(--color-grey-white)] rounded-[var(--radius-12)] border border-solid border-[var(--color-grey-2)] p-[var(--spacing-32)] min-h-[520px]">
           {step === 1 && <BasicInfoStep industries={data.industries} categories={data.categories} />}
           {step === 2 && <ObjectivesStep expertiseOptions={data.expertiseOptions} />}

@@ -8,9 +8,13 @@ import { ChatDock } from './chat-dock';
 
 export function WizardSidebar() {
   return (
-    <aside className="flex flex-col gap-[var(--spacing-16)] lg:sticky lg:top-[80px]">
+    // Full column height: Tips hugs the top, the Chat Dock stretches over ALL
+    // remaining space — no vertical gap, both columns end flush.
+    <aside className="flex flex-col gap-[var(--spacing-16)] h-full">
       <TipsPanel />
-      <ChatDock />
+      <div className="flex-1 min-h-0 flex flex-col">
+        <ChatDock />
+      </div>
     </aside>
   );
 }
