@@ -105,15 +105,22 @@ export async function getSubIndustries(): Promise<Industry[]> {
 }
 
 // Distinct expertise areas across all challenges — feeds the wizard's
-// "Select from list…" expertise picker.
+// multiselect expertise picker. Most-used first (there are ~700 distinct
+// values; the common ones must surface before scrolling/filtering).
 export async function getExpertiseOptions(): Promise<string[]> {
   const rows = await prisma.challenge.findMany({
     where: { status: 'PUBLISHED' },
     select: { requiredExpertise: true },
   });
-  const set = new Set<string>();
-  for (const r of rows) for (const e of r.requiredExpertise) if (e.trim()) set.add(e.trim());
-  return [...set].sort((a, b) => a.localeCompare(b));
+  const counts = new Map<string, number>();
+  for (const r of rows)
+    for (const e of r.requiredExpertise) {
+      const v = e.trim();
+      if (v) counts.set(v, (counts.get(v) ?? 0) + 1);
+    }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([v]) => v);
 }
 
 // First write path in the app (2.0 AI intake, spec ch. 2). There is no auth yet,

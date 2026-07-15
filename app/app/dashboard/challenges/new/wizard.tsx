@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import { makeWizardStore, useWizardDispatch, useWizardSelector, type WizardStore } from './store';
-import { dismissSplash, goToStep, isStepComplete, stepStatus } from './wizard-slice';
+import { clearDraft, makeWizardStore, useWizardDispatch, useWizardSelector, type WizardStore } from './store';
+import { dismissSplash, goToStep, isStepComplete, resetWizard, stepStatus } from './wizard-slice';
 import { STEPS } from '@/lib/wizard-shared';
 import { Splash, SKIP_SPLASH_KEY } from './splash';
 import { WizardSidebar } from './sidebar';
@@ -50,16 +50,37 @@ function WizardInner(data: WizardData) {
 
   if (!splashDismissed) return <Splash />;
 
+  const startOver = () => {
+    if (
+      !window.confirm(
+        'Start over? This clears the draft saved on this device — all fields, the conversation and the attachments list.',
+      )
+    )
+      return;
+    clearDraft();
+    dispatch(resetWizard());
+  };
+
   return (
     <div className="py-[var(--spacing-32)] flex flex-col gap-[var(--spacing-24)]">
-      <header className="flex items-center justify-between gap-[var(--spacing-24)] flex-wrap">
-        <h1 className="text-[length:var(--font-size-32)] font-[var(--font-weight-bold)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)]">
-          {step === 5 ? 'Preview & Save' : 'Create a New Challenge'}
-        </h1>
+      <header className="flex items-start justify-between gap-[var(--spacing-24)] flex-wrap">
+        <div className="flex flex-col gap-[var(--spacing-4)]">
+          <h1 className="text-[length:var(--font-size-32)] font-[var(--font-weight-bold)] leading-[var(--line-height-120)] text-[color:var(--color-grey-black)]">
+            {step === 5 ? 'Preview & Save' : 'Create a New Challenge'}
+          </h1>
+          <button
+            type="button"
+            onClick={startOver}
+            title="Clears the draft saved on this device"
+            className="self-start text-[length:var(--font-size-13)] text-[color:var(--color-grey-5)] hover:text-[color:var(--color-error)] hover:underline"
+          >
+            ↺ Start over
+          </button>
+        </div>
         <Stepper />
       </header>
 
-      <div className="grid gap-[var(--spacing-24)] items-start lg:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid gap-[var(--spacing-24)] items-start lg:grid-cols-[minmax(0,1fr)_400px]">
         <section className="bg-[var(--color-grey-white)] rounded-[var(--radius-12)] border border-solid border-[var(--color-grey-2)] p-[var(--spacing-32)] min-h-[520px]">
           {step === 1 && <BasicInfoStep industries={data.industries} categories={data.categories} />}
           {step === 2 && <ObjectivesStep expertiseOptions={data.expertiseOptions} />}

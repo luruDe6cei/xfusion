@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from 'react';
 import { useWizardDispatch, useWizardSelector } from './store';
 import { setField } from './wizard-slice';
-import type { AiFieldKey, ImproveResponse } from '@/lib/wizard-shared';
+import { DEPLOYMENT_OPTIONS, type AiFieldKey, type ImproveResponse } from '@/lib/wizard-shared';
 
 // A labelled field with the ✨ Improve Button (ADR-006): sends the field's
 // current text + wizard context to /api/field-improve and shows the result as
@@ -15,12 +15,17 @@ export function ImprovableField({
   label,
   required,
   counter,
+  enabledWhen,
   children,
 }: {
   target: AiFieldKey;
   label: string;
   required?: boolean;
   counter?: { len: number; max: number };
+  // Override for the default "field must be non-empty" gate — suggestion-style
+  // targets (expertise, deployment time) work off the surrounding context and
+  // must be usable while the field itself is still empty.
+  enabledWhen?: boolean;
   children: ReactNode;
 }) {
   const dispatch = useWizardDispatch();
@@ -28,10 +33,16 @@ export function ImprovableField({
   const transcript = useWizardSelector((s) => s.wizard.chat);
   const [busy, setBusy] = useState(false);
   const [suggestion, setSuggestion] = useState<string | string[] | null>(null);
+  const [rationale, setRationale] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const current = fields[target];
-  const empty = Array.isArray(current) ? current.length === 0 : !String(current).trim();
+  const empty =
+    enabledWhen !== undefined
+      ? !enabledWhen
+      : Array.isArray(current)
+        ? current.length === 0
+        : !String(current).trim();
 
   const run = async () => {
     if (busy) return;
@@ -52,6 +63,7 @@ export function ImprovableField({
         throw new Error(data.error || `Request failed (${res.status})`);
       }
       setSuggestion(data.improved);
+      setRationale(data.rationale ?? null);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong');
     } finally {
@@ -70,7 +82,14 @@ export function ImprovableField({
       dispatch(setField({ key: target, value: suggestion }));
     }
     setSuggestion(null);
+    setRationale(null);
   };
+
+  // Enum values render by their human label (deployment time).
+  const displayText =
+    typeof suggestion === 'string' && target === 'requiredDeploymentTime'
+      ? (DEPLOYMENT_OPTIONS.find((o) => o.value === suggestion)?.label ?? suggestion)
+      : suggestion;
 
   return (
     <div className="flex flex-col gap-[var(--spacing-8)]">
@@ -128,9 +147,9 @@ export function ImprovableField({
           <span className="text-[length:var(--font-size-13)] font-[var(--font-weight-semibold)] text-[color:var(--color-violet-6)]">
             ✨ AI suggestion
           </span>
-          {Array.isArray(suggestion) ? (
+          {Array.isArray(displayText) ? (
             <div className="flex flex-wrap gap-[var(--spacing-8)]">
-              {suggestion.map((s) => (
+              {displayText.map((s) => (
                 <span
                   key={s}
                   className="px-[var(--spacing-12)] py-[var(--spacing-4)] rounded-[var(--radius-4)] bg-[var(--color-grey-white)] text-[length:var(--font-size-14)]"
@@ -140,8 +159,13 @@ export function ImprovableField({
               ))}
             </div>
           ) : (
-            <p className="text-[length:var(--font-size-15)] leading-[var(--line-height-150)] whitespace-pre-wrap text-[color:var(--color-grey-black)]">
-              {suggestion}
+            <p className="text-[length:var(--font-size-15)] leading-[var(--line-height-150)] whitespace-pre-wrap text-[color:var(--color-grey-black)] font-[var(--font-weight-medium)]">
+              {displayText}
+            </p>
+          )}
+          {rationale && (
+            <p className="text-[length:var(--font-size-13)] leading-[var(--line-height-150)] text-[color:var(--color-grey-5)]">
+              {rationale}
             </p>
           )}
           <div className="flex gap-[var(--spacing-12)]">
@@ -154,7 +178,10 @@ export function ImprovableField({
             </button>
             <button
               type="button"
-              onClick={() => setSuggestion(null)}
+              onClick={() => {
+                setSuggestion(null);
+                setRationale(null);
+              }}
               className="h-[36px] px-[var(--spacing-24)] rounded-[var(--radius-40)] border border-solid border-[var(--color-grey-3)] text-[length:var(--font-size-14)] text-[color:var(--color-grey-black)] hover:bg-[var(--color-grey-1)]"
             >
               Reject

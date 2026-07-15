@@ -63,7 +63,12 @@ export function BasicInfoStep({
         </FieldShell>
       </div>
 
-      <ImprovableField target="keywords" label="Keywords" required>
+      <ImprovableField
+        target="keywords"
+        label="Keywords"
+        required
+        enabledWhen={Boolean(f.shortDescription.trim()) || f.keywords.length > 0}
+      >
         <ChipInput
           values={f.keywords}
           placeholder="Add a keyword..."

@@ -7,6 +7,7 @@
 import { NextResponse } from 'next/server';
 import { geminiJson, type ChatTurn } from '@/lib/gemini';
 import {
+  DEPLOYMENT_OPTIONS,
   EMPTY_FIELDS,
   LIMITS,
   MAX_EXPERTISE,
@@ -18,7 +19,15 @@ import {
 
 const MAX_TRANSCRIPT_CHARS = 20_000;
 
-const IMPROVABLE = ['name', 'shortDescription', 'keywords', 'objective', 'rewardInformation'] as const;
+const IMPROVABLE = [
+  'name',
+  'shortDescription',
+  'keywords',
+  'objective',
+  'rewardInformation',
+  'requiredExpertise',
+  'requiredDeploymentTime',
+] as const;
 type Improvable = (typeof IMPROVABLE)[number];
 
 const FIELD_BRIEFS: Record<Improvable, string> = {
@@ -27,6 +36,8 @@ const FIELD_BRIEFS: Record<Improvable, string> = {
   objective: `Rewrite the challenge objective: 3–5 bullets, each on its own line starting with "• ", each short and measurable (a KPI where possible). Max ${LIMITS.objective} characters. Describe outcomes, not solutions.`,
   rewardInformation: `Rewrite the incentives description: 1–3 sentences describing the partnership/engagement model offered (joint development, POC, paid pilot, prize...). Max ${LIMITS.rewardInformation} characters. Be concrete about what a solver gets.`,
   keywords: `Suggest ADDITIONAL search keywords for this challenge: 6–10 lowercase phrases, cross-industry angles included, none duplicating the existing keywords. Think beyond the obvious industry boundary.`,
+  requiredExpertise: `Suggest ADDITIONAL expertise areas a solver should bring to this challenge: 4–8 concise areas (e.g. "clinical workflow optimization", "machine learning"), none duplicating the existing ones. Ground every suggestion in the challenge context; mix domain expertise with the technical skills the solution will need.`,
+  requiredDeploymentTime: `Estimate the most realistic deployment timeframe for this challenge. Weigh every timeline signal in the context: pilot durations, procurement/partner-selection lead time, rollout ambitions, urgency of the pain. Return the single best-fitting option and a one-sentence rationale that cites their own stated timeline facts (e.g. "a 6-month pilot after selecting a partner within 3 months points to 6–12 months overall").`,
 };
 
 const STRING_SCHEMA = {
@@ -39,6 +50,15 @@ const ARRAY_SCHEMA = {
   type: 'OBJECT',
   properties: { improved: { type: 'ARRAY', items: { type: 'STRING' } } },
   required: ['improved'],
+} as const;
+
+const DEPLOYMENT_SCHEMA = {
+  type: 'OBJECT',
+  properties: {
+    improved: { type: 'STRING', enum: DEPLOYMENT_OPTIONS.map((o) => o.value) },
+    rationale: { type: 'STRING' },
+  },
+  required: ['improved', 'rationale'],
 } as const;
 
 const ASSIST_SCHEMA = {
@@ -140,31 +160,43 @@ Answer with JSON matching the schema.`,
       return NextResponse.json({ error: 'Unsupported improve target.' }, { status: 400 });
     }
     const key = target as Improvable;
-    const isArrayTarget = key === 'keywords';
+    const isArrayTarget = key === 'keywords' || key === 'requiredExpertise';
+    const isDeployment = key === 'requiredDeploymentTime';
     const currentValue = fields[key];
 
-    const out = await geminiJson<{ improved: string | string[] }>({
+    const out = await geminiJson<{ improved: string | string[]; rationale?: string }>({
       system: `You are the xFUSION challenge assistant behind a per-field "improve with AI" button.
 TASK — improve exactly one field: "${key}".
 ${FIELD_BRIEFS[key]}
-Base your rewrite on the field's current value plus the surrounding challenge context. Never invent facts or numbers the user didn't give. Answer with JSON matching the schema.`,
+Base your answer on the field's current value plus the surrounding challenge context. Never invent facts or numbers the user didn't give. Answer with JSON matching the schema.`,
       turns: [
         {
           role: 'user',
           text: `${contextBlock(fields, transcript)}\n\nFIELD TO IMPROVE: ${key}\nCURRENT VALUE\n${
-            Array.isArray(currentValue) ? currentValue.join(', ') : currentValue
+            Array.isArray(currentValue) ? currentValue.join(', ') : currentValue || '(not set)'
           }`,
         },
       ],
-      schema: isArrayTarget ? ARRAY_SCHEMA : STRING_SCHEMA,
+      schema: isDeployment ? DEPLOYMENT_SCHEMA : isArrayTarget ? ARRAY_SCHEMA : STRING_SCHEMA,
     });
+
+    if (isDeployment) {
+      const improved = String(out.improved ?? '');
+      if (!DEPLOYMENT_OPTIONS.some((o) => o.value === improved)) {
+        return NextResponse.json({ error: 'The AI returned nothing usable — try again.' }, { status: 502 });
+      }
+      const rationale = String(out.rationale ?? '').trim().slice(0, 300);
+      return NextResponse.json({ improved, rationale } satisfies ImproveResponse);
+    }
 
     let improved: string | string[];
     if (isArrayTarget) {
+      const existing = fields[key];
+      // Keywords are normalized to lowercase; expertise keeps its casing.
       improved = (Array.isArray(out.improved) ? out.improved : [])
-        .map((k) => String(k).trim().toLowerCase())
-        .filter((k) => k && !fields.keywords.includes(k))
-        .slice(0, MAX_KEYWORDS);
+        .map((k) => (key === 'keywords' ? String(k).trim().toLowerCase() : String(k).trim()))
+        .filter((k) => k && !existing.includes(k))
+        .slice(0, key === 'keywords' ? MAX_KEYWORDS : MAX_EXPERTISE);
     } else {
       const max = LIMITS[key];
       improved = String(out.improved ?? '').trim().slice(0, max);

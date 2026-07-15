@@ -75,7 +75,9 @@ scraping. Suggested order:
   Supporting Data → AI Assistance → Review), rebuilt from live captures. Includes:
   **Redux Toolkit** state machine (the app's first client-state lib; single route,
   localStorage draft `xfusion-wizard-draft-v1`), sidebar **Chat Dock** that auto-fills
-  untouched fields / offers "Apply" chips for touched ones, per-field **✨ improve**
+  untouched fields / offers "Apply" chips for touched ones — expandable into a large
+  two-column workspace (wide transcript + live "Filled so far" field panel; auto-opens
+  when a fresh conversation gets focus), per-field **✨ improve**
   buttons (preview → Accept/Reject), step-4 **Help Me Write** (3 suggestion sections),
   **AI Tips** (context-hash cached, static fallbacks), **file upload** to
   `app/public/uploads/` (gitignored) with a Supporting Documents section on the
@@ -87,6 +89,11 @@ scraping. Suggested order:
 - **`docs/xfusion-2.0-items.md` is the 2.0 roadmap** — full spec checklist plus
   self-contained implementation tickets (XF2-01…XF2-13) with file-level build notes.
   XF2-13's working checklist: `docs/xf2-13-challenge-wizard-plan.md` (all ticked).
+- A kept demo challenge (full wizard run: 3-turn chat → all fields AI-filled → upload →
+  Help Me Write → publish) lives at
+  `/challenges/streamlining-nursing-documentation-for-enhanced-patient-care`
+  (owner: Demo Organization; PDF in `app/public/uploads/`, gitignored). `db:seed`
+  won't remove it; delete via the button on its detail page if unwanted.
 - ⚠️ codebase-memory MCP: `manage_adr(update)` REPLACES the ADR doc and a full
   `index_repository` WIPES it — see CLAUDE.md for the backup/restore drill.
 

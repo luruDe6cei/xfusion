@@ -3,7 +3,8 @@
 
 export const FIRST_QUESTION =
   "Let's shape your challenge together. What is the main pain point or challenge " +
-  'you are experiencing day to day — and which solutions have you already tried?';
+  'you are experiencing day to day — and which solutions have you already tried? ' +
+  "Not sure yet? Just type a few words about what bothers you and I'll ask the right questions.";
 
 // Limits observed on the live wizard (captured 2026-07-15): shortDescription 1300,
 // objective 1200, incentives 650. Name 90 comes from the public API data.
@@ -111,6 +112,8 @@ export interface ImproveRequest {
 export interface ImproveResponse {
   // single-field target
   improved?: string | string[];
+  // one-sentence estimation reasoning (deployment-time target)
+  rationale?: string;
   // target === 'assist'
   suggestions?: {
     objective: string;

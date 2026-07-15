@@ -3,17 +3,17 @@
 import { useWizardDispatch, useWizardSelector } from '../store';
 import { setField } from '../wizard-slice';
 import { DEPLOYMENT_OPTIONS, LIMITS, MAX_EXPERTISE } from '@/lib/wizard-shared';
-import { ChipInput, FieldShell, SelectBox, StepHeading, TextArea } from '../controls';
+import { ChipInput, MultiSelect, SelectBox, StepHeading, TextArea } from '../controls';
 import { ImprovableField } from '../improve';
 
 export function ObjectivesStep({ expertiseOptions }: { expertiseOptions: string[] }) {
   const dispatch = useWizardDispatch();
   const f = useWizardSelector((s) => s.wizard.fields);
+  const chatLen = useWizardSelector((s) => s.wizard.chat.length);
 
-  const addExpertise = (v: string) => {
-    if (!v || f.requiredExpertise.includes(v) || f.requiredExpertise.length >= MAX_EXPERTISE) return;
-    dispatch(setField({ key: 'requiredExpertise', value: [...f.requiredExpertise, v] }));
-  };
+  // Suggestion-style ✨ targets work off context, not the field's own value.
+  const hasContext =
+    chatLen > 0 || Boolean(f.shortDescription.trim() || f.objective.trim() || f.name.trim());
 
   return (
     <div className="flex flex-col gap-[var(--spacing-24)]">
@@ -37,15 +37,14 @@ export function ObjectivesStep({ expertiseOptions }: { expertiseOptions: string[
         />
       </ImprovableField>
 
-      <FieldShell label="Required Expertise" required>
+      <ImprovableField target="requiredExpertise" label="Required Expertise" required enabledWhen={hasContext}>
         <div className="flex flex-col gap-[var(--spacing-12)]">
-          <SelectBox
-            value=""
+          <MultiSelect
+            values={f.requiredExpertise}
+            options={expertiseOptions}
             placeholder="Select from list..."
-            options={expertiseOptions
-              .filter((e) => !f.requiredExpertise.includes(e))
-              .map((e) => ({ value: e, label: e }))}
-            onChange={addExpertise}
+            max={MAX_EXPERTISE}
+            onChange={(v) => dispatch(setField({ key: 'requiredExpertise', value: v }))}
           />
           <ChipInput
             values={f.requiredExpertise}
@@ -55,16 +54,21 @@ export function ObjectivesStep({ expertiseOptions }: { expertiseOptions: string[
             onChange={(v) => dispatch(setField({ key: 'requiredExpertise', value: v }))}
           />
         </div>
-      </FieldShell>
+      </ImprovableField>
 
-      <FieldShell label="Required Deployment Time" required>
+      <ImprovableField
+        target="requiredDeploymentTime"
+        label="Required Deployment Time"
+        required
+        enabledWhen={hasContext}
+      >
         <SelectBox
           value={f.requiredDeploymentTime}
           placeholder="Select deployment timeframe"
           options={DEPLOYMENT_OPTIONS.map((o) => ({ value: o.value, label: o.label }))}
           onChange={(v) => dispatch(setField({ key: 'requiredDeploymentTime', value: v }))}
         />
-      </FieldShell>
+      </ImprovableField>
     </div>
   );
 }

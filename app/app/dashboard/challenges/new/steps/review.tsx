@@ -15,7 +15,7 @@ export function ReviewStep() {
     DEPLOYMENT_OPTIONS.find((o) => o.value === f.requiredDeploymentTime)?.label ?? '—';
 
   return (
-    <div className="grid gap-[var(--spacing-16)] xl:grid-cols-2 items-start">
+    <div className="flex flex-col gap-[var(--spacing-16)]">
       <SectionCard icon="📄" title="Basic info" onEdit={() => dispatch(goToStep(1))}>
         <ValueCard label="Challenge Name" value={f.name} />
         <ValueCard label="Short Description" value={f.shortDescription} />

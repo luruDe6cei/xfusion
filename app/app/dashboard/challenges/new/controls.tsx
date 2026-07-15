@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 // Shared form controls for the wizard steps, styled after the live captures.
 
@@ -127,6 +127,112 @@ export function SelectBox(props: {
         </option>
       ))}
     </select>
+  );
+}
+
+// Multiselect dropdown: checkbox list with a search filter; selected values
+// are managed by the parent (rendered as chips there).
+export function MultiSelect({
+  values,
+  onChange,
+  options,
+  placeholder,
+  max,
+}: {
+  values: string[];
+  onChange: (v: string[]) => void;
+  options: string[];
+  placeholder: string;
+  max: number;
+}) {
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState('');
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
+  const toggle = (opt: string) => {
+    if (values.includes(opt)) onChange(values.filter((v) => v !== opt));
+    else if (values.length < max) onChange([...values, opt]);
+  };
+  const filtered = options.filter((o) => o.toLowerCase().includes(q.trim().toLowerCase()));
+
+  return (
+    <div ref={rootRef} className="relative">
+      <button
+        type="button"
+        role="combobox"
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        onClick={() => setOpen((v) => !v)}
+        className={
+          inputClass +
+          ' flex items-center justify-between gap-[var(--spacing-8)] text-left ' +
+          (values.length ? '' : ' text-[color:var(--color-grey-5)]')
+        }
+      >
+        <span className="truncate">
+          {values.length ? `${values.length} selected from list` : placeholder}
+        </span>
+        <span aria-hidden className="shrink-0 text-[color:var(--color-grey-5)]">
+          {open ? '▴' : '▾'}
+        </span>
+      </button>
+
+      {open && (
+        <div className="absolute z-20 mt-[4px] w-full rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-3)] bg-[var(--color-grey-white)] shadow-lg overflow-hidden">
+          <div className="p-[var(--spacing-8)] border-b border-solid border-[var(--color-grey-2)]">
+            <input
+              value={q}
+              autoFocus
+              placeholder="Filter…"
+              onChange={(e) => setQ(e.target.value)}
+              className="w-full h-[36px] px-[var(--spacing-12)] rounded-[var(--radius-8)] border border-solid border-[var(--color-grey-2)] text-[length:var(--font-size-14)] outline-none focus:border-[var(--color-primary)]"
+            />
+          </div>
+          <ul role="listbox" aria-multiselectable className="max-h-[240px] overflow-y-auto py-[var(--spacing-4)]">
+            {filtered.length === 0 && (
+              <li className="px-[var(--spacing-12)] py-[var(--spacing-8)] text-[length:var(--font-size-14)] text-[color:var(--color-grey-5)]">
+                No matches
+              </li>
+            )}
+            {filtered.map((opt) => {
+              const checked = values.includes(opt);
+              const full = !checked && values.length >= max;
+              return (
+                <li key={opt} role="option" aria-selected={checked}>
+                  <label
+                    className={`flex items-center gap-[var(--spacing-8)] px-[var(--spacing-12)] py-[var(--spacing-8)] text-[length:var(--font-size-14)] ${
+                      full ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:bg-[var(--color-grey-1)]'
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      disabled={full}
+                      onChange={() => toggle(opt)}
+                    />
+                    {opt}
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 }
 
