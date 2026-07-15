@@ -16,6 +16,11 @@ This repo is indexed in `codebase-memory-mcp` as project
   re-run `index_repository(repo_path='/Users/eduard/projects/xfusion', mode='full')`.
 - **When a decision is made** (or reversed): append it to the ADRs via
   `manage_adr(mode='update')` — decisions belong there, current state in `HANDOFF.md`.
+- ⚠️ **Two data-loss traps in this MCP server** (both hit on 2026-07-15):
+  1. `manage_adr(mode='update')` **replaces** the whole ADR document — always
+     `get` first and send back the FULL text with your addition.
+  2. `index_repository(mode='full')` **wipes the stored ADRs** — `get` a backup
+     before reindexing, restore via `update` after, and verify with `get`.
 
 ## What this project is
 

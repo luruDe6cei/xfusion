@@ -8,6 +8,7 @@ const challengeInclude = {
   company: { include: { logo: true, country: true } },
   industry: true,
   subIndustry: true,
+  files: true, // Supporting Documents (wizard uploads + seeded rows)
 } as const;
 
 const solutionInclude = {
@@ -97,6 +98,24 @@ export async function getIndustries(): Promise<Industry[]> {
   return rows as unknown as Industry[];
 }
 
+// "Category" in the wizard/list UIs (see CONTEXT.md).
+export async function getSubIndustries(): Promise<Industry[]> {
+  const rows = await prisma.subIndustry.findMany({ orderBy: { name: 'asc' } });
+  return rows as unknown as Industry[];
+}
+
+// Distinct expertise areas across all challenges — feeds the wizard's
+// "Select from list…" expertise picker.
+export async function getExpertiseOptions(): Promise<string[]> {
+  const rows = await prisma.challenge.findMany({
+    where: { status: 'PUBLISHED' },
+    select: { requiredExpertise: true },
+  });
+  const set = new Set<string>();
+  for (const r of rows) for (const e of r.requiredExpertise) if (e.trim()) set.add(e.trim());
+  return [...set].sort((a, b) => a.localeCompare(b));
+}
+
 // First write path in the app (2.0 AI intake, spec ch. 2). There is no auth yet,
 // so AI-submitted challenges hang off a synthetic "Demo Organization" — swap for
 // the session user's company once auth exists (roadmap XF2-01).
@@ -106,9 +125,11 @@ export async function createChallenge(input: {
   objective: string;
   rewardInformation: string;
   industryName: string;
+  subIndustryName?: string;
   requiredDeploymentTime: string;
   keywords: string[];
   requiredExpertise: string[];
+  files?: { name: string; url: string; mimetype: string; size: number }[];
 }): Promise<Challenge> {
   const company = await prisma.company.upsert({
     where: { slug: 'demo-organization' },
@@ -122,6 +143,9 @@ export async function createChallenge(input: {
     },
   });
   const industry = await prisma.industry.findFirst({ where: { name: input.industryName } });
+  const subIndustry = input.subIndustryName
+    ? await prisma.subIndustry.findFirst({ where: { name: input.subIndustryName } })
+    : null;
 
   const base =
     input.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) ||
@@ -138,10 +162,22 @@ export async function createChallenge(input: {
       objective: input.objective,
       rewardInformation: input.rewardInformation,
       industryId: industry?.id,
+      subIndustryId: subIndustry?.id,
       requiredDeploymentTime: input.requiredDeploymentTime,
       keywords: input.keywords,
       requiredExpertise: input.requiredExpertise,
       status: 'PUBLISHED',
+      files: input.files?.length
+        ? {
+            create: input.files.map((f) => ({
+              name: f.name,
+              url: f.url,
+              mimetype: f.mimetype,
+              filesize: f.size,
+              type: f.mimetype.startsWith('image/') ? 'IMAGE' : 'DOCUMENT',
+            })),
+          }
+        : undefined,
     },
     include: challengeInclude,
   });

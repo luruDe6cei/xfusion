@@ -10,7 +10,7 @@ export default async function ChallengesPage() {
       <HeroBanner title="Challenges" variant="challenges" />
       <div className="flex justify-end pt-[var(--spacing-24)]">
         <Link
-          href="/challenges/new"
+          href="/dashboard/challenges/new"
           className="h-[44px] px-[var(--spacing-24)] flex items-center gap-[var(--spacing-8)] rounded-[var(--radius-40)] text-[length:var(--font-size-16)] text-[color:var(--color-grey-white)] hover:opacity-90"
           style={{ background: 'var(--gradient-ai)' }}
         >

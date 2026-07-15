@@ -44,6 +44,7 @@ export interface Challenge {
   viewsCount: number;
   sharesCount: number;
   averageMatchScore?: number | null;
+  files?: FileAsset[];
   company: Company;
   createdAt: string;
 }

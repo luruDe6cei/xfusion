@@ -47,6 +47,9 @@ docs/*.doc
 # ─── Demo screenshots (regenerable, contain xfusion content) ─────────────────
 demo/
 
+# ─── Wizard uploads (user-uploaded Supporting Documents, local-disk demo) ────
+app/public/uploads/
+
 # ─── Editor / OS cruft ───────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db

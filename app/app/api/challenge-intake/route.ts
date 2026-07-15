@@ -1,94 +1,163 @@
-// xFUSION 2.0 (spec ch. 2) — conversational challenge intake.
-// The client posts the transcript; Gemini either asks the next Socratic
-// question (done=false) or returns the fully extracted challenge fields
-// (done=true). JSON output is enforced via responseSchema.
+// Chat Dock copilot (XF2-13, ADR-006). The client posts the transcript PLUS the
+// wizard's current field state, which fields the user touched, and the current
+// step. Gemini replies conversationally and extracts whatever it newly learned
+// into fieldUpdates — the client auto-fills untouched fields and renders
+// "Apply" chips for touched ones. JSON output enforced via responseSchema.
 import { NextResponse } from 'next/server';
 import { geminiJson, type ChatTurn } from '@/lib/gemini';
-import { getIndustries } from '@/lib/data';
-import { FIRST_QUESTION, LIMITS, type IntakeResponse } from '../../challenges/new/intake-shared';
+import { getIndustries, getSubIndustries } from '@/lib/data';
+import {
+  DEPLOYMENT_OPTIONS,
+  EMPTY_FIELDS,
+  FIRST_QUESTION,
+  LIMITS,
+  MAX_EXPERTISE,
+  MAX_KEYWORDS,
+  type AiFieldKey,
+  type FieldUpdates,
+  type IntakeRequest,
+  type IntakeResponse,
+  type WizardFields,
+} from '@/lib/wizard-shared';
 
 // Guardrails: the transcript is billed against the Gemini key, so cap what a
-// single request may forward. 20 turns / 20k chars is far beyond any real
-// intake conversation (max ~8 turns by design).
-const MAX_TURNS = 20;
-const MAX_TOTAL_CHARS = 20_000;
+// single request may forward. The dock is a long-lived copilot, hence roomier
+// caps than the old 3-question intake.
+const MAX_TURNS = 40;
+const MAX_TOTAL_CHARS = 30_000;
+
+const AI_KEYS: AiFieldKey[] = [
+  'name',
+  'shortDescription',
+  'industry',
+  'category',
+  'keywords',
+  'objective',
+  'requiredExpertise',
+  'requiredDeploymentTime',
+  'rewardInformation',
+];
 
 const RESPONSE_SCHEMA = {
   type: 'OBJECT',
   properties: {
     reply: { type: 'STRING' },
-    done: { type: 'BOOLEAN' },
-    fields: {
+    fieldUpdates: {
       type: 'OBJECT',
       nullable: true,
       properties: {
-        name: { type: 'STRING' },
-        shortDescription: { type: 'STRING' },
-        objective: { type: 'STRING' },
-        rewardInformation: { type: 'STRING' },
-        industry: { type: 'STRING' },
+        name: { type: 'STRING', nullable: true },
+        shortDescription: { type: 'STRING', nullable: true },
+        industry: { type: 'STRING', nullable: true },
+        category: { type: 'STRING', nullable: true },
+        keywords: { type: 'ARRAY', nullable: true, items: { type: 'STRING' } },
+        objective: { type: 'STRING', nullable: true },
+        requiredExpertise: { type: 'ARRAY', nullable: true, items: { type: 'STRING' } },
         requiredDeploymentTime: {
           type: 'STRING',
-          enum: ['UP_TO_3_MONTHS', 'THREE_TO_6_MONTHS', 'SIX_TO_12_MONTHS', 'ONE_YEAR_PLUS', 'NO_TIMEFRAME'],
+          nullable: true,
+          enum: DEPLOYMENT_OPTIONS.map((o) => o.value),
         },
-        keywords: { type: 'ARRAY', items: { type: 'STRING' } },
-        requiredExpertise: { type: 'ARRAY', items: { type: 'STRING' } },
+        rewardInformation: { type: 'STRING', nullable: true },
       },
-      required: [
-        'name',
-        'shortDescription',
-        'objective',
-        'rewardInformation',
-        'industry',
-        'requiredDeploymentTime',
-        'keywords',
-        'requiredExpertise',
-      ],
     },
   },
-  required: ['reply', 'done'],
+  required: ['reply'],
 } as const;
 
-function buildSystemPrompt(industryNames: string[]): string {
-  return `You are the xFUSION challenge intake assistant — a "Socratic partner" that helps an organization turn a vague pain point into a sharp, publishable open-innovation challenge.
+function buildSystemPrompt(opts: {
+  industries: string[];
+  categories: string[];
+  fields: WizardFields;
+  touched: AiFieldKey[];
+  step: number;
+}): string {
+  const { industries, categories, fields, touched, step } = opts;
+  const formState = JSON.stringify(
+    Object.fromEntries(AI_KEYS.map((k) => [k, fields[k]])),
+  );
+  return `You are the xFUSION challenge copilot — a "Socratic partner" embedded beside a 5-step "Create a Challenge" wizard (1 Basic Information, 2 Objectives & Requirements, 3 Incentives & Supporting Data, 4 AI Assistance, 5 Review). You help an organization turn a vague pain point into a sharp, publishable open-innovation challenge, filling the form for them as the conversation progresses.
+
+CURRENT WIZARD STATE
+- The user is on step ${step}.
+- Current form values: ${formState}
+- Fields the user edited BY HAND: ${touched.length ? touched.join(', ') : '(none)'}
 
 CONVERSATION RULES
-- The user was already asked: "${FIRST_QUESTION}" — their first message is the answer to it.
-- Ask exactly ONE short, conversational follow-up question per turn. React in one sentence to what they said before asking; never sound like a form.
-- Ask 2–3 follow-ups in total, never more than 3. Cover whichever of these are still unknown:
-  1. What kind of partnership they can offer (joint development/R&D, building a POC, a paid pilot, pro-bono collaboration, a prize). Do NOT push budgets or off-the-shelf products if they sound like a hospital, university or nonprofit — they usually seek development partners, not vendors.
-  2. Success criteria — what measurable outcome would make this a win.
-  3. Whether the information is commercially sensitive (NDA / teaser version may be needed) and their rough timeline.
-- When you have enough (or after the 3rd follow-up, whichever comes first), set done=true and produce the fields. If the user says "just generate it" or similar, set done=true immediately with best-effort fields.
-- While done=false, fields must be null.
+- The user was already greeted with: "${FIRST_QUESTION}" — their first message answers it.
+- Reply in 1–3 short conversational sentences. React to what they said; never sound like a form.
+- If important information is still missing, end your reply with ONE short follow-up question. Prioritize whichever is still unknown: what partnership they can offer (joint development/R&D, POC, paid pilot, pro-bono, prize — do NOT push budgets or off-the-shelf products on hospitals, universities or nonprofits), measurable success criteria, timeline, commercial sensitivity.
+- When the form is essentially complete, don't ask more questions — tell them the form is filled in and invite them to review each step and publish.
 
-FIELD RULES (only when done=true)
-- Clear business English. Short, concrete, measurable — never generic or "fluffy". Reuse the user's own vocabulary and numbers wherever possible.
-- name: punchy title, max ${LIMITS.name} characters, no trailing period.
-- shortDescription: the challenge statement, max ${LIMITS.shortDescription} characters, 2–4 short paragraphs: context and pain, what has been tried, what is sought. Written from the organization's perspective ("We ...").
-- objective: 3–5 bullets, each on its own line starting with "• ", each short and measurable (a KPI where possible).
-- rewardInformation: 1–3 sentences describing the partnership/incentive they offer.
-- keywords: 6–10 lowercase search phrases. Think beyond the obvious — include cross-industry angles, ignoring traditional industry boundaries.
-- requiredExpertise: 3–6 expertise areas a solver should bring.
-- industry: exactly one name from this list (verbatim): ${industryNames.join(' | ')}
-- requiredDeploymentTime: your best guess from their timeline; NO_TIMEFRAME if unknown.
-- reply (when done=true): one sentence handing off, e.g. "Here's a draft of your challenge — review and edit anything before publishing."
+FIELD EXTRACTION RULES (fieldUpdates — with EVERY reply)
+- Extract whatever you NEWLY learned this turn into fieldUpdates. Include ONLY fields you have real information for; omit everything else. Do not resend values that already match the form.
+- Fields the user edited by hand belong to them: only propose a value for a hand-edited field when the conversation clearly justifies a change (the UI shows it as an optional suggestion, it will not overwrite).
+- Clear business English. Short, concrete, measurable — never generic. Reuse the user's own vocabulary and numbers.
+- name: punchy title, max ${LIMITS.name} chars, no trailing period.
+- shortDescription: the challenge statement, max ${LIMITS.shortDescription} chars, 2–4 short paragraphs from the organization's perspective ("We ..."): context and pain, what was tried, what is sought.
+- objective: 3–5 bullets, each on its own line starting with "• ", each short and measurable (a KPI where possible). Max ${LIMITS.objective} chars.
+- rewardInformation: 1–3 sentences describing the partnership/incentive offered. Max ${LIMITS.rewardInformation} chars.
+- keywords: 6–10 lowercase search phrases, cross-industry angles included. Max ${MAX_KEYWORDS}.
+- requiredExpertise: 3–6 expertise areas a solver should bring. Max ${MAX_EXPERTISE}.
+- industry: exactly one name from this list (verbatim): ${industries.join(' | ')}
+- category: exactly one name from this list (verbatim), or omit if none fits: ${categories.join(' | ')}
+- requiredDeploymentTime: your best guess from their timeline; omit if unknown.
 
 ALWAYS answer with JSON matching the schema.`;
 }
 
+// Belt-and-braces: clamp/validate everything the model proposed before it
+// reaches the client.
+function sanitizeUpdates(
+  raw: FieldUpdates | null | undefined,
+  industries: string[],
+  categories: string[],
+): FieldUpdates | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const out: FieldUpdates = {};
+  const str = (v: unknown, max: number) =>
+    typeof v === 'string' && v.trim() ? v.trim().slice(0, max) : undefined;
+  const arr = (v: unknown, maxItems: number, maxLen: number) =>
+    Array.isArray(v)
+      ? v
+          .filter((x): x is string => typeof x === 'string')
+          .map((x) => x.trim().slice(0, maxLen))
+          .filter(Boolean)
+          .slice(0, maxItems)
+      : undefined;
+
+  const name = str(raw.name, LIMITS.name);
+  if (name) out.name = name;
+  const sd = str(raw.shortDescription, LIMITS.shortDescription);
+  if (sd) out.shortDescription = sd;
+  const obj = str(raw.objective, LIMITS.objective);
+  if (obj) out.objective = obj;
+  const reward = str(raw.rewardInformation, LIMITS.rewardInformation);
+  if (reward) out.rewardInformation = reward;
+  const industry = str(raw.industry, 80);
+  if (industry && industries.includes(industry)) out.industry = industry;
+  const category = str(raw.category, 80);
+  if (category && categories.includes(category)) out.category = category;
+  const dep = str(raw.requiredDeploymentTime, 40);
+  if (dep && DEPLOYMENT_OPTIONS.some((o) => o.value === dep)) out.requiredDeploymentTime = dep;
+  const kw = arr(raw.keywords, MAX_KEYWORDS, 60);
+  if (kw?.length) out.keywords = kw;
+  const exp = arr(raw.requiredExpertise, MAX_EXPERTISE, 80);
+  if (exp?.length) out.requiredExpertise = exp;
+  return Object.keys(out).length ? out : null;
+}
+
 export async function POST(req: Request) {
   try {
-    const { messages } = (await req.json()) as { messages: ChatTurn[] };
+    const body = (await req.json()) as Partial<IntakeRequest>;
+    const messages = body.messages as ChatTurn[];
     if (!Array.isArray(messages) || messages.length === 0 || messages[0].role !== 'user') {
       return NextResponse.json({ error: 'messages must start with a user turn' }, { status: 400 });
     }
     const wellFormed = messages.every(
       (m) => (m.role === 'user' || m.role === 'model') && typeof m.text === 'string',
     );
-    const totalChars = wellFormed
-      ? messages.reduce((n, m) => n + m.text.length, 0)
-      : Infinity;
+    const totalChars = wellFormed ? messages.reduce((n, m) => n + m.text.length, 0) : Infinity;
     if (!wellFormed || messages.length > MAX_TURNS || totalChars > MAX_TOTAL_CHARS) {
       return NextResponse.json(
         { error: 'Conversation is too long or malformed — please start over.' },
@@ -96,19 +165,48 @@ export async function POST(req: Request) {
       );
     }
 
-    const industries = await getIndustries();
-    const out = await geminiJson<IntakeResponse>({
-      system: buildSystemPrompt(industries.map((i) => i.name)),
+    // The client's field state goes into the prompt — clamp it defensively.
+    const f = { ...EMPTY_FIELDS, ...(typeof body.fields === 'object' ? body.fields : {}) };
+    const fields: WizardFields = {
+      ...EMPTY_FIELDS,
+      name: String(f.name ?? '').slice(0, LIMITS.name),
+      shortDescription: String(f.shortDescription ?? '').slice(0, LIMITS.shortDescription),
+      industry: String(f.industry ?? '').slice(0, 80),
+      category: String(f.category ?? '').slice(0, 80),
+      objective: String(f.objective ?? '').slice(0, LIMITS.objective),
+      rewardInformation: String(f.rewardInformation ?? '').slice(0, LIMITS.rewardInformation),
+      requiredDeploymentTime: String(f.requiredDeploymentTime ?? '').slice(0, 40),
+      keywords: Array.isArray(f.keywords) ? f.keywords.slice(0, MAX_KEYWORDS).map(String) : [],
+      requiredExpertise: Array.isArray(f.requiredExpertise)
+        ? f.requiredExpertise.slice(0, MAX_EXPERTISE).map(String)
+        : [],
+    };
+    const touched = (Array.isArray(body.touched) ? body.touched : []).filter((k): k is AiFieldKey =>
+      AI_KEYS.includes(k as AiFieldKey),
+    );
+    const step = Math.min(5, Math.max(1, Number(body.step) || 1));
+
+    const [industries, subIndustries] = await Promise.all([getIndustries(), getSubIndustries()]);
+    const industryNames = industries.map((i) => i.name);
+    const categoryNames = subIndustries.map((s) => s.name);
+
+    const out = await geminiJson<{ reply: string; fieldUpdates?: FieldUpdates | null }>({
+      system: buildSystemPrompt({
+        industries: industryNames,
+        categories: categoryNames,
+        fields,
+        touched,
+        step,
+      }),
       turns: messages,
       schema: RESPONSE_SCHEMA,
     });
 
-    // Belt-and-braces: the model is told the limits, but enforce them anyway.
-    if (out.fields) {
-      out.fields.name = out.fields.name.slice(0, LIMITS.name);
-      out.fields.shortDescription = out.fields.shortDescription.slice(0, LIMITS.shortDescription);
-    }
-    return NextResponse.json(out);
+    const response: IntakeResponse = {
+      reply: typeof out.reply === 'string' ? out.reply : '…',
+      fieldUpdates: sanitizeUpdates(out.fieldUpdates, industryNames, categoryNames),
+    };
+    return NextResponse.json(response);
   } catch (e) {
     const msg = e instanceof Error ? e.message : 'Challenge intake failed';
     return NextResponse.json({ error: msg }, { status: 500 });

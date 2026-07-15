@@ -104,6 +104,28 @@ export default async function ChallengeDetail({ params }: { params: Promise<{ sl
             </div>
           </section>
         )}
+
+        {c.files && c.files.length > 0 && (
+          <section className="flex flex-col gap-[var(--spacing-12)]">
+            <h3 className="text-[length:var(--font-size-20)] font-[var(--font-weight-semibold)] leading-[var(--line-height-120)]">
+              Supporting Documents
+            </h3>
+            <ul className="flex flex-col gap-[var(--spacing-8)]">
+              {c.files.map((f) => (
+                <li key={f.id}>
+                  <a
+                    href={f.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-[var(--spacing-8)] text-[length:var(--font-size-16)] text-[color:var(--color-violet-6)] hover:underline"
+                  >
+                    📄 {f.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
 
       {/* Sidebar — upstream's action panel. The actions need auth + write paths,

@@ -1,6 +1,6 @@
 # HANDOFF.md — current state & next steps
 
-Last updated: 2026-07-14. Read `CLAUDE.md` first for conventions/rules.
+Last updated: 2026-07-15. Read `CLAUDE.md` first for conventions/rules.
 
 ## TL;DR
 
@@ -69,15 +69,26 @@ scraping. Suggested order:
   then **reverted** on 2026-07-14 — owner wants AI-capability demos, not heuristic UI.
   Code parked in `demo/reverted-matched-solutions/`, restore notes in the roadmap doc.)
 
-### 2.0 work — current state (2026-07-14)
-- **SHIPPED: AI challenge intake (spec ch. 2)** at `/challenges/new` — Socratic chat
-  powered by **Gemini** (`app/lib/gemini.ts`, REST, no SDK) that drafts every challenge
-  field for review, then publishes via the app's **first write path**
-  (`createChallenge` in `lib/data.ts`, owned by a synthetic "Demo Organization").
-  Needs `GEMINI_API_KEY` in `app/.env` (placeholder added; restart dev after setting).
+### 2.0 work — current state (2026-07-15)
+- **SHIPPED: Challenge Wizard (XF2-13, ADR-006)** at `/dashboard/challenges/new` —
+  the real site's 5-step create flow (Splash → Basic Info → Objectives → Incentives &
+  Supporting Data → AI Assistance → Review), rebuilt from live captures. Includes:
+  **Redux Toolkit** state machine (the app's first client-state lib; single route,
+  localStorage draft `xfusion-wizard-draft-v1`), sidebar **Chat Dock** that auto-fills
+  untouched fields / offers "Apply" chips for touched ones, per-field **✨ improve**
+  buttons (preview → Accept/Reject), step-4 **Help Me Write** (3 suggestion sections),
+  **AI Tips** (context-hash cached, static fallbacks), **file upload** to
+  `app/public/uploads/` (gitignored) with a Supporting Documents section on the
+  challenge detail page. The old chat-only `/challenges/new` (XF2-03) is now a
+  redirect; its files were removed. E2E-verified live (chat autofill, merge rule,
+  improve, upload, draft-restore on reload, publish). Gemini routes:
+  `/api/challenge-intake` (copilot contract), `/api/field-improve`, `/api/wizard-tips`,
+  plus `/api/upload`. Needs `GEMINI_API_KEY` in `app/.env`.
 - **`docs/xfusion-2.0-items.md` is the 2.0 roadmap** — full spec checklist plus
-  self-contained implementation tickets (XF2-01…XF2-12) with file-level build notes.
-  Pick up any ticket from there; it repeats the gotchas that matter per ticket.
+  self-contained implementation tickets (XF2-01…XF2-13) with file-level build notes.
+  XF2-13's working checklist: `docs/xf2-13-challenge-wizard-plan.md` (all ticked).
+- ⚠️ codebase-memory MCP: `manage_adr(update)` REPLACES the ADR doc and a full
+  `index_repository` WIPES it — see CLAUDE.md for the backup/restore drill.
 
 ### 4. Nice-to-haves
 - Search & industry filters on list pages.

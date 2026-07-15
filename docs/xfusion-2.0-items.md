@@ -135,9 +135,11 @@ detail page. If restored, its scoring should be re-based on real AI via `lib/gem
 
 ## 3. Tickets
 
-**XF2-03 (chat-based challenge intake) is SHIPPED** — see section 1. Remaining tickets,
-in suggested order: XF2-05 → XF2-12 → XF2-08 → XF2-09 → XF2-01 → XF2-02 → XF2-11 →
-XF2-04 → XF2-10 → XF2-06/07. All AI tickets should reuse `lib/gemini.ts` (`geminiJson`
+**XF2-03 (chat-based challenge intake) is SHIPPED** — see section 1. **XF2-13 (challenge
+wizard) is SHIPPED 2026-07-15** — it absorbed XF2-03's chat into the wizard's Chat Dock
+(`/challenges/new` now redirects to `/dashboard/challenges/new`).
+Remaining tickets, in suggested order: XF2-05 → XF2-12 → XF2-08 → XF2-09 →
+XF2-01 → XF2-02 → XF2-11 → XF2-04 → XF2-10 → XF2-06/07. All AI tickets should reuse `lib/gemini.ts` (`geminiJson`
 with a response schema) and follow the intake route as the reference pattern.
 
 ### XF2-01 — Auth + corporate-email gate (ch. 1)
@@ -198,6 +200,27 @@ PDF (extract text; Gemini's REST API also accepts inline PDF bytes via `inline_d
 One `geminiJson` call extracts company profile, description, technologies, industries,
 keywords, USP into the existing solution fields; review form (reuse the intake form
 pattern); `createSolution` write path mirroring `createChallenge`.
+
+### XF2-13 — Challenge Wizard: 5-step create flow + Chat Dock (ch. 2, evolves XF2-03) — **SHIPPED 2026-07-15, see ADR-006**
+**Checklist (all ticked): [`docs/xf2-13-challenge-wizard-plan.md`](./xf2-13-challenge-wizard-plan.md)**
+Rebuild challenge creation as the real site's wizard at `/dashboard/challenges/new`
+(Splash → Basic Information → Objectives & Requirements → Incentives & Supporting Data →
+AI Assistance → Review; live captures in the planning session's scratchpad, reference
+screenshots of every step). `/challenges/new` becomes a redirect; the existing intake
+chat is adapted into a sidebar **Chat Dock** below Tips, transcript persisted across
+steps. State: Redux Toolkit `wizard` slice (step index, fields, per-step status, touched
+set, chat transcript, tips cache), single route, localStorage rehydration ("Draft").
+Chat replies carry `fieldUpdates` that auto-fill only untouched fields (Apply chip for
+touched ones). Per-field ✨ improve buttons (name/description/keywords, objective,
+incentives) render preview → Accept/Reject via one `/api/field-improve` route; step-4
+"Help Me Write" mirrors the captured live UI — progress-bar generation, then Suggested
+Objectives / Recommended Keywords / Suggested Expertise sections, each with its own
+Accept + edit, unaccepted suggestions discarded on Next. AI Tips regenerate on step entry +
+chat turns via `/api/wizard-tips`. Supporting Documents upload to local disk (max 10,
+PDF/PPT/Word/XLS/JPG/PNG) with `File` rows linked on publish. Field limits per live
+site: shortDescription 1300, objective 1200, incentives 650. Domain=Industry,
+Category=SubIndustry (needs `getSubIndustries` + `subIndustryId`/files/status params on
+`createChallenge`). All AI through `geminiJson` (ADR-003); publish per ADR-004.
 
 ---
 
